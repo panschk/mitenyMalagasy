@@ -1,13 +1,22 @@
 ﻿var app = angular.module('mitenyMain', ['mitenyUtil']);
 app.controller('Main', ['checkAnswer', '$scope', function Main(checkAnswer, $scope) {
-	this.getQuestion = function getQuestion() {
+	this.isactive = false;
+	$scope.getQuestion = function getQuestion() {
 		return data['numbers']['de'][index]
 	}
 	this.check = function check() {
-		console.log($scope)
 		return checkAnswer.checkAnswerF($scope.answer, $scope)
-  };
-  
+	};
+	this.gameState = function gameState() {
+		if (this.isactive) {
+			return "block";
+		} else {
+			return "none";
+		}
+	}
+	this.startGame = function startGame() {
+		this.isactive = true;
+	}
 	newRandomQuestion($scope);
 }]);
 angular.module('mitenyUtil', [])
@@ -18,9 +27,8 @@ angular.module('mitenyUtil', [])
 
 		if (guess.toUpperCase() == getCorrectAnswer().toUpperCase()) {
 			correctGuess($scope)
-			return "Richtig!"
 		} else {
-			return "Falsch";
+			wrongGuess($scope)
 		}
 	}
 	return {
@@ -28,9 +36,6 @@ angular.module('mitenyUtil', [])
 	};
 	
 });
-
-
-
 
 function newRandomQuestion($scope) {
 	index = parseInt(Math.random()*10, 10)
@@ -42,5 +47,8 @@ function getCorrectAnswer() {
 
 function correctGuess($scope) {
 	newRandomQuestion($scope);
-	
+}
+function wrongGuess($scope) {
+	alert("Falsch. "+ $scope.getQuestion() +" ==> "+ getCorrectAnswer());
+	newRandomQuestion($scope);
 }
