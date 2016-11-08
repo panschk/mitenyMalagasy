@@ -1,54 +1,66 @@
-﻿var app = angular.module('mitenyMain', ['mitenyUtil']);
-app.controller('Main', ['checkAnswer', '$scope', function Main(checkAnswer, $scope) {
-	this.isactive = false;
-	$scope.getQuestion = function getQuestion() {
-		return data['numbers']['de'][index]
-	}
+﻿var app = angular.module('mitenyMain', []);
+app.controller('Main', ['$scope', function Main($scope) {
+	this.isactive = 'menu';
+	$scope.game = game;
+	$scope.game.Game("numbers")
+	
 	this.check = function check() {
-		return checkAnswer.checkAnswerF($scope.answer, $scope)
+		return $scope.game.checkAnswer()
 	};
-	this.gameState = function gameState() {
-		if (this.isactive) {
+	this.state = function state(item) {
+		if (this.isactive == item) {
 			return "block";
 		} else {
 			return "none";
 		}
 	}
-	this.startGame = function startGame() {
-		this.isactive = true;
+	this.startGame = function startGame(lvl) {
+		this.isactive = 'game'
+		$scope.game.Game(lvl)
 	}
-	newRandomQuestion($scope);
+	this.mainMenu = function mainMenu() {
+		this.isactive = 'menu'
+	}
+	$scope.game.next()
+	$scope.data=data
 }]);
-angular.module('mitenyUtil', [])
-.factory('checkAnswer', function() {
+var game = {
+	levelName	:	"",
+	index		:	0,
+	answer		: "",
+	start		: function start() {
+		
+	},
+	Game		:function Game(lvlName) {
+		this.levelName = lvlName
+	},
+	getQuestion : function getQuestion() {
+		return data[this.levelName]['de'][this.index];
+	},
+	next		:function next() {
+		var lengthArray = data[this.levelName]['mg'].length;
+		this.index = parseInt(Math.random()*lengthArray, 10);
+		this.answer = "";
+	},
+	checkAnswer : function checkAnswerF() {
 
-	
-	var checkAnswerF = function checkAnswerF(guess, $scope) {
-
-		if (guess.toUpperCase() == getCorrectAnswer().toUpperCase()) {
-			correctGuess($scope)
+		if (this.answer.toUpperCase() == this.getCorrectAnswer().toUpperCase()) {
+			this.correctGuess()
 		} else {
-			wrongGuess($scope)
+			this.wrongGuess()
 		}
-	}
-	return {
-		checkAnswerF : checkAnswerF
-	};
+	},
 	
-});
+	getCorrectAnswer : function getCorrectAnswer() {
+		return data[this.levelName]['mg'][this.index]
+	},
 
-function newRandomQuestion($scope) {
-	index = parseInt(Math.random()*10, 10)
-	$scope.answer = ""
-}
-function getCorrectAnswer() {
-	return data['numbers']['mg'][index]
-}
-
-function correctGuess($scope) {
-	newRandomQuestion($scope);
-}
-function wrongGuess($scope) {
-	alert("Falsch. "+ $scope.getQuestion() +" ==> "+ getCorrectAnswer());
-	newRandomQuestion($scope);
+	correctGuess : function correctGuess() {
+		this.next()
+	},
+	wrongGuess : function wrongGuess() {
+		alert("Falsch. "+ this.getQuestion() +" ==> "+ this.getCorrectAnswer());
+		this.next()
+	}
+	
 }

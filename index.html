@@ -1,20 +1,26 @@
+<!DOCTYPE html>
 <html ng-app="mitenyMain" ng-controller="Main as mitenyMain">
   <head>
+	<meta charset="utf-8"/>
   <script src="jquery-3.1.1.min.js"></script>
     <script src="angular.js"></script>
 		<script src="data.js" charset="utf-8"></script>
 	<script src="miteny.js" charset="utf-8"></script>
-
-	
   </head>
   <body>
-  <div id="menu">
-  <button ng-click="mitenyMain.startGame()">Los geht's</button>
+  <div id="menu" style="display: {{ mitenyMain.state('menu') }} ">
+	<div ng-repeat="(lvlName, level) in data">
+		<button ng-click="mitenyMain.startGame(lvlName)">{{ level['name'] }}</button> 
+	</div>
+
   </div>
-   <div style="display: {{ mitenyMain.gameState() }} " id="game">
-	  <div id = "question">Was ist <b>{{ getQuestion() }}</b> auf madagassisch?</div>
-      <input type="text" ng-model="answer" placeholder="?">
-	  <button ng-click="mitenyMain.check()">Ok</button>
+   <div style="display: {{ mitenyMain.state('game') }} " id="game">
+	  <button ng-click="mitenyMain.mainMenu()">Zurück</button> 
+	  <form ng-submit="mitenyMain.check()">
+	  <div id = "question">Was ist <b>{{ game.getQuestion() }}</b> auf madagassisch?</div>
+      <input type="text" ng-model="game.answer">
+	  <button type ="submit" >Ok</button>
+	  </form>
     </div>
 
   </body>
