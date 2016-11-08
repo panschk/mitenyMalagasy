@@ -1,0 +1,19 @@
+<html ng-app="mitenyMain" ng-controller="Main as mitenyMain">
+  <head>
+    <script src="angular.js"></script>
+		<script src="data.js" charset="utf-8"></script>
+	<script src="miteny.js" charset="utf-8"></script>
+
+	
+  </head>
+  <body>
+      <div>
+	  <div id = "question">Was ist <b>{{ mitenyMain.getQuestion() }}</b> auf madagassisch?</div>
+      <input type="text" ng-model="answer" placeholder="?">
+      <div id = "check"> {{ mitenyMain.check() }}!</div>
+	  <div>{{ testVal }}</div>
+    </div>
+  
+  
+  </body>
+</html>
