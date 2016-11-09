@@ -10,17 +10,29 @@
   <body>
   <div id="menu" style="display: {{ mitenyMain.state('menu') }} ">
 	<div ng-repeat="(lvlName, level) in data">
-		<button ng-click="mitenyMain.startGame(lvlName)">{{ level['name'] }}</button> 
+		{{ level['name'] }} <button ng-click="mitenyMain.startGame(lvlName)">&#x270d;</button>
+		<button ng-click="mitenyMain.start1of4(lvlName)">&#x2611;</button> 
 	</div>
 
   </div>
    <div style="display: {{ mitenyMain.state('game') }} " id="game">
 	  <button ng-click="mitenyMain.mainMenu()">Zurück</button> 
 	  <form ng-submit="mitenyMain.check()">
-	  <div id = "question">Was ist <b>{{ game.getQuestion() }}</b> auf madagassisch?</div>
-      <input type="text" ng-model="game.answer">
-	  <button type ="submit" >Ok</button>
+		  <div id = "question">Was ist <b>{{ game.getQuestion() }}</b> auf madagassisch?</div>
+		  <input type="text" ng-model="game.answer">
+		  <button type ="submit" >Ok</button>
 	  </form>
+    </div>
+	
+	<div style="display: {{ mitenyMain.state('1of4') }} " id="1of4">
+	  <button ng-click="mitenyMain.mainMenu()">Zurück</button> 
+	  <div id = "question">Was ist <b>{{ game.getQuestion() }}</b> auf madagassisch?</div>
+	  <button  ng-click="mitenyMain.selectAnswer(0)">{{ game.getPossibleAnswer(0) }}</button>
+	  <button  ng-click="mitenyMain.selectAnswer(1)">{{ game.getPossibleAnswer(1) }}</button>
+	  <button  ng-click="mitenyMain.selectAnswer(2)">{{ game.getPossibleAnswer(2) }}</button>
+	  <button  ng-click="mitenyMain.selectAnswer(3)">{{ game.getPossibleAnswer(3) }}</button>
+
+	  
     </div>
 
   </body>
