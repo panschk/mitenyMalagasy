@@ -1,28 +1,28 @@
 var app = angular.module('mitenyMain', []);
 app.controller('Main', ['$scope', function Main($scope) {
 	this.isactive = 'menu';
-	$scope.game = game;
-	$scope.game.Game("numbers")
-	
-	this.check = function check() {
+
+	this.check = function() {
 		return $scope.game.checkAnswer()
 	};
-	this.state = function state(item) {
+	this.state = function(item) {
 		if (this.isactive == item) {
 			return "block";
 		} else {
 			return "none";
 		}
 	}
-	this.startGame = function startGame(lvl) {
+	this.startGame = function(lvl) {
 		this.isactive = 'game'
+		$scope.game = new Game()
 		$scope.game.Game(lvl)
 	}
-	this.start1of4 = function start1of4(lvl) {
+	this.start1of4 = function(lvl) {
 		this.isactive = '1of4'
+		$scope.game = new MultipleChoiceGame()
 		$scope.game.Game(lvl)
 	}
-	this.selectAnswer = function selectAnswer(choice) {
+	this.selectAnswer = function(choice) {
 	    var idx = $scope.game.possibleAnswers[choice];
 		if (idx == $scope.game.index) {
 			$scope.game.correctGuess()
@@ -31,62 +31,69 @@ app.controller('Main', ['$scope', function Main($scope) {
 		}
 		$scope.game.next()
 	}
-	this.mainMenu = function mainMenu() {
+	this.mainMenu = function() {
 		this.isactive = 'menu'
 	}
-	$scope.game.next()
 	$scope.data=data
 }]);
-var game = {
-	levelName	:	"",
-	index		:	0,
-	answer		: "",
-	possibleAnswers	: [1,2,3,4],
-	Game		:function Game(lvlName) {
+var Game = function() {
+	levelName	=	""
+	index		=	0
+	answer		= ""
+	this.Game = function(lvlName) {
 		this.levelName = lvlName
 		this.next()
-	},
-	getQuestion : function getQuestion() {
+	}
+
+	this.getQuestion = function() {
 		return data[this.levelName]['de'][this.index];
-	},
-	next		:function next() {
+	}
+	this.next = function() {
 		var lengthArray = data[this.levelName]['mg'].length;
 		this.index = parseInt(Math.random()*lengthArray, 10);
 		this.answer = "";
 		this.generatePossibleAnswers();
-	},
-	checkAnswer : function checkAnswer() {
+	}
+	this.generatePossibleAnswers	=	function() {
+	}
+	
+	this.checkAnswer = function() {
 
 		if (this.answer.toUpperCase() == this.getCorrectAnswer().toUpperCase()) {
 			this.correctGuess()
 		} else {
 			this.wrongGuess()
 		}
-	},
-	getPossibleAnswer	:	function getPossibleAnswer(choice) {
-		var idx = this.possibleAnswers[choice]
-		return data[this.levelName]['mg'][idx];
-	},
-	
-	generatePossibleAnswers	:	function generatePossibleAnswers() {
-		var indexList = getRandomIndex(data[this.levelName]['mg'].length, 4);
-		var randomOfFour = Math.floor(Math.random() * indexList.length);
-		this.possibleAnswers = indexList;
-		this.index = indexList[randomOfFour];
-	},
-	
-	getCorrectAnswer : function getCorrectAnswer() {
-		return data[this.levelName]['mg'][this.index]
-	},
+	}
 
-	correctGuess : function correctGuess() {
+	this.getCorrectAnswer = function() {
+		return data[this.levelName]['mg'][this.index]
+	}
+
+	this.correctGuess = function() {
 		this.next()
-	},
-	wrongGuess : function wrongGuess() {
+	}
+	this.wrongGuess = function() {
 		alert("Falsch. "+ this.getQuestion() +" ==> "+ this.getCorrectAnswer());
 		this.next()
 	}
 }
+
+var MultipleChoiceGame = function() {
+	possibleAnswers	= [1,2,3,4]
+	this.generatePossibleAnswers	=	function() {
+		var indexList = getRandomIndex(data[this.levelName]['mg'].length, 4);
+		var randomOfFour = Math.floor(Math.random() * indexList.length);
+		this.possibleAnswers = indexList;
+		this.index = indexList[randomOfFour];
+	}
+	
+	this.getPossibleAnswer	=	function(choice) {
+		var idx = this.possibleAnswers[choice]
+		return data[this.levelName]['mg'][idx];
+	}
+}
+MultipleChoiceGame.prototype = new Game();
 	
 function getRandomIndex(len, n) {
     var result = new Array(n),
