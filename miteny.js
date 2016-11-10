@@ -23,13 +23,7 @@ app.controller('Main', ['$scope', function Main($scope) {
 		$scope.game.Game(lvl)
 	}
 	this.selectAnswer = function(choice) {
-	    var idx = $scope.game.possibleAnswers[choice];
-		if (idx == $scope.game.index) {
-			$scope.game.correctGuess()
-		} else {
-			$scope.game.wrongGuess()
-		}
-		$scope.game.next()
+		$scope.game.selectAnswer(choice)
 	}
 	this.mainMenu = function() {
 		this.isactive = 'menu'
@@ -91,6 +85,15 @@ var MultipleChoiceGame = function() {
 	this.getPossibleAnswer	=	function(choice) {
 		var idx = this.possibleAnswers[choice]
 		return data[this.levelName]['mg'][idx];
+	}
+	this.selectAnswer = function(choice) {
+		var idx = this.possibleAnswers[choice];
+		if (idx == this.index) {
+			this.correctGuess()
+		} else {
+			this.wrongGuess()
+		}
+		this.next()
 	}
 }
 MultipleChoiceGame.prototype = new Game();
