@@ -1,39 +1,50 @@
 <!DOCTYPE html>
-<html ng-app="mitenyMain" ng-controller="Main as mitenyMain">
+<html ng-app="mitenyMain" ng-controller="Main as m">
   <head>
 	<meta charset="utf-8"/>
-  <script src="jquery-3.1.1.min.js"></script>
-    <script src="angular.js"></script>
-		<script src="data.js" charset="utf-8"></script>
+	<script src="jquery-3.1.1.min.js"></script>
+    <script src="angular.min.js"></script>
+	<script src="data.js" charset="utf-8"></script>
 	<script src="miteny.js" charset="utf-8"></script>
   </head>
   <body>
-  <div id="menu" style="display: {{ mitenyMain.state('menu') }} ">
+  <div id="menu"  ng-show="m.isactive=='menu'" ng-cloak>
 	<div ng-repeat="(lvlName, level) in data">
-		{{ level['name'] }} <button ng-click="mitenyMain.startGame(lvlName)">&#x270d;</button>
-		<button ng-click="mitenyMain.start1of4(lvlName)">&#x2611;</button> 
+		{{ level['name'] }} 
+		<button ng-click="m.startList(lvlName)">&#x1f4f0;</button>
+		<button ng-click="m.startGame(lvlName)">&#x270d;</button>
+		<button ng-click="m.start1of4(lvlName)">&#x2611;</button>
 	</div>
 
   </div>
-   <div style="display: {{ mitenyMain.state('game') }} " id="game">
-	  <button ng-click="mitenyMain.mainMenu()">Zurück</button> 
-	  <form ng-submit="mitenyMain.check()">
+     <div  ng-show="m.isactive=='list'" id="list" ng-cloak>
+	  <button ng-click="m.mainMenu()">Zurück</button> 
+	   <h1>{{ game.show().name}}</h1>
+	   <h2>{{ game.show().nameMg }}</h2>
+	   <table>
+	   <tr><th>Deutsch</th><th>Madagassisch</th></tr>
+	   <tr ng-repeat="n in game.show().mg track by $index">
+		<td>{{game.show().de[$index]}}</td><td>{{game.show().mg[$index]}}</td>
+	   </tr>
+	   </table>
+    </div>
+   <div  ng-show="m.isactive=='game'" id="game" ng-cloak>
+	  <button ng-click="m.mainMenu()">Zurück</button> 
+	  <form ng-submit="m.check()">
 		  <div id = "question">Was ist <b>{{ game.getQuestion() }}</b> auf madagassisch?</div>
 		  <input type="text" ng-model="game.answer">
 		  <button type ="submit" >Ok</button>
 	  </form>
     </div>
 	
-	<div style="display: {{ mitenyMain.state('1of4') }} " id="1of4">
-	  <button ng-click="mitenyMain.mainMenu()">Zurück</button> 
+	<div ng-show="m.isactive=='1of4'" id="1of4" ng-cloak>
+	  <button ng-click="m.mainMenu()">Zurück</button> 
 	  <div id = "question">Was ist <b>{{ game.getQuestion() }}</b> auf madagassisch?</div>
-	  <button  ng-click="mitenyMain.selectAnswer(0)">{{ game.getPossibleAnswer(0) }}</button>
-	  <button  ng-click="mitenyMain.selectAnswer(1)">{{ game.getPossibleAnswer(1) }}</button>
-	  <button  ng-click="mitenyMain.selectAnswer(2)">{{ game.getPossibleAnswer(2) }}</button>
-	  <button  ng-click="mitenyMain.selectAnswer(3)">{{ game.getPossibleAnswer(3) }}</button>
-
-	  
-    </div>
+	  <button  ng-click="m.selectAnswer(0)">{{ game.getPossibleAnswer(0) }}</button>
+	  <button  ng-click="m.selectAnswer(1)">{{ game.getPossibleAnswer(1) }}</button>
+	  <button  ng-click="m.selectAnswer(2)">{{ game.getPossibleAnswer(2) }}</button>
+	  <button  ng-click="m.selectAnswer(3)">{{ game.getPossibleAnswer(3) }}</button>
+	</div>
 
   </body>
 </html>

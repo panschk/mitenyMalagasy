@@ -5,23 +5,23 @@ app.controller('Main', ['$scope', function Main($scope) {
 	this.check = function() {
 		return $scope.game.checkAnswer()
 	};
-	this.state = function(item) {
-		if (this.isactive == item) {
-			return "block";
-		} else {
-			return "none";
-		}
+	this.startList = function(lvl) {
+		this.isactive = 'list'
+		$scope.game = new ListWords()
+		$scope.game.init(lvl)
 	}
 	this.startGame = function(lvl) {
 		this.isactive = 'game'
 		$scope.game = new Game()
-		$scope.game.Game(lvl)
+		$scope.game.init(lvl)
 	}
 	this.start1of4 = function(lvl) {
 		this.isactive = '1of4'
 		$scope.game = new MultipleChoiceGame()
-		$scope.game.Game(lvl)
+		$scope.game.init(lvl)
 	}
+	
+	
 	this.selectAnswer = function(choice) {
 		$scope.game.selectAnswer(choice)
 	}
@@ -34,7 +34,7 @@ var Game = function() {
 	levelName	=	""
 	index		=	0
 	answer		= ""
-	this.Game = function(lvlName) {
+	this.init = function(lvlName) {
 		this.levelName = lvlName
 		this.next()
 	}
@@ -47,8 +47,6 @@ var Game = function() {
 		this.index = parseInt(Math.random()*lengthArray, 10);
 		this.answer = "";
 		this.generatePossibleAnswers();
-	}
-	this.generatePossibleAnswers	=	function() {
 	}
 	
 	this.checkAnswer = function() {
@@ -97,7 +95,18 @@ var MultipleChoiceGame = function() {
 	}
 }
 MultipleChoiceGame.prototype = new Game();
+
+var ListWords = function() {
 	
+	this.init = function(lvlName) {
+		this.levelName = lvlName
+	}
+	this.show = function() {
+		return data[this.levelName]
+	}
+}
+
+
 function getRandomIndex(len, n) {
     var result = new Array(n),
         choices = new Array(len);
