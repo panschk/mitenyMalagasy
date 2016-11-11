@@ -6,6 +6,7 @@
     <script src="angular.min.js"></script>
 	<script src="data.js" charset="utf-8"></script>
 	<script src="miteny.js" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
   </head>
   <body>
   <div id="menu"  ng-show="m.isactive=='menu'" ng-cloak>
@@ -14,9 +15,10 @@
 		<button ng-click="m.startList(lvlName)">&#x1f4f0;</button>
 		<button ng-click="m.startGame(lvlName)">&#x270d;</button>
 		<button ng-click="m.start1of4(lvlName)">&#x2611;</button>
+		<button ng-click="m.startMemory(lvlName)">&#xe322;</button>
 	</div>
   </div>
-     <div  ng-show="m.isactive=='list'" id="list" ng-cloak>
+     <div ng-show="m.isactive=='list'" id="list" ng-cloak>
 	  <button ng-click="m.mainMenu()">Zurück</button> 
 	   <h1>{{ game.show().name}}</h1>
 	   <h2>{{ game.show().nameMg }}</h2>
@@ -27,7 +29,7 @@
 	   </tr>
 	   </table>
     </div>
-   <div  ng-show="m.isactive=='game'" id="game" ng-cloak>
+   <div ng-show="m.isactive=='game'" id="game" ng-cloak>
 	  <button ng-click="m.mainMenu()">Zurück</button> 
 	  <form ng-submit="m.check()">
 		  <div id = "question">Was ist <b>{{ game.getQuestion() }}</b> auf madagassisch?</div>
@@ -43,6 +45,14 @@
 	  <button  ng-click="m.selectAnswer(1)">{{ game.getPossibleAnswer(1) }}</button>
 	  <button  ng-click="m.selectAnswer(2)">{{ game.getPossibleAnswer(2) }}</button>
 	  <button  ng-click="m.selectAnswer(3)">{{ game.getPossibleAnswer(3) }}</button>
+	</div>
+	
+	<div ng-show="m.isactive=='memory'" id="memory" ng-cloak>
+	  <button ng-click="m.mainMenu()">Zurück</button>
+	  <br />
+	   <button ng-repeat="card in game.cards track by $index" ng-class="'card_'+card.class" ng-disabled="card.class!='hidden'" ng-click="game.turn($index)">
+		<span>&nbsp;</span><span class = "cardtext"><span ng-class="card.lang">{{card['value']}}</span></span>
+	   </button>
 	</div>
 
   </body>
