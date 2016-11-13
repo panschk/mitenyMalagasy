@@ -11,6 +11,13 @@ var data =
 	'nameMg': "Loko",
 	'de'	: ["rot", "grün", "blau", "gelb", "weiß", "schwarz", "braun", "rosa"],
 	'mg'	: ["mena", "maintso", "manga", "mavo", "fotsy", "mainty", "volon-tany", "mavokely"]
+},
+'colors2'	: {
+	'name'	: "Farben",
+	'nameMg': "Loko",
+	'de'	: ["rot", "grün", "blau", "gelb", "weiß", "schwarz", "braun", "rosa"],
+	'mg'	: ["mena", "maintso", "manga", "mavo", "fotsy", "mainty", "volon-tany", "mavokely"]
 }
+
 
 }
