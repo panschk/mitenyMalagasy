@@ -13,4 +13,4 @@ var data =
 	'mg'	: ["mena", "maintso", "manga", "mavo", "fotsy", "mainty", "volon-tany", "mavokely"]
 }
 
-}
+};
