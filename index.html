@@ -5,17 +5,20 @@
 	<script src="jquery-3.1.1.min.js"></script>
     <script src="angular.min.js"></script>
 	<script src="data.js" charset="utf-8"></script>
+	<script src="util.js" charset="utf-8"></script>
 	<script src="miteny.js" charset="utf-8"></script>
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
   </head>
   <body>
   <div id="menu"  ng-show="m.isactive=='menu'" ng-cloak>
-	<div ng-repeat="(lvlName, level) in data">
+  <img src="img/lemur.png" width = "10%"/>
+    <h1>Miteny Malagasy!</h1>
+	<div ng-repeat="level in data track by $index">
 		{{ level['name'] }} 
-		<button ng-click="m.startList(lvlName)">&#x1f4f0;</button>
-		<button ng-click="m.startGame(lvlName)">&#x270d;</button>
-		<button ng-click="m.start1of4(lvlName)">&#x2611;</button>
-		<button ng-click="m.startMemory(lvlName)">&#xe322;</button>
+		<button ng-click="m.startList($index)" ng-disabled="p.progress<($index * 3) + 1">&#x1f4f0;</button>
+		<button ng-click="m.start1of4($index)" ng-disabled="p.progress<($index * 3) + 1">&#x2611;</button>
+		<button ng-click="m.startGame($index)" ng-disabled="p.progress<($index * 3) + 2">&#x270d;</button>
+		<button ng-click="m.startMemory($index)" ng-disabled="p.progress<($index * 3) + 3">&#xe322;</button>
 	</div>
   </div>
      <div ng-show="m.isactive=='list'" id="list" ng-cloak>
@@ -50,7 +53,7 @@
 	<div ng-show="m.isactive=='memory'" id="memory" ng-cloak>
 	  <button ng-click="m.mainMenu()">Zurück</button>
 	  <br />
-	   <button ng-repeat="card in game.cards track by $index" ng-class="'card_'+card.class" ng-disabled="card.class!='hidden'" ng-click="game.turn($index)">
+	   <button ng-repeat="card in game.cards track by $index" ng-class="'card_'+card.clazz" ng-disabled="card.clazz!='hidden'" ng-click="game.turn($index, m)">
 		<span>&nbsp;</span><span class = "cardtext"><span ng-class="card.lang">{{card['value']}}</span></span>
 	   </button>
 	</div>
