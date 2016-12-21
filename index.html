@@ -2,12 +2,14 @@
 <html ng-app="mitenyMain" ng-controller="Main as m">
   <head>
 	<meta charset="utf-8"/>
-	<script src="jquery-3.1.1.min.js"></script>
-    <script src="angular.min.js"></script>
+	<script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/angular.min.js"></script>
+	<script src="js/lockr.js"></script>
 	<script src="data.js" charset="utf-8"></script>
 	<script src="util.js" charset="utf-8"></script>
 	<script src="miteny.js" charset="utf-8"></script>
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<title>Miteny Malagasy</title>
   </head>
   <body>
   <div id="menu"  ng-show="m.isactive=='menu'" ng-cloak>
@@ -15,10 +17,12 @@
     <h1>Miteny Malagasy!</h1>
 	<div ng-repeat="level in data track by $index">
 		{{ level['name'] }} 
-		<button ng-click="m.startList($index)" ng-disabled="p.progress<($index * 3) + 1">&#x1f4f0;</button>
-		<button ng-click="m.start1of4($index)" ng-disabled="p.progress<($index * 3) + 1">&#x2611;</button>
-		<button ng-click="m.startGame($index)" ng-disabled="p.progress<($index * 3) + 2">&#x270d;</button>
-		<button ng-click="m.startMemory($index)" ng-disabled="p.progress<($index * 3) + 3">&#xe322;</button>
+		<button ng-click="m.startList($index)" ng-show="true'" ng-disabled="p.progress<($index * 3) + 1">&#x1f4f0;</button>
+		<button ng-click="m.start1of4($index)" ng-show="data[$index].type==='normal'" ng-disabled="p.progress<($index * 3) + 1">&#x2611;</button>
+		<button ng-click="m.startGame($index)" ng-show="data[$index].type==='normal'" ng-disabled="p.progress<($index * 3) + 2">&#x270d;</button>
+		<button ng-click="m.startMemory($index)" ng-show="data[$index].type==='normal'" ng-disabled="p.progress<($index * 3) + 3">&#xe322;</button>
+		<button ng-click="m.startPicture($index)" ng-show="data[$index].type==='picture'" ng-disabled="p.progress<($index * 3) + 1">&#xe322;</button>
+		
 	</div>
   </div>
      <div ng-show="m.isactive=='list'" id="list" ng-cloak>
@@ -56,6 +60,16 @@
 	   <button ng-repeat="card in game.cards track by $index" ng-class="'card_'+card.clazz" ng-disabled="card.clazz!='hidden'" ng-click="game.turn($index, m)">
 		<span>&nbsp;</span><span class = "cardtext"><span ng-class="card.lang">{{card['value']}}</span></span>
 	   </button>
+	</div>
+	<div ng-show="m.isactive=='picturegame'" id="picturegame" ng-cloack>
+		<button ng-click="m.mainMenu()">Zurück</button>
+		<br />
+		<div style= "background-image:url('{{game.words.path}}'); border:0; padding:0; margin:0; top:120;left:0;position:absolute; width:900px; height:600px;"
+			ng-click="m.mainManu()">
+<!--			<button ng-repeat="c in game.coordinates track by $index" ng-click="game.guess($index, m)">{{$index}}</button>-->
+
+		</div>
+		
 	</div>
 
   </body>

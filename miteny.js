@@ -31,6 +31,12 @@ app.controller('Main', ['$scope', function Main($scope) {
 		$scope.game = new Memory();
 		$scope.game.init(lvl);
 	};
+	this.startPicture = function(lvl) {
+		$scope.p.currentgame = (lvl * 3) + 3;
+		this.isactive = 'picturegame';
+		$scope.game = new PictureGame();
+		$scope.game.init(lvl);
+	};
 	
 	
 	this.selectAnswer = function(choice) {
@@ -133,13 +139,13 @@ var ListWords = function() {
 };
 
 var Memory = function() {
-	this.init = function(lvlName) {
+	this.init = function(lvlId) {
 		this.turnedCards = [];
 		this.cards = new Array(16);
-		var indexSel = util.getRandomIndex(data[lvlName]['mg'].length, 8);
+		var indexSel = util.getRandomIndex(data[lvlId]['mg'].length, 8);
 		for (var i=0; i < indexSel.length; i++) {
-			this.cards[i*2] = {index:indexSel[i], value:data[lvlName]['mg'][indexSel[i]], lang:'mg',clazz:'hidden'};
-			this.cards[i*2 + 1] = {index:indexSel[i], value:data[lvlName]['de'][indexSel[i]],lang:'de',clazz:'hidden'};
+			this.cards[i*2] = {index:indexSel[i], value:data[lvlId]['mg'][indexSel[i]], lang:'mg',clazz:'hidden'};
+			this.cards[i*2 + 1] = {index:indexSel[i], value:data[lvlId]['de'][indexSel[i]],lang:'de',clazz:'hidden'};
 		}
 		util.shuffle(this.cards);
 	};
@@ -179,10 +185,33 @@ var Memory = function() {
 	};
 };
 
+var PictureGame = function() {
+	this.answer		= "";
+	this.words		= {};
+	this.init = function(lvlId) {
+		this.levelId = lvlId;
+		// copy is a deep clone, see util.js
+		this.words = util.copy(data[lvlId]);
+		this.next(false);
+	};
+
+}
+PictureGame.prototype = new Game();
+
+var load = function() {
+	var gs = Lockr.get("miteny_p");
+	if (!gs) {
+		gs = initialP;
+	}
+	return gs;
+}
+var save = function() {
+	Lockr.set("miteny_p", p);
+}
 
 
-var p = {
-	progress : 3,
+var initialP = {
+	progress : 1,
 	currentgame : 0
 };
 
@@ -190,5 +219,7 @@ var success = function() {
 	if (p.progress === p.currentgame) {
 		p.progress = p.progress + 1;
 	}
+	save();
 };
 
+var p = load();
