@@ -1,3 +1,4 @@
+ALL_LEVELS=true;
 /*jshint sub:true */
 /* ['de'] is better written in dot notation*/
 /*global data,angular,util*/ 
@@ -36,6 +37,12 @@ app.controller('Main', ['$scope', function Main($scope) {
 		this.isactive = 'picturegame';
 		$scope.game = new PictureGame();
 		$scope.game.init(lvl);
+	};
+	this.isDisabled = function(lvlIndex) {
+		if (ALL_LEVELS){
+			return false;
+		}
+		return p.progress<lvlIndex;
 	};
 	
 	

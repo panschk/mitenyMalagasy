@@ -21,7 +21,20 @@ var data =
 	nameMg: "Loko",
 	de	: ["rot", "grün", "blau", "gelb", "weiß", "schwarz", "braun", "rosa"],
 	mg	: ["mena", "maintso", "manga", "mavo", "fotsy", "mainty", "volon-tany", "mavokely"]
+},
+{
+	type	: "normal",
+	name	: "wichtige Ausdrücke",
+	nameMg: "Voambolana fampiasa andavanandro",
+	de	: ["Hallo", "Tschüss", "Danke", "Bitte", "Willkommen", "Gute Nacht", "Bitteschön", "Gute Reise"],
+	mg	: ["salama", "veloma", "misaotra", "azafady", "tonga soa", "tafandriamandry", "tsisy fisaorana", "tongava soa"]
+},
+{
+	type	: "normal",
+	name	: "Gemüse",
+	nameMg: "Legioma",
+	de	: ["Karotte", "Kartoffel", "Knoblauch", "Schnittlauch", "Tomate", "Aubergine", "Gurke", "Zucchini", "Kürbis", "Pilz", "Salat"],
+	mg	: ["karoty", "Ovy", "tongolo gasy", "tongolo maintso", "voatabia", "baranjely", "konkombra", "korzety", "voatavo", "holatra", "salady"]
+
 }
-
-
 ];

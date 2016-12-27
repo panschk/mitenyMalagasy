@@ -17,11 +17,11 @@
     <h1>Miteny Malagasy!</h1>
 	<div ng-repeat="level in data track by $index">
 		{{ level['name'] }} 
-		<button ng-click="m.startList($index)" ng-show="true'" ng-disabled="p.progress<($index * 3) + 1">&#x1f4f0;</button>
-		<button ng-click="m.start1of4($index)" ng-show="data[$index].type==='normal'" ng-disabled="p.progress<($index * 3) + 1">&#x2611;</button>
-		<button ng-click="m.startGame($index)" ng-show="data[$index].type==='normal'" ng-disabled="p.progress<($index * 3) + 2">&#x270d;</button>
-		<button ng-click="m.startMemory($index)" ng-show="data[$index].type==='normal'" ng-disabled="p.progress<($index * 3) + 3">&#xe322;</button>
-		<button ng-click="m.startPicture($index)" ng-show="data[$index].type==='picture'" ng-disabled="p.progress<($index * 3) + 1">&#xe322;</button>
+		<button ng-click="m.startList($index)" ng-show="true'" ng-disabled="m.isDisabled(($index * 3) + 1)">&#x1f4f0;</button>
+		<button ng-click="m.start1of4($index)" ng-show="data[$index].type==='normal'" ng-disabled="m.isDisabled(($index * 3) + 1)">&#x2611;</button>
+		<button ng-click="m.startGame($index)" ng-show="data[$index].type==='normal'" ng-disabled="m.isDisabled(($index * 3) + 2)">&#x270d;</button>
+		<button ng-click="m.startMemory($index)" ng-show="data[$index].type==='normal'" ng-disabled="m.isDisabled(($index * 3) + 3)">&#xe322;</button>
+		<button ng-click="m.startPicture($index)" ng-show="data[$index].type==='picture'" ng-disabled="m.isDisabled(($index * 3) + 1)">&#xe322;</button>
 		
 	</div>
   </div>
