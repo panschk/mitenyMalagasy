@@ -1,15 +1,13 @@
 var data = 
 [ {
 	type	: "normal",
-	name	: "Zahlen 1-10",
-	nameMg: "Isa 1-10",
+	name	: {de:"Zahlen 1-10", en : "Numbers 1-10", fr: "nombres 1-10", mg : "Isa 1-10"},
 	de 	: ["eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn"],
 	mg 	: ["iray", "roa", "telo", "efatra", "dimy", "enina", "fito", "valo", "sivy", "folo"]
 },
  {
 	type	: "picture",
-	name	: "unaufgeräumter Schreibtisch",
-	nameMg	: "latabatra mikorotana",
+	name	: {de: "unaufgeräumter Schreibtisch", en : "untidy desk", fr: "bureau en désordre", mg : "latabatra mikorotana"},
 	path	: "img/desk_stuff.jpg",
 	size	: [900,570],
 	de		: ["Regenschirm","Katze","Banane","Ei","Ente", "Flasche", "Lampe"],
@@ -18,22 +16,19 @@ var data =
  },
  {
 	type	: "normal",
-	name	: "Farben",
-	nameMg: "Loko",
+	name	: {de : "Farben", en :"Colors", fr:"Couleurs", mg: "Loko" },
 	de	: ["rot", "grün", "blau", "gelb", "weiß", "schwarz", "braun", "rosa"],
 	mg	: ["mena", "maintso", "manga", "mavo", "fotsy", "mainty", "volon-tany", "mavokely"]
 },
 {
 	type	: "normal",
-	name	: "wichtige Ausdrücke",
-	nameMg: "Voambolana fampiasa andavanandro",
+	name	: {de: "wichtige Ausdrücke", en: "Important Expressions", fr: "Expressions Importantes", mg: "Voambolana fampiasa andavanandro"},
 	de	: ["Hallo", "Tschüss", "Danke", "Bitte", "Willkommen", "Gute Nacht", "Bitteschön", "Gute Reise"],
 	mg	: ["salama", "veloma", "misaotra", "azafady", "tonga soa", "tafandriamandry", "tsisy fisaorana", "tongava soa"]
 },
 {
 	type	: "normal",
-	name	: "Gemüse",
-	nameMg: "Legioma",
+	name	: {de:"Gemüse", en: "Vegetables", fr: "Légumes", mg: "Legioma"},
 	de	: ["Karotte", "Kartoffel", "Knoblauch", "Schnittlauch", "Tomate", "Aubergine", "Gurke", "Zucchini", "Kürbis", "Pilz", "Salat"],
 	mg	: ["karoty", "Ovy", "tongolo gasy", "tongolo maintso", "voatabia", "baranjely", "konkombra", "korzety", "voatavo", "holatra", "salady"]
 

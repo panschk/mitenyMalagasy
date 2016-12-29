@@ -5,7 +5,6 @@ ALL_LEVELS=true;
 var app = angular.module('mitenyMain', []);
 app.controller('Main', ['$scope', function Main($scope) {
 	this.isactive = 'menu';
-
 	this.check = function() {
 		return $scope.game.checkAnswer(this);
 	};
@@ -57,7 +56,41 @@ app.controller('Main', ['$scope', function Main($scope) {
 	};
 	$scope.data=data;
 	$scope.p = p;
+	$scope.text=text;
+	$scope.languages=languages;
+	$scope.save=save;
+	$scope.l1 = l1;
+	$scope.l2 = l2;
 }]);
+
+app.directive('modalDialog', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      show: '='
+    },
+    replace: true, // Replace with the template below
+    transclude: true, // we want to insert custom content inside the directive
+    link: function(scope, element, attrs) {
+      scope.dialogStyle = {};
+      if (attrs.width)
+        scope.dialogStyle.width = attrs.width;
+      if (attrs.height)
+        scope.dialogStyle.height = attrs.height;
+      scope.hideModal = function() {
+        scope.show = false;
+      };
+    },
+    template: "<div class='ng-modal' ng-show='show'><div class='ng-modal-overlay' ng-click='hideModal()'></div><div class='ng-modal-dialog' ng-style='dialogStyle'><div class='ng-modal-close' ng-click='hideModal()'>X</div><div class='ng-modal-dialog-content' ng-transclude></div></div></div>"
+  };
+});
+app.controller('ModalController', ['$scope', function($scope) {
+  $scope.modalShown = false;
+  $scope.toggleModal = function() {
+    $scope.modalShown = !$scope.modalShown;
+  };
+}]);
+
 var Game = function() {
 	this.MIN_LENGTH = 1;
 	this.index		=	0;
@@ -75,17 +108,17 @@ var Game = function() {
 	};
 	this.next = function(wasCorrect, controller) {
 		if (wasCorrect) { 
-			this.words.mg.splice(this.index, 1);
-			this.words.de.splice(this.index, 1);
+			this.words[l2()].splice(this.index, 1);
+			this.words[l1()].splice(this.index, 1);
 			this.customNext();
-			if (this.words.mg.length < this.MIN_LENGTH) {
+			if (this.words[l2()].length < this.MIN_LENGTH) {
 				window.alert("Level geschafft!");
 				success();
 				controller.mainMenu();
 				return;
 			}
 		}
-		var lengthArray = this.words['mg'].length;
+		var lengthArray = this.words[l2()].length;
 		this.index = parseInt(Math.random()*lengthArray, 10);
 		this.answer = "";
 		this.generatePossibleAnswers();
@@ -105,7 +138,7 @@ var Game = function() {
 	};
 
 	this.getCorrectAnswer = function() {
-		return this.words['mg'][this.index];
+		return this.words[l2()][this.index];
 	};
 
 	this.correctGuess = function(controller) {
@@ -121,7 +154,7 @@ var MultipleChoiceGame = function() {
 	this.MIN_LENGTH			= 4;
 	this.possibleAnswers	= [1,2,3,4];
 	this.generatePossibleAnswers	=	function() {
-		var indexList = util.getRandomIndex(this.words['mg'].length, this.MIN_LENGTH);
+		var indexList = util.getRandomIndex(this.words[l2()].length, this.MIN_LENGTH);
 		var randomOfFour = Math.floor(Math.random() * indexList.length);
 		this.possibleAnswers = indexList;
 		this.index = indexList[randomOfFour];
@@ -129,7 +162,7 @@ var MultipleChoiceGame = function() {
 	
 	this.getPossibleAnswer	=	function(choice) {
 		var idx = this.possibleAnswers[choice];
-		return this.words['mg'][idx];
+		return this.words[l2()][idx];
 	};
 	this.selectAnswer = function(choice, controller) {
 		var idx = this.possibleAnswers[choice];
@@ -156,10 +189,10 @@ var Memory = function() {
 	this.init = function(lvlId) {
 		this.turnedCards = [];
 		this.cards = new Array(16);
-		var indexSel = util.getRandomIndex(data[lvlId]['mg'].length, 8);
+		var indexSel = util.getRandomIndex(data[lvlId][l2()].length, 8);
 		for (var i=0; i < indexSel.length; i++) {
-			this.cards[i*2] = {index:indexSel[i], value:data[lvlId]['mg'][indexSel[i]], lang:'mg',clazz:'hidden'};
-			this.cards[i*2 + 1] = {index:indexSel[i], value:data[lvlId]['de'][indexSel[i]],lang:'de',clazz:'hidden'};
+			this.cards[i*2] = {index:indexSel[i], value:data[lvlId][l2()][indexSel[i]], lang:l2(),clazz:'hidden'};
+			this.cards[i*2 + 1] = {index:indexSel[i], value:data[lvlId][l1()][indexSel[i]],lang:l1(),clazz:'hidden'};
 		}
 		util.shuffle(this.cards);
 	};
@@ -210,7 +243,7 @@ var PictureGame = function() {
 	};
 	
 	this.getQuestion = function() {
-		return this.words['mg'][this.index];
+		return this.words[l2()][this.index];
 	};
 	this.guess = function(event, controller) {
 		var coordinates = this.words.coordinates[this.index];
@@ -242,7 +275,8 @@ var save = function() {
 
 var initialP = {
 	progress : 1,
-	currentgame : 0
+	currentgame : 0,
+	language	: 'de'
 };
 
 var success = function() {
@@ -250,6 +284,23 @@ var success = function() {
 		p.progress = p.progress + 1;
 	}
 	save();
+};
+var text = function(t) {
+	return translate(t, p.language);
+};
+var l1 = function() {
+	var result = p.language.code;
+	if (result) {
+		return result;
+	}
+	return 'de';
+};
+var l2 = function() {
+	var result = p.languageToLearn.code;
+	if (result) {
+		return result;
+	}
+	return 'mg';
 };
 
 var p = load();
