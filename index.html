@@ -64,9 +64,9 @@
 	<div ng-show="m.isactive=='picturegame'" id="picturegame" ng-cloack>
 		<button ng-click="m.mainMenu()">Zurück</button>
 		<br />
-		<div style= "background-image:url('{{game.words.path}}'); border:0; padding:0; margin:0; top:120;left:0;position:absolute; width:900px; height:600px;"
-			ng-click="m.mainManu()">
-<!--			<button ng-repeat="c in game.coordinates track by $index" ng-click="game.guess($index, m)">{{$index}}</button>-->
+		<div>Aiza ny {{game.getQuestion()}}?</div>
+		<div style= "background-image:url('{{game.words.path}}'); border:0; padding:0; margin:0; top:120;left:0;position:absolute; width:{{game.words.size[0]}}px; height:{{game.words.size[1]}}px;"
+			ng-click="m.guess($event)">
 
 		</div>
 		

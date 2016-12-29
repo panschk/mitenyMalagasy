@@ -49,6 +49,9 @@ app.controller('Main', ['$scope', function Main($scope) {
 	this.selectAnswer = function(choice) {
 		$scope.game.selectAnswer(choice, this);
 	};
+	this.guess = function(event) {
+		$scope.game.guess(event, this);
+	};
 	this.mainMenu = function() {
 		this.isactive = 'menu';
 	};
@@ -74,6 +77,7 @@ var Game = function() {
 		if (wasCorrect) { 
 			this.words.mg.splice(this.index, 1);
 			this.words.de.splice(this.index, 1);
+			this.customNext();
 			if (this.words.mg.length < this.MIN_LENGTH) {
 				window.alert("Level geschafft!");
 				success();
@@ -88,6 +92,9 @@ var Game = function() {
 	};
 	this.generatePossibleAnswers = function () { // empty
 	};
+	this.customNext = function () { // empty
+	};
+	
 	this.checkAnswer = function(controller) {
 
 		if (this.answer.toUpperCase() === this.getCorrectAnswer().toUpperCase()) {
@@ -201,6 +208,22 @@ var PictureGame = function() {
 		this.words = util.copy(data[lvlId]);
 		this.next(false);
 	};
+	
+	this.getQuestion = function() {
+		return this.words['mg'][this.index];
+	};
+	this.guess = function(event, controller) {
+		var coordinates = this.words.coordinates[this.index];
+		var x = event.offsetX;
+		var y = event.offsetY;
+		if (coordinates[0] <= x && coordinates[1] <= y && coordinates[0] + coordinates[2] >= x && coordinates[1] + coordinates[3] >= y ) {
+			this.next(true, controller);
+		}
+	};
+	this.customNext = function () {
+		this.words.coordinates.splice(this.index, 1);
+	};
+	
 
 }
 PictureGame.prototype = new Game();

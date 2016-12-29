@@ -8,12 +8,13 @@ var data =
 },
  {
 	type	: "picture",
-	name	: "Fianarantsoa",
-	nameMg	: "Fianarantsoa",
-	path	: "img/fianarantsoa2.jpg",
-	de		: ["Wolke","Haus","Berge","Bäume","Sportplatz"],
-	coordinates :[[32,18,824,124],[590,256,240,136],[266,128,622,72],[184,372,52,36],[549,302,196,86]],
-	mg		: ["Wolke","Haus","Berge","Bäume","Sportplatz"]
+	name	: "unaufgeräumter Schreibtisch",
+	nameMg	: "latabatra mikorotana",
+	path	: "img/desk_stuff.jpg",
+	size	: [900,570],
+	de		: ["Regenschirm","Katze","Banane","Ei","Ente", "Flasche", "Lampe"],
+	coordinates :[[30,305,103,255],[590,315,85,97],[301,522,112,36],[139,179,38,43],[181,349,66,40],[243,508,44,58],[514,81,94,88]],
+	mg		: ["elo","saka","akondro","atody","ganagana", "tavoahangy", "jiro"]
  },
  {
 	type	: "normal",
