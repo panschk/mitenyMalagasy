@@ -29,10 +29,10 @@ var data =
 {
 	type	: "normal",
 	name	: {de: "wichtige Ausdrücke", en: "Important Expressions", fr: "Expressions Importantes", mg: "Voambolana fampiasa andavanandro"},
-	de	: ["Hallo", "Tschüss", "Danke", "Bitte", "Willkommen", "Gute Nacht", "Bitteschön", "Gute Reise"],
-	en	: ["hi", "bye", "thank you", "please", "welcome", "good night", "you're welcome", "have a nice trip"],
-	fr	: ["Bonjour", "Au revoir", "merci", "s'il vous plaît", "bienvenue", "bonne nuit", "de rien", "Bon voyage"],
-	mg	: ["salama", "veloma", "misaotra", "azafady", "tonga soa", "tafandriamandry", "tsisy fisaorana", "tongava soa"]
+	de	: ["Hallo", "Tschüss", "Danke", "Bitte", "Willkommen", "Gute Nacht", "Bitteschön", "Gute Reise", "Guten Appetit"],
+	en	: ["hi", "bye", "thank you", "please", "welcome", "good night", "you're welcome", "have a nice trip", "Enjoy your meal"],
+	fr	: ["Bonjour", "Au revoir", "merci", "s'il vous plaît", "bienvenue", "bonne nuit", "de rien", "bon voyage", "bon appétit"],
+	mg	: ["salama", "veloma", "misaotra", "azafady", "tonga soa", "tafandriamandry", "tsisy fisaorana", "tongava soa", "mazotoa homana"]
 },
 {
 	type	: "normal",
@@ -41,6 +41,27 @@ var data =
 	en	: ["carot", "potato", "garlic", "chives", "tomato", "eggplant", "cucumber", "zucchini", "pumpkin", "mushroom", "salad"],
 	fr	: ["carotte", "pomme de terre", "ail", "ciboulette", "tomate", "aubergine", "concombre", "courgette", "citrouille", "champignon", "salade"],
 	mg	: ["karoty", "Ovy", "tongolo gasy", "tongolo maintso", "voatabia", "baranjely", "konkombra", "korzety", "voatavo", "holatra", "salady"]
+
+},
+{
+	type	: "normal",
+	name	: {de:"Fragewörter", en: "Question words", fr: "questions", mg: "??"},
+	de	: ["Wer", "Wie", "Wo", "Was", "Wie viel", "Woher", "Wohin", "Warum", "Wie teuer", "Wann", "Wie lange"],
+	mg	: ["iza", "ahoana", "aiza", "inona", "firy", "avy aiza", "mankaiza", "nahoana", "ohatrinona", "rahoviana", "hafiriana"]
+
+},
+{
+	type	: "normal",
+	name	: {de:"Richtungen", en: "Directions", fr: "Directions", mg: "??"},
+	de	: ["links", "rechts", "geradeaus", "Norden", "Süden", "Westen", "Osten", "Hin", "Zurück", "Bis", "Nach"],
+	mg	: ["ankavia", "ankavanana", "mahitsy", "avaratra", "atsimo", "andrefana", "atsinanana", "mandroso", "miverina", "ivelany", "mankany"]
+
+},
+{
+	type	: "normal",
+	name	: {de:"Ortsangaben", en: "Locations", fr: "Emplacements", mg: "??"},
+	de	: ["nah", "weit", "hier", "dort", "draußen", "innen", "über", "unter", "vorne", "hinten", "bei/zu"],
+	mg	: ["akaiky", "lavitra", "eto", "any", "ivelany", "anaty", "ambony", "ambany", "aloha", "aoriana", "amin'"]
 
 }
 ];

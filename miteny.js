@@ -1,4 +1,4 @@
-ALL_LEVELS=false;
+ALL_LEVELS=true;
 /*jshint sub:true */
 /* ['de'] is better written in dot notation*/
 /*global data,angular,util*/ 
