@@ -27,7 +27,7 @@
 			<button ng-click = "save();toggleModal()">Ok</button>
 		</modal-dialog>
 	</div>
-	<div ng-repeat="level in data track by $index">
+	<div ng-repeat="level in m.levels() track by $index">
 		{{ level['name'][l1()] }} 
 		<button ng-click="m.startList($index)" ng-show="true'" ng-disabled="m.isDisabled(($index * 3) + 1)">&#x1f4f0;</button>
 		<button ng-click="m.start1of4($index)" ng-show="data[$index].type==='normal'" ng-disabled="m.isDisabled(($index * 3) + 1)">&#x2611;</button>
@@ -38,7 +38,7 @@
 	</div>
   </div>
      <div ng-show="m.isactive=='list'" id="list" ng-cloak>
-	  <button ng-click="m.mainMenu()">{{text(back)}}</button> 
+	  <button ng-click="m.mainMenu()">{{text("back")}}</button> 
 	   <h1>{{ game.show().name[l1()]}}</h1>
 	   <h2>{{ game.show().name[l2()] }}</h2>
 	   <table>
@@ -49,17 +49,17 @@
 	   </table>
     </div>
    <div ng-show="m.isactive=='game'" id="game" ng-cloak>
-	  <button ng-click="m.mainMenu()">{{text(back)}}</button> 
+	  <button ng-click="m.mainMenu()">{{text("back")}}</button> 
 	  <form ng-submit="m.check()">
-		  <div id = "question">Was ist <b>{{ game.getQuestion() }}</b> auf madagassisch?</div>
+		  <div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</b></div>
 		  <input type="text" ng-model="game.answer">
 		  <button type ="submit" >Ok</button>
 	  </form>
     </div>
 	
 	<div ng-show="m.isactive=='1of4'" id="1of4" ng-cloak>
-	  <button ng-click="m.mainMenu()">{{text(back)}}</button> 
-	  <div id = "question">Was ist <b>{{ game.getQuestion() }}</b> auf madagassisch?</div>
+	  <button ng-click="m.mainMenu()">{{text("back")}}</button> 
+	  <div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</div>
 	  <button  ng-click="m.selectAnswer(0)">{{ game.getPossibleAnswer(0) }}</button>
 	  <button  ng-click="m.selectAnswer(1)">{{ game.getPossibleAnswer(1) }}</button>
 	  <button  ng-click="m.selectAnswer(2)">{{ game.getPossibleAnswer(2) }}</button>
@@ -67,16 +67,16 @@
 	</div>
 	
 	<div ng-show="m.isactive=='memory'" id="memory" ng-cloak>
-	  <button ng-click="m.mainMenu()">{{text(back)}}</button>
+	  <button ng-click="m.mainMenu()">{{text("back")}}</button>
 	  <br />
 	   <button ng-repeat="card in game.cards track by $index" ng-class="'card_'+card.clazz" ng-disabled="card.clazz!='hidden'" ng-click="game.turn($index, m)">
 		<span>&nbsp;</span><span class = "cardtext"><span ng-class="card.lang">{{card['value']}}</span></span>
 	   </button>
 	</div>
 	<div ng-show="m.isactive=='picturegame'" id="picturegame" ng-cloack>
-		<button ng-click="m.mainMenu()">{{text(back)}}</button>
+		<button ng-click="m.mainMenu()">{{text("back")}}</button>
 		<br />
-		<div>Aiza ny {{game.getQuestion()}}?</div>
+		<div>{{text("where_is")}} {{game.getQuestion()}}?</div>
 		<div style= "background-image:url('{{game.words.path}}'); border:0; padding:0; margin:0; top:120;left:0;position:absolute; width:{{game.words.size[0]}}px; height:{{game.words.size[1]}}px;"
 			ng-click="m.guess($event)">
 

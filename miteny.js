@@ -54,6 +54,15 @@ app.controller('Main', ['$scope', function Main($scope) {
 	this.mainMenu = function() {
 		this.isactive = 'menu';
 	};
+	this.levels = function() {
+		var levelList = [];
+		data.forEach(function(entry) {
+			if (entry[l1()] && entry[l2()]) {
+				levelList.push(entry);
+			}
+		});
+		return levelList;
+	};
 	$scope.data=data;
 	$scope.p = p;
 	$scope.text=text;
@@ -61,6 +70,7 @@ app.controller('Main', ['$scope', function Main($scope) {
 	$scope.save=save;
 	$scope.l1 = l1;
 	$scope.l2 = l2;
+
 }]);
 
 app.directive('modalDialog', function() {
@@ -104,7 +114,7 @@ var Game = function() {
 	};
 
 	this.getQuestion = function() {
-		return this.words['de'][this.index];
+		return this.words[l1()][this.index];
 	};
 	this.next = function(wasCorrect, controller) {
 		if (wasCorrect) { 
@@ -112,7 +122,7 @@ var Game = function() {
 			this.words[l1()].splice(this.index, 1);
 			this.customNext();
 			if (this.words[l2()].length < this.MIN_LENGTH) {
-				window.alert("Level geschafft!");
+				window.alert(text("good_job"));
 				success();
 				controller.mainMenu();
 				return;
@@ -145,7 +155,7 @@ var Game = function() {
 		this.next(true, controller);
 	};
 	this.wrongGuess = function(controller) {
-		window.alert("Falsch. "+ this.getQuestion() +" ==> "+ this.getCorrectAnswer());
+		window.alert( text("wrong") + " " + this.getQuestion() +" ==> "+ this.getCorrectAnswer());
 		this.next(false, controller);
 	};
 };
@@ -191,8 +201,8 @@ var Memory = function() {
 		this.cards = new Array(16);
 		var indexSel = util.getRandomIndex(data[lvlId][l2()].length, 8);
 		for (var i=0; i < indexSel.length; i++) {
-			this.cards[i*2] = {index:indexSel[i], value:data[lvlId][l2()][indexSel[i]], lang:l2(),clazz:'hidden'};
-			this.cards[i*2 + 1] = {index:indexSel[i], value:data[lvlId][l1()][indexSel[i]],lang:l1(),clazz:'hidden'};
+			this.cards[i*2] = {index:indexSel[i], value:data[lvlId][l2()][indexSel[i]], lang:"l2",clazz:'hidden'};
+			this.cards[i*2 + 1] = {index:indexSel[i], value:data[lvlId][l1()][indexSel[i]],lang:"l1",clazz:'hidden'};
 		}
 		util.shuffle(this.cards);
 	};

@@ -110,11 +110,11 @@ h1 {
 	font-weight: bold;
 	color:black;
 }
-.card_shown .cardtext .de{
+.card_shown .cardtext .l2{
 	font-weight: bold;
 	color:red;
 }
-.card_shown .cardtext .mg{
+.card_shown .cardtext .l1{
 	font-weight: bold;
 	color:green;
 }
