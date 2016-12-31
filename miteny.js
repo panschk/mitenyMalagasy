@@ -1,4 +1,4 @@
-ALL_LEVELS=true;
+ALL_LEVELS=false;
 /*jshint sub:true */
 /* ['de'] is better written in dot notation*/
 /*global data,angular,util*/ 
@@ -14,25 +14,25 @@ app.controller('Main', ['$scope', function Main($scope) {
 		$scope.game.init(lvl);
 	};
 	this.startGame = function(lvl) {
-		$scope.p.currentgame = (lvl * 3) + 2;
+		$scope.p.currentgame = {"levelId" : lvl, "type" : "game"};
 		this.isactive = 'game';
 		$scope.game = new Game();
 		$scope.game.init(lvl);
 	};
 	this.start1of4 = function(lvl) {
-		$scope.p.currentgame = (lvl * 3) + 1;
+		$scope.p.currentgame = {"levelId" : lvl, "type" : "1of4"};
 		this.isactive = '1of4';
 		$scope.game = new MultipleChoiceGame();
 		$scope.game.init(lvl);
 	};
 	this.startMemory = function(lvl) {
-		$scope.p.currentgame = (lvl * 3) + 3;
+		$scope.p.currentgame = {"levelId" : lvl, "type" : "memory"};
 		this.isactive = 'memory';
 		$scope.game = new Memory();
 		$scope.game.init(lvl);
 	};
 	this.startPicture = function(lvl) {
-		$scope.p.currentgame = (lvl * 3) + 3;
+		$scope.p.currentgame = {"levelId" : lvl, "type" : "picture"};
 		this.isactive = 'picturegame';
 		$scope.game = new PictureGame();
 		$scope.game.init(lvl);
@@ -63,6 +63,12 @@ app.controller('Main', ['$scope', function Main($scope) {
 		});
 		return levelList;
 	};
+	this.getButtonStyle = function(levelId, levelType) {
+		if (p.completedLevels && p.completedLevels[l2()] && p.completedLevels[l2()][levelId] && p.completedLevels[l2()][levelId][levelType]) {
+			return p.completedLevels[l2()][levelId][levelType];
+		}
+		return "";
+	};
 	$scope.data=data;
 	$scope.p = p;
 	$scope.text=text;
@@ -70,6 +76,7 @@ app.controller('Main', ['$scope', function Main($scope) {
 	$scope.save=save;
 	$scope.l1 = l1;
 	$scope.l2 = l2;
+	$scope.text2 = text2;
 
 }]);
 
@@ -102,15 +109,18 @@ app.controller('ModalController', ['$scope', function($scope) {
 }]);
 
 var Game = function() {
+	this.type = "game";
 	this.MIN_LENGTH = 1;
 	this.index		=	0;
 	this.answer		= "";
 	this.words		= {};
+	this.errors		= 0;
 	this.init = function(lvlId) {
 		this.levelId = lvlId;
 		// copy is a deep clone, see util.js
 		this.words = util.copy(data[lvlId]);
 		this.next(false);
+		this.errors = 0;
 	};
 
 	this.getQuestion = function() {
@@ -122,8 +132,7 @@ var Game = function() {
 			this.words[l1()].splice(this.index, 1);
 			this.customNext();
 			if (this.words[l2()].length < this.MIN_LENGTH) {
-				window.alert(text("good_job"));
-				success();
+				success(this);
 				controller.mainMenu();
 				return;
 			}
@@ -156,11 +165,13 @@ var Game = function() {
 	};
 	this.wrongGuess = function(controller) {
 		window.alert( text("wrong") + " " + this.getQuestion() +" ==> "+ this.getCorrectAnswer());
+		this.errors++;
 		this.next(false, controller);
 	};
 };
 
 var MultipleChoiceGame = function() {
+	this.type = "1of4";
 	this.MIN_LENGTH			= 4;
 	this.possibleAnswers	= [1,2,3,4];
 	this.generatePossibleAnswers	=	function() {
@@ -196,6 +207,7 @@ var ListWords = function() {
 };
 
 var Memory = function() {
+	this.type = "memory";
 	this.init = function(lvlId) {
 		this.turnedCards = [];
 		this.cards = new Array(16);
@@ -235,14 +247,14 @@ var Memory = function() {
 				return;
 			}
 		}
-		window.alert("Level geschafft!");
-		success();
+		success(this);
 		controller.mainMenu();
 		
 	};
 };
 
 var PictureGame = function() {
+	this.type = "picture";
 	this.answer		= "";
 	this.words		= {};
 	this.init = function(lvlId) {
@@ -261,6 +273,8 @@ var PictureGame = function() {
 		var y = event.offsetY;
 		if (coordinates[0] <= x && coordinates[1] <= y && coordinates[0] + coordinates[2] >= x && coordinates[1] + coordinates[3] >= y ) {
 			this.next(true, controller);
+		} else {
+			this.errors++;
 		}
 	};
 	this.customNext = function () {
@@ -285,18 +299,44 @@ var save = function() {
 
 var initialP = {
 	progress : 1,
-	currentgame : 0,
-	language	: 'de'
+	currentgame : {},
+	language	: 'de',
+	languageToLearn	: 'mg',
+	completedLevels : {
+		mg : {},
+		de : {},
+		fr : {},
+		en : {}
+	}
 };
 
-var success = function() {
-	if (p.progress === p.currentgame) {
+var success = function(game) {
+	if (p.progress === p.currentgame.levelId) {
 		p.progress = p.progress + 1;
 	}
+	if (!p.completedLevels) {
+		p.completedLevels = {};
+	}
+	if (!p.completedLevels[l2()]) {
+		p.completedLevels[l2()] = {};
+	}
+	if (!p.completedLevels[l2()][p.currentgame.levelId]) {
+		p.completedLevels[l2()][p.currentgame.levelId] = {};
+	}
+	if (!p.completedLevels[l2()][p.currentgame.levelId][game.type]) {
+		p.completedLevels[l2()][p.currentgame.levelId][game.type] = "SUCCESS";
+	}
+	if (game.errors === 0) {
+		p.completedLevels[l2()][p.currentgame.levelId][game.type] = "PERFECT";
+	}
+	window.alert(text("good_job"));
 	save();
 };
 var text = function(t) {
 	return translate(t, p.language);
+};
+var text2 = function(t) {
+	return translate(t, p.languageToLearn);
 };
 var l1 = function() {
 	var result = p.language.code;
