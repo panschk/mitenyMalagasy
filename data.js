@@ -32,7 +32,7 @@ var data =
 	de	: ["Hallo", "Tschüss", "Danke", "Bitte", "Willkommen", "Gute Nacht", "Bitteschön", "Gute Reise", "Guten Appetit"],
 	en	: ["hi", "bye", "thank you", "please", "welcome", "good night", "you're welcome", "have a nice trip", "Enjoy your meal"],
 	fr	: ["Bonjour", "Au revoir", "merci", "s'il vous plaît", "bienvenue", "bonne nuit", "de rien", "bon voyage", "bon appétit"],
-	mg	: ["salama", "veloma", "misaotra", "azafady", "tonga soa", "tafandriamandry", "tsisy fisaorana", "tongava soa", "mazotoa homana"]
+	mg	: ["salama", "veloma", "misaotra", "azafady", "tonga soa", "tafandriamandry", "tsisy fisaorana", "soava dia", "mazotoa homana"]
 },
 {
 	type	: "normal",
@@ -63,5 +63,17 @@ var data =
 	de	: ["nah", "weit", "hier", "dort", "draußen", "innen", "über", "unter", "vorne", "hinten", "bei/zu"],
 	mg	: ["akaiky", "lavitra", "eto", "any", "ivelany", "anaty", "ambony", "ambany", "aloha", "aoriana", "amin'"]
 
+},
+{
+	type	: "normal",
+	name	: {de:"Zeitangaben", en: "time", fr: "temps", mg: "??"},
+	de	: ["gestern", "heute", "morgen", "Morgen", "vorgestern", "Nachmittag", "Mittag", "täglich", "Abend", "jetzt", "früher", "bald"],
+	mg	: ["omaly", "anio", "rahampitso", "maraina", "afak'omaly", "anaty", "ambony", "ambany", "aloha", "aoriana", "amin'"]
+},
+{
+	type	: "normal",
+	name	: {de:"Familie", en: "family", fr: "famille", mg: "fianakaviana"},
+	de	: ["Papa", "Mama", "Bruder (als Mann)", "Bruder (als Frau)", "Schwester (als Mann)", "Schwestet (als Frau)", , "Sohn", "Tochter", "Oma", "Opa", "verheiratet", "Verwandter", "havana", "Verwandtschaft"],
+	mg	: ["omaly", "anio", "rahampitso", "maraina", "afak'omaly", "anaty", "ambony", "ambany", "aloha", "aoriana", "amin'"]
 }
 ];
