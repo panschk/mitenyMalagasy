@@ -55,13 +55,38 @@ app.controller('Main', ['$scope', function Main($scope) {
 		this.isactive = 'menu';
 	};
 	this.levels = function() {
-		var levelList = [];
+		return data;
+		/*var levelList = [];
 		data.forEach(function(entry) {
 			if (entry[l1()] && entry[l2()]) {
 				levelList.push(entry);
 			}
 		});
 		return levelList;
+		*/
+	};
+	this.doShow = function(levelId, levelType) {
+		// list is active for all types
+		var typeMatch = true;
+		if (levelType) {
+			typeMatch = data[levelId].type===levelType;
+		}
+		var langOkay = data[levelId][l1()] && data[levelId][l2()];
+		return typeMatch && langOkay;
+	};
+	this.mark = function() {
+		if (!p.marked) {
+			p.marked = [];
+		}
+		var game = $scope.game;
+		p.marked.push(l1() +"|"+ l2() + "|" + game.levelId + "|" + game.getQuestion() + "|" + game.getCorrectAnswer());
+		save();
+	};
+	this.startShowMarks = function() {
+		this.isactive = 'marks';
+	};
+	this.showMarks = function() {
+		return JSON.stringify(p.marked)
 	};
 	this.getButtonStyle = function(levelId, levelType) {
 		if (p.completedLevels && p.completedLevels[l2()] && p.completedLevels[l2()][levelId] && p.completedLevels[l2()][levelId][levelType]) {
@@ -339,15 +364,15 @@ var text2 = function(t) {
 	return translate(t, p.languageToLearn);
 };
 var l1 = function() {
-	var result = p.language.code;
-	if (result) {
+	if (p && p.language && p.language.code) {
+		var result = p.language.code;
 		return result;
 	}
 	return 'de';
 };
 var l2 = function() {
-	var result = p.languageToLearn.code;
-	if (result) {
+	if (p && p.languageToLearn && p.languageToLearn.code) {
+		var result = p.languageToLearn.code;
 		return result;
 	}
 	return 'mg';

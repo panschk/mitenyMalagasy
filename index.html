@@ -7,7 +7,6 @@
 	<script src="js/lockr.js"></script>
 	<script src="data.js" charset="utf-8"></script>
 	<script src="data2.js" charset="utf-8"></script>
-	
 	<script src="translations.js" charset="utf-8"></script>
 	<script src="util.js" charset="utf-8"></script>
 	<script src="miteny.js" charset="utf-8"></script>
@@ -29,15 +28,17 @@
 			<button ng-click = "save();toggleModal()">Ok</button>
 		</modal-dialog>
 	</div>
+
 	<div ng-repeat="level in m.levels() track by $index">
 		{{ level['name'][l1()] }} 
-		<button ng-click="m.startList($index)" ng-show="true'" ng-disabled="m.isDisabled($index)">&#x1f4f0;</button>
-		<button ng-click="m.start1of4($index)" ng-class="m.getButtonStyle($index, '1of4')" ng-show="data[$index].type==='normal'" ng-disabled="m.isDisabled($index)">&#x2611;</button>
-		<button ng-click="m.startGame($index)" ng-class="m.getButtonStyle($index, 'game')" ng-show="data[$index].type==='normal'" ng-disabled="m.isDisabled($index)">&#x270d;</button>
-		<button ng-click="m.startMemory($index)" ng-class="m.getButtonStyle($index, 'memory')" ng-show="data[$index].type==='normal'" ng-disabled="m.isDisabled($index)">&#xe322;</button>
-		<button ng-click="m.startPicture($index)" ng-class="m.getButtonStyle($index, 'picture')" ng-show="data[$index].type==='picture'" ng-disabled="m.isDisabled($index)">&#xe322;</button>
+		<button ng-click="m.startList($index)" ng-show="m.doShow($index)" ng-disabled="m.isDisabled($index)">&#x1f4f0;</button>
+		<button ng-click="m.start1of4($index)" ng-class="m.getButtonStyle($index, '1of4')" ng-show="m.doShow($index, 'normal')" ng-disabled="m.isDisabled($index)">&#x2611;</button>
+		<button ng-click="m.startGame($index)" ng-class="m.getButtonStyle($index, 'game')" ng-show="m.doShow($index, 'normal')" ng-disabled="m.isDisabled($index)">&#x270d;</button>
+		<button ng-click="m.startMemory($index)" ng-class="m.getButtonStyle($index, 'memory')" ng-show="m.doShow($index, 'normal')" ng-disabled="m.isDisabled($index)">&#xe322;</button>
+		<button ng-click="m.startPicture($index)" ng-class="m.getButtonStyle($index, 'picture')" ng-show="m.doShow($index, 'picture')" ng-disabled="m.isDisabled($index)">&#xe322;</button>
 		
 	</div>
+		<button ng-click="m.startShowMarks()">*</button>
   </div>
      <div ng-show="m.isactive=='list'" id="list" ng-cloak>
 	  <button ng-click="m.mainMenu()">{{text("back")}}</button> 
@@ -51,7 +52,7 @@
 	   </table>
     </div>
    <div ng-show="m.isactive=='game'" id="game" ng-cloak>
-	  <button ng-click="m.mainMenu()">{{text("back")}}</button> 
+	  <button ng-click="m.mainMenu()">{{text("back")}}</button> <button ng-click="m.mark()">*</button>
 	  <form ng-submit="m.check()">
 		  <div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</b></div>
 		  <input type="text" ng-model="game.answer">
@@ -60,7 +61,7 @@
     </div>
 	
 	<div ng-show="m.isactive=='1of4'" id="1of4" ng-cloak>
-	  <button ng-click="m.mainMenu()">{{text("back")}}</button> 
+	  <button ng-click="m.mainMenu()">{{text("back")}}</button> <button ng-click="m.mark()">*</button>
 	  <div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</div>
 	  <button  ng-click="m.selectAnswer(0)">{{ game.getPossibleAnswer(0) }}</button>
 	  <button  ng-click="m.selectAnswer(1)">{{ game.getPossibleAnswer(1) }}</button>
@@ -81,9 +82,11 @@
 		<div>{{text2("where_is")}} {{game.getQuestion()}}?</div>
 		<div style= "background-image:url('{{game.words.path}}'); border:0; padding:0; margin:0; top:120;left:0;position:absolute; width:{{game.words.size[0]}}px; height:{{game.words.size[1]}}px;"
 			ng-click="m.guess($event)">
-
 		</div>
-		
+	</div>
+	<div ng-show="m.isactive=='marks'" id="marks" ng-cloak>
+	  	<button ng-click="m.mainMenu()">{{text("back")}}</button>
+		{{m.showMarks()}}
 	</div>
 
   </body>
