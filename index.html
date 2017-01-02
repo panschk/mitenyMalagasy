@@ -19,7 +19,7 @@
     <h1>Miteny Malagasy!</h1>
     <div ng-controller='ModalController'>
 		<button ng-click='toggleModal()'>{{text("settings")}}</button>
-		<modal-dialog show='modalShown' width='600px' height='60%'>
+		<modal-dialog show='modalShown' width='60%' height='60%'>
 			<p>{{text("settings")}}</p>
 			{{text("menulang")}}<select ng-model="p.language" ng-options="l.name for l in languages track by l.code"></select>
 			<br />
@@ -55,7 +55,10 @@
 	  <button ng-click="m.mainMenu()">{{text("back")}}</button> <button ng-click="m.mark()">*</button>
 	  <form ng-submit="m.check()">
 		  <div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</b></div>
-		  <input type="text" ng-model="game.answer">
+		  <input type="text" ng-model="game.answer"><button type = "button" ng-click="game.deleteLetter()">&#x232B;</button>
+		  <br />
+		  <button type="button" ng-repeat="letter in game.buttonModel" ng-disabled = "!letter.isActive" ng-click = "game.addLetter(letter)">{{letter.text}}</button>
+		  <br />
 		  <button type ="submit" >Ok</button>
 	  </form>
     </div>

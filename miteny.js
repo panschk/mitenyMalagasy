@@ -140,6 +140,7 @@ var Game = function() {
 	this.answer		= "";
 	this.words		= {};
 	this.errors		= 0;
+	this.buttonModel = {};
 	this.init = function(lvlId) {
 		this.levelId = lvlId;
 		// copy is a deep clone, see util.js
@@ -155,7 +156,6 @@ var Game = function() {
 		if (wasCorrect) { 
 			this.words[l2()].splice(this.index, 1);
 			this.words[l1()].splice(this.index, 1);
-			this.customNext();
 			if (this.words[l2()].length < this.MIN_LENGTH) {
 				success(this);
 				controller.mainMenu();
@@ -166,10 +166,12 @@ var Game = function() {
 		this.index = parseInt(Math.random()*lengthArray, 10);
 		this.answer = "";
 		this.generatePossibleAnswers();
+		this.customNext(wasCorrect);
 	};
 	this.generatePossibleAnswers = function () { // empty
 	};
-	this.customNext = function () { // empty
+	this.customNext = function (wasCorrect) {
+		this.buttonModel = this.generateButtons();
 	};
 	
 	this.checkAnswer = function(controller) {
@@ -193,6 +195,31 @@ var Game = function() {
 		this.errors++;
 		this.next(false, controller);
 	};
+	this.generateButtons = function() {
+		var word = this.getCorrectAnswer();
+		var wordArray = word.split("");
+		util.shuffle(wordArray);
+		var letters = [];
+		for (var i = 0; i < wordArray.length; i++) {
+			letters.push({text: wordArray[i], isActive: true});
+		}
+		return letters;
+	};
+	this.addLetter = function(letter) {
+		this.answer = this.answer + letter.text;
+		letter.isActive = false;
+	};
+	this.deleteLetter = function() {
+		var deletedLetter = this.answer.slice(this.answer.length - 1);
+		this.answer = this.answer.slice(0, -1);
+		for (var i = 0; i < this.buttonModel.length; i++) {
+			if (this.buttonModel[i].text === deletedLetter && !this.buttonModel[i].isActive) {
+				this.buttonModel[i].isActive = true;
+				break;
+			}
+		}
+	};
+	
 };
 
 var MultipleChoiceGame = function() {
@@ -218,6 +245,7 @@ var MultipleChoiceGame = function() {
 			this.wrongGuess(controller);
 		}
 	};
+
 };
 MultipleChoiceGame.prototype = new Game();
 
@@ -302,8 +330,10 @@ var PictureGame = function() {
 			this.errors++;
 		}
 	};
-	this.customNext = function () {
-		this.words.coordinates.splice(this.index, 1);
+	this.customNext = function (wasCorrect) {
+		if (wasCorrect) {
+			this.words.coordinates.splice(this.index, 1);
+		}
 	};
 	
 
