@@ -43,7 +43,11 @@ app.controller('Main', ['$scope', function Main($scope) {
 		}
 		return p.progress<lvlIndex;
 	};
-	
+	this.gameClass = function() {
+		if ($scope.game) {
+			return $scope.game.cssClass;
+		}
+	}
 	
 	this.selectAnswer = function(choice) {
 		$scope.game.selectAnswer(choice, this);
@@ -94,6 +98,9 @@ app.controller('Main', ['$scope', function Main($scope) {
 		}
 		return "";
 	};
+	this.refreshScope = function() {
+		$scope.$apply();
+	}
 	$scope.data=data;
 	$scope.p = p;
 	$scope.text=text;
@@ -141,6 +148,7 @@ var Game = function() {
 	this.words		= {};
 	this.errors		= 0;
 	this.buttonModel = {};
+	this.cssClass = "gameClass0";
 	this.init = function(lvlId) {
 		this.levelId = lvlId;
 		// copy is a deep clone, see util.js
@@ -153,7 +161,15 @@ var Game = function() {
 		return this.words[l1()][this.index];
 	};
 	this.next = function(wasCorrect, controller) {
-		if (wasCorrect) { 
+		if (wasCorrect) {
+			this.cssClass = "gameClass1";
+			var f = function(game, controller) {
+				return function() {
+					game.cssClass = "gameClass0";
+					controller.refreshScope();
+				}
+			}
+			setTimeout(f(this, controller), 50); 
 			this.words[l2()].splice(this.index, 1);
 			this.words[l1()].splice(this.index, 1);
 			if (this.words[l2()].length < this.MIN_LENGTH) {

@@ -169,4 +169,13 @@ h1 {
   background-color: green;
 }
 
+.gameClass0 {
+  background: opacity: 0;
+  transition:0.3s;
+}
+.gameClass1 {
+  background-color: white;
+  width : 100vw;
+  height: 100vh;
+}
 

@@ -51,7 +51,7 @@
 	   </tr>
 	   </table>
     </div>
-   <div ng-show="m.isactive=='game'" id="game" ng-cloak>
+   <div ng-show="m.isactive=='game'" id="game" ng-cloak ng-class="game.cssClass">
 	  <button ng-click="m.mainMenu()">{{text("back")}}</button> <button ng-click="m.mark()">*</button>
 	  <form ng-submit="m.check()">
 		  <div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</b></div>
@@ -63,7 +63,7 @@
 	  </form>
     </div>
 	
-	<div ng-show="m.isactive=='1of4'" id="1of4" ng-cloak>
+	<div ng-show="m.isactive=='1of4'" id="1of4" ng-cloak ng-class="game.cssClass">
 	  <button ng-click="m.mainMenu()">{{text("back")}}</button> <button ng-click="m.mark()">*</button>
 	  <div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</div>
 	  <button  ng-click="m.selectAnswer(0)">{{ game.getPossibleAnswer(0) }}</button>
@@ -72,7 +72,7 @@
 	  <button  ng-click="m.selectAnswer(3)">{{ game.getPossibleAnswer(3) }}</button>
 	</div>
 	
-	<div ng-show="m.isactive=='memory'" id="memory" ng-cloak>
+	<div ng-show="m.isactive=='memory'" id="memory" ng-cloak >
 	  <button ng-click="m.mainMenu()">{{text("back")}}</button>
 	  <br />
 	   <button ng-repeat="card in game.cards track by $index" ng-class="'card_'+card.clazz" ng-disabled="card.clazz!='hidden'" ng-click="game.turn($index, m)">

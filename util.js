@@ -32,5 +32,8 @@ var util = {
 			choices.splice(x, 1);
 		}
 		return result;
+	},
+	sleep : async function (ms) {
+		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 };
