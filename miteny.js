@@ -103,6 +103,7 @@ app.controller('Main', ['$scope', function Main($scope) {
 	}
 	$scope.data=data;
 	$scope.p = p;
+	$scope.audio=audio;
 	$scope.text=text;
 	$scope.languages=languages;
 	$scope.save=save;

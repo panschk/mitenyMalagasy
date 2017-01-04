@@ -33,7 +33,7 @@ var util = {
 		}
 		return result;
 	},
-	sleep : async function (ms) {
+	sleep : function (ms) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 };
