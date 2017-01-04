@@ -37,6 +37,7 @@
 		<button ng-click="m.startGame($index)" ng-class="m.getButtonStyle($index, 'game')" ng-show="m.doShow($index, 'normal')" ng-disabled="m.isDisabled($index)">&#x270d;</button>
 		<button ng-click="m.startMemory($index)" ng-class="m.getButtonStyle($index, 'memory')" ng-show="m.doShow($index, 'normal')" ng-disabled="m.isDisabled($index)">&#xe322;</button>
 		<button ng-click="m.startPicture($index)" ng-class="m.getButtonStyle($index, 'picture')" ng-show="m.doShow($index, 'picture')" ng-disabled="m.isDisabled($index)">&#xe322;</button>
+		<button ng-click="m.startListenGame($index)" ng-class="m.getButtonStyle($index, 'listen')" ng-show="m.doShowListenGame($index)" ng-disabled="m.isDisabled($index)">&#x1f50a;</button>
 		
 	</div>
 		<button ng-click="m.startShowMarks()">*</button>
@@ -87,6 +88,22 @@
 		<div style= "background-image:url('{{game.words.path}}'); border:0; padding:0; margin:0; top:120;left:0;position:absolute; width:{{game.words.size[0]}}px; height:{{game.words.size[1]}}px;"
 			ng-click="m.guess($event)">
 		</div>
+	</div>
+	<div ng-show="m.isactive=='listen'" id="listen" ng-cloack>
+	
+		<button ng-click="m.mainMenu()">{{text("back")}}</button>
+		<br />
+		<span>{{text("listen")}}</span>
+		<form ng-submit="m.check()">
+
+			<button type = "button" ng-click="game.playSpeech()">&#x1f50a;</button></td>
+			<br />
+			<input type="text" ng-model="game.answer"><button type = "button" ng-click="game.deleteLetter()">&#x232B;</button>
+			<br />
+			<button type="button" ng-repeat="letter in game.buttonModel" ng-disabled = "!letter.isActive" ng-click = "game.addLetter(letter)">{{letter.text}}</button>
+			<br />
+			<button type ="submit">Ok</button>
+		</form>
 	</div>
 	<div ng-show="m.isactive=='marks'" id="marks" ng-cloak>
 	  	<button ng-click="m.mainMenu()">{{text("back")}}</button>

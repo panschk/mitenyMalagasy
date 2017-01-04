@@ -75,5 +75,10 @@ var data =
 	name	: {de:"Familie", en: "family", fr: "famille", mg: "fianakaviana"},
 	de	: ["Papa", "Mama", "Bruder (als Mann)", "Bruder (als Frau)", "Schwester (als Mann)", "Schwestet (als Frau)", , "Sohn", "Tochter", "Oma", "Opa", "verheiratet", "Verwandter", "havana", "Verwandtschaft"],
 	mg	: ["omaly", "anio", "rahampitso", "maraina", "afak'omaly", "anaty", "ambony", "ambany", "aloha", "aoriana", "amin'"]
+},
+{
+	type	: "listen",
+	name	: {de:"Einige Worte", en:"Some Words", fr:"Quelque mots", mg:"Sasany Teny"},
+	mg : ["mena", "maintso"]
 }
 ];

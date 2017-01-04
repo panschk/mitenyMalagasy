@@ -37,6 +37,13 @@ app.controller('Main', ['$scope', function Main($scope) {
 		$scope.game = new PictureGame();
 		$scope.game.init(lvl);
 	};
+	this.startListenGame = function(lvl) {
+		$scope.p.currentgame = {"levelId" : lvl, "type" : "listen"};
+		this.isactive = 'listen';
+		$scope.game = new ListenGame();
+		$scope.game.init(lvl);
+	};
+	
 	this.isDisabled = function(lvlIndex) {
 		if (ALL_LEVELS){
 			return false;
@@ -73,9 +80,18 @@ app.controller('Main', ['$scope', function Main($scope) {
 		// list is active for all types
 		var typeMatch = true;
 		if (levelType) {
+			if (levelType === 'listen') {
+				return false;
+			}
 			typeMatch = data[levelId].type===levelType;
 		}
+		
 		var langOkay = data[levelId][l1()] && data[levelId][l2()];
+		return typeMatch && langOkay;
+	};
+	this.doShowListenGame = function(levelId) {
+		typeMatch = data[levelId].type==='listen';
+		var langOkay = data[levelId][l2()];
 		return typeMatch && langOkay;
 	};
 	this.mark = function() {
@@ -172,7 +188,9 @@ var Game = function() {
 			}
 			setTimeout(f(this, controller), 50); 
 			this.words[l2()].splice(this.index, 1);
-			this.words[l1()].splice(this.index, 1);
+			if (this.words[l1()]) {
+				this.words[l1()].splice(this.index, 1);
+			}
 			if (this.words[l2()].length < this.MIN_LENGTH) {
 				success(this);
 				controller.mainMenu();
@@ -356,6 +374,31 @@ var PictureGame = function() {
 
 }
 PictureGame.prototype = new Game();
+
+
+var ListenGame = function() {
+	this.type = "listen";
+	this.answer		= "";
+	this.words		= {};
+	this.init = function(lvlId) {
+		this.levelId = lvlId;
+		// copy is a deep clone, see util.js
+		this.words = util.copy(data[lvlId]);
+		this.next(false);
+	};
+	this.getQuestion = function() {
+		return "";
+	};
+	this.playSpeech = function() {
+		audio.play(this.getCorrectAnswer())
+	};
+	this.customNext = function (wasCorrect) {
+		this.buttonModel = this.generateButtons();
+		this.playSpeech();
+	};
+
+}
+ListenGame.prototype = new Game();
 
 var load = function() {
 	var gs = Lockr.get("miteny_p");

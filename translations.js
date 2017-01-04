@@ -16,6 +16,7 @@ var translate = function(code, lang) {
 		good_job	: {de: "Gut gemacht!", en: "Good job", fr: "Très bien", mg: "Tsara!"},
 		wrong		: {de: "Falsch!", en: "That's wrong", fr: "Faux!", mg: "Diso!"},
 		where_is	: {de: "Wo ist", en: "Where is", fr: "Où est", mg: "Aiza"},
+		listen		: {de: "Hör zu", en: "Listen!", fr:"Ecoute", mg:"Mihaino"}
 		
 	}
 	if (lang && lang.code) { 
