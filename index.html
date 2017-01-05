@@ -15,16 +15,17 @@
 	<title>Miteny Malagasy</title>
   </head>
   <body ng-cloak>
+	  <div id = "container">
   <div id="menu"  ng-show="m.isactive=='menu'">
   <img src="img/lemur.png" width = "10%"/>
     <h1>Miteny Malagasy!</h1>
     <div ng-controller='ModalController'>
 		<button ng-click='toggleModal()'>{{text("settings")}}</button>
 		<modal-dialog show='modalShown' width='60%' height='60%'>
-			<p>{{text("settings")}}</p>
-			{{text("menulang")}}<select ng-model="p.language" ng-options="l.name for l in languages track by l.code"></select>
+			<h1>{{text("settings")}}</h1>
+			{{text("menulang")}}&nbsp;&nbsp;<select ng-model="p.language" ng-options="l.name for l in languages track by l.code"></select>
 			<br />
-			{{text("langToLearn")}}<select ng-model="p.languageToLearn" ng-options="l.name for l in languages track by l.code"></select>
+			{{text("langToLearn")}}&nbsp;&nbsp;<select ng-model="p.languageToLearn" ng-options="l.name for l in languages track by l.code"></select>
 			<br />
 			<button ng-click = "save();toggleModal()">Ok</button>
 		</modal-dialog>
@@ -109,6 +110,6 @@
 	  	<button ng-click="m.mainMenu()">{{text("back")}}</button>
 		{{m.showMarks()}}
 	</div>
-
+</div>
   </body>
 </html>
