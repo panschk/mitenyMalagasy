@@ -120,6 +120,7 @@ h1 {
 	color:green;
 }
 
+
 .ng-modal-overlay {
   /* A dark translucent div that covers the whole screen */
   position:absolute;
@@ -182,5 +183,7 @@ h1 {
 table, tr, td {
 	border:1px solid black;
 }
-
+.small {
+	font-size: 50%;
+}
 

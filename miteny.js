@@ -301,8 +301,11 @@ var Memory = function() {
 		this.cards = new Array(16);
 		var indexSel = util.getRandomIndex(data[lvlId][l2()].length, 8);
 		for (var i=0; i < indexSel.length; i++) {
-			this.cards[i*2] = {index:indexSel[i], value:data[lvlId][l2()][indexSel[i]], lang:"l2",clazz:'hidden'};
-			this.cards[i*2 + 1] = {index:indexSel[i], value:data[lvlId][l1()][indexSel[i]],lang:"l1",clazz:'hidden'};
+			var wordL2 = data[lvlId][l2()][indexSel[i]];
+			var wordL1 = data[lvlId][l1()][indexSel[i]];
+
+			this.cards[i*2] = {index:indexSel[i], value:wordL2, lang:"l2",clazz:'hidden',textSize:Math.min(100, 700/Math.pow(wordL2.length, 0.9))};
+			this.cards[i*2 + 1] = {index:indexSel[i], value:wordL1,lang:"l1",clazz:'hidden',textSize:Math.min(100, 700/Math.pow(wordL1.length, 0.9))};
 		}
 		util.shuffle(this.cards);
 	};
