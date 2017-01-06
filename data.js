@@ -5,7 +5,8 @@ var data =
 	de 	: ["eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn"],
 	en 	: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
 	fr 	: ["un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix"],
-	mg 	: ["iray", "roa", "telo", "efatra", "dimy", "enina", "fito", "valo", "sivy", "folo"]
+	mg 	: ["iray", "roa", "telo", "efatra", "dimy", "enina", "fito", "valo", "sivy", "folo"],
+	speech : ['mg']
 },
  {
 	type	: "picture",
@@ -24,7 +25,8 @@ var data =
 	de	: ["rot", "grün", "blau", "gelb", "weiß", "schwarz", "braun", "rosa"],
 	en	: ["red", "green", "blue", "yellow", "white", "black", "brown", "pink"],
 	fr	: ["rouge", "vert", "bleu", "jaune", "blanc", "noir", "marron", "rose"],
-	mg	: ["mena", "maintso", "manga", "mavo", "fotsy", "mainty", "volon-tany", "mavokely"]
+	mg	: ["mena", "maintso", "manga", "mavo", "fotsy", "mainty", "volon-tany", "mavokely"],
+	speech : ['mg']
 },
 {
 	type	: "normal",
@@ -32,7 +34,8 @@ var data =
 	de	: ["Hallo", "Tschüss", "Danke", "Bitte", "Willkommen", "Gute Nacht", "Bitteschön", "Gute Reise", "Guten Appetit"],
 	en	: ["hi", "bye", "thank you", "please", "welcome", "good night", "you're welcome", "have a nice trip", "Enjoy your meal"],
 	fr	: ["Bonjour", "Au revoir", "merci", "s'il vous plaît", "bienvenue", "bonne nuit", "de rien", "bon voyage", "bon appétit"],
-	mg	: ["salama", "veloma", "misaotra", "azafady", "tonga soa", "tafandriamandry", "tsisy fisaorana", "soava dia", "mazotoa homana"]
+	mg	: ["salama", "veloma", "misaotra", "azafady", "tonga soa", "tafandriamandry", "tsisy fisaorana", "soava dia", "mazotoa homana"],
+	speech : ['mg']
 },
 {
 	type	: "normal",
@@ -40,7 +43,8 @@ var data =
 	de	: ["Karotte", "Kartoffel", "Knoblauch", "Schnittlauch", "Tomate", "Aubergine", "Gurke", "Zucchini", "Kürbis", "Pilz", "Salat"],
 	en	: ["carot", "potato", "garlic", "chives", "tomato", "eggplant", "cucumber", "zucchini", "pumpkin", "mushroom", "salad"],
 	fr	: ["carotte", "pomme de terre", "ail", "ciboulette", "tomate", "aubergine", "concombre", "courgette", "citrouille", "champignon", "salade"],
-	mg	: ["karoty", "Ovy", "tongolo gasy", "tongolo maintso", "voatabia", "baranjely", "konkombra", "korzety", "voatavo", "holatra", "salady"]
+	mg	: ["karoty", "Ovy", "tongolo gasy", "tongolo maintso", "voatabia", "baranjely", "konkombra", "korzety", "voatavo", "holatra", "salady"],
+	speech : ['mg']
 
 },
 {

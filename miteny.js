@@ -90,7 +90,12 @@ app.controller('Main', ['$scope', function Main($scope) {
 		return typeMatch && langOkay;
 	};
 	this.doShowListenGame = function(levelId) {
-		typeMatch = data[levelId].type==='listen';
+		var typeMatch = data[levelId].type==='listen';
+		if (!typeMatch) {
+			if (data[levelId].speech && data[levelId].speech.indexOf(l2()) != -1) {
+				return true;
+			}
+		}
 		var langOkay = data[levelId][l2()];
 		return typeMatch && langOkay;
 	};
