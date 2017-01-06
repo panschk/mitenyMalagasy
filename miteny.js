@@ -3,7 +3,7 @@ ALL_LEVELS=true;
 /* ['de'] is better written in dot notation*/
 /*global data,angular,util*/ 
 var app = angular.module('mitenyMain', []);
-app.controller('Main', ['$scope', function Main($scope) {
+app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 	this.isactive = 'menu';
 	this.check = function() {
 		return $scope.game.checkAnswer(this);
@@ -112,6 +112,12 @@ app.controller('Main', ['$scope', function Main($scope) {
 	};
 	this.showMarks = function() {
 		return JSON.stringify(p.marked)
+	};
+	this.send = function(game) {
+		var url = 'http://www.panschk.de/mitenyMalagasy/getFeedback.php?id=';
+		url = url + game.levelId + "&content="+JSON.stringify(game.good);
+		$http.post(url, game);
+
 	};
 	this.getButtonStyle = function(levelId, levelType) {
 		if (p.completedLevels && p.completedLevels[l2()] && p.completedLevels[l2()][levelId] && p.completedLevels[l2()][levelId][levelType]) {
@@ -290,9 +296,13 @@ var MultipleChoiceGame = function() {
 MultipleChoiceGame.prototype = new Game();
 
 var ListWords = function() {
-	
+	// temporary to give feedback
+	this.good = [];
 	this.init = function(lvlId) {
 		this.levelId = lvlId;
+		for (var i = 0; i < data[this.levelId][l2()].length; i++) {
+			this.good[i] = false;
+		}
 	};
 	this.show = function() {
 		return data[this.levelId];

@@ -50,9 +50,13 @@
 	   <table>
 	   <tr><th>{{language.name}}</th><th>{{languageToLearn.name}}</th></tr>
 	   <tr ng-repeat="n in game.show()[l2()] track by $index">
-		<td>{{game.show()[l1()][$index]}}</td><td>{{game.show()[l2()][$index]}}<button ng-show="audio.exists(game.show()[l2()][$index])" ng-click="audio.play(game.show()[l2()][$index])">&#x1f50a;</button></td>
+		<td>{{game.show()[l1()][$index]}}</td><td>{{game.show()[l2()][$index]}}
+			<button ng-show="audio.exists(game.show()[l2()][$index])" ng-click="audio.play(game.show()[l2()][$index])">&#x1f50a;</button>
+			<input type="checkbox" ng-model="game.good[$index]" >(isgood)
+		</td>
 	   </tr>
 	   </table>
+	   <button ng-click="m.send(game)">send feedback to server</button>
     </div>
    <div ng-show="m.isactive=='game'" id="game" ng-cloak ng-class="game.cssClass">
 	  <button ng-click="m.mainMenu()">{{text("back")}}</button> <button ng-click="m.mark()">*</button>
