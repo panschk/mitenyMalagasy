@@ -114,10 +114,11 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 		return JSON.stringify(p.marked)
 	};
 	this.send = function(game) {
-		var url = 'http://www.panschk.de/mitenyMalagasy/getFeedback.php?id=';
-		url = url + game.levelId + "&content="+JSON.stringify(game.good);
-		$http.post(url, game);
-
+		if (window.confirm("Wirklich senden?")) {
+			var url = 'http://www.panschk.de/mitenyMalagasy/getFeedback.php?auth=mm&id=';
+			url = url + game.levelId + "&content="+JSON.stringify(game.good);
+			$http.post(url, game);
+		}
 	};
 	this.getButtonStyle = function(levelId, levelType) {
 		if (p.completedLevels && p.completedLevels[l2()] && p.completedLevels[l2()][levelId] && p.completedLevels[l2()][levelId][levelType]) {
