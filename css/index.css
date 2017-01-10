@@ -186,4 +186,11 @@ table, tr, td {
 .small {
 	font-size: 50%;
 }
+#footer {
+	font-size:9pt;
+}
+#progress {
+	height:10px;
+	background: linear-gradient(to right, yellow, green);
 
+}

@@ -42,6 +42,10 @@
 		
 	</div>
 		<button ng-click="m.startShowMarks()">*</button>
+<div id="footer">
+Logo und Icons based on <a href="http://www.flaticon.com/authors/freepik" target="_blank">Freepik from Flaticon</a>
+&nbsp;&nbsp;&nbsp;<a href="credits.html">Credits</a>
+</div>
   </div>
      <div ng-show="m.isactive=='list'" id="list" ng-cloak>
 	  <button ng-click="m.mainMenu()">{{text("back")}}</button> 
@@ -60,6 +64,7 @@
     </div>
    <div ng-show="m.isactive=='game'" id="game" ng-cloak ng-class="game.cssClass">
 	  <button ng-click="m.mainMenu()">{{text("back")}}</button> <button ng-click="m.mark()">*</button>
+	  <div id = "progress" style="width:{{game.getDone()/game.getTotal()*100}}%"></div>
 	  <form ng-submit="m.check()">
 		  <div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</b></div>
 		  <input type="text" ng-model="game.answer"><button type = "button" ng-click="game.deleteLetter()">&#x232B;</button>
@@ -71,12 +76,13 @@
     </div>
 	
 	<div ng-show="m.isactive=='1of4'" id="1of4" ng-cloak ng-class="game.cssClass">
-	  <button ng-click="m.mainMenu()">{{text("back")}}</button> <button ng-click="m.mark()">*</button>
-	  <div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</div>
-	  <button  ng-click="m.selectAnswer(0)">{{ game.getPossibleAnswer(0) }}</button>
-	  <button  ng-click="m.selectAnswer(1)">{{ game.getPossibleAnswer(1) }}</button>
-	  <button  ng-click="m.selectAnswer(2)">{{ game.getPossibleAnswer(2) }}</button>
-	  <button  ng-click="m.selectAnswer(3)">{{ game.getPossibleAnswer(3) }}</button>
+		<button ng-click="m.mainMenu()">{{text("back")}}</button> <button ng-click="m.mark()">*</button>
+		<div id = "progress" style="width:{{game.getDone()/game.getTotal()*100}}%"></div>
+		<div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</div>
+		<button  ng-click="m.selectAnswer(0)">{{ game.getPossibleAnswer(0) }}</button>
+		<button  ng-click="m.selectAnswer(1)">{{ game.getPossibleAnswer(1) }}</button>
+		<button  ng-click="m.selectAnswer(2)">{{ game.getPossibleAnswer(2) }}</button>
+		<button  ng-click="m.selectAnswer(3)">{{ game.getPossibleAnswer(3) }}</button>
 	</div>
 	
 	<div ng-show="m.isactive=='memory'" id="memory" ng-cloak >
@@ -88,6 +94,7 @@
 	</div>
 	<div ng-show="m.isactive=='picturegame'" id="picturegame" ng-cloack>
 		<button ng-click="m.mainMenu()">{{text("back")}}</button>
+	  <div id = "progress" style="width:{{game.getDone()/game.getTotal()*100}}%"></div>
 		<br />
 		<div>{{text2("where_is")}} {{game.getQuestion()}}?</div>
 		<div style= "background-image:url('{{game.words.path}}'); border:0; padding:0; margin:0; top:120;left:0;position:absolute; width:{{game.words.size[0]}}px; height:{{game.words.size[1]}}px;"
@@ -97,7 +104,7 @@
 	<div ng-show="m.isactive=='listen'" id="listen" ng-cloack>
 	
 		<button ng-click="m.mainMenu()">{{text("back")}}</button>
-		<br />
+		<div id = "progress" style="width:{{game.getDone()/game.getTotal()*100}}%"></div>
 		<span>{{text("listen")}}</span>
 		<form ng-submit="m.check()">
 
@@ -115,5 +122,6 @@
 		{{m.showMarks()}}
 	</div>
 </div>
+
   </body>
 </html>

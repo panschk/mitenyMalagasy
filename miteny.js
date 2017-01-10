@@ -184,8 +184,14 @@ var Game = function() {
 		this.words = util.copy(data[lvlId]);
 		this.next(false);
 		this.errors = 0;
+		this.total = this.words[l2()].length;
 	};
-
+	this.getTotal = function() {
+		return this.total;
+	};
+	this.getDone = function() {
+		return this.getTotal() - this.words[l2()].length;
+	};
 	this.getQuestion = function() {
 		return this.words[l1()][this.index];
 	};
@@ -399,12 +405,6 @@ var ListenGame = function() {
 	this.type = "listen";
 	this.answer		= "";
 	this.words		= {};
-	this.init = function(lvlId) {
-		this.levelId = lvlId;
-		// copy is a deep clone, see util.js
-		this.words = util.copy(data[lvlId]);
-		this.next(false);
-	};
 	this.getQuestion = function() {
 		return "";
 	};
