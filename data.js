@@ -81,6 +81,14 @@ var data =
 	mg	: ["dada", "neny", "rahalahy", "anadahy", "anabavy", "rahavavy", "zanaka lahy", "zanaka vavy", "bebe", "dadabe", "manambady", "havana", "fihavanana"]
 },
 {
+	type	: "normal",
+	name	: {de:"Tiere", en: "animals", fr: "animaux", mg: "Ny bibi"},
+	de	: ["Schwein", "Katze", "Hund", "Ente", "Vogel", "Wurm", "Pferd", "Rind", "Huhn", "Maus", "Hase"],
+	en	: ["pig", "cat", "dog", "duck", "bird", "worm", "horse", "cattle", "chicken", "mouse", "rabbit"],
+	fr	:  [ "cochon", "chat", "chien", "canard", "oiseau", "ver", "cheval", "boeuf", "poule", "souris", "lapin"],
+	mg: [ "kisoa", "saka", "alika", "ganagana", "vorona", "kankana", "soavaly", "omby", "akoho", "totozy", "bitro"]
+},
+{
 	type	: "listen",
 	name	: {de:"Einige Worte", en:"Some Words", fr:"Quelque mots", mg:"Sasany Teny"},
 	mg : ["mena", "maintso"]
