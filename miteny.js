@@ -1,7 +1,7 @@
-ALL_LEVELS=true;
+var ALL_LEVELS=true;
 /*jshint sub:true */
 /* ['de'] is better written in dot notation*/
-/*global data,angular,util*/ 
+/*global data,angular,util,audio,languages,Lockr,translate*/ 
 var app = angular.module('mitenyMain', []);
 app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 	this.isactive = 'menu';
@@ -54,7 +54,7 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 		if ($scope.game) {
 			return $scope.game.cssClass;
 		}
-	}
+	};
 	
 	this.selectAnswer = function(choice) {
 		$scope.game.selectAnswer(choice, this);
@@ -92,7 +92,7 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 	this.doShowListenGame = function(levelId) {
 		var typeMatch = data[levelId].type==='listen';
 		if (!typeMatch) {
-			if (data[levelId].speech && data[levelId].speech.indexOf(l2()) != -1) {
+			if (data[levelId].speech && data[levelId].speech.indexOf(l2()) !== -1) {
 				return true;
 			}
 		}
@@ -111,7 +111,7 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 		this.isactive = 'marks';
 	};
 	this.showMarks = function() {
-		return JSON.stringify(p.marked)
+		return JSON.stringify(p.marked);
 	};
 	this.send = function(game) {
 		if (window.confirm("Wirklich senden?")) {
@@ -128,7 +128,7 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 	};
 	this.refreshScope = function() {
 		$scope.$apply();
-	}
+	};
 	$scope.data=data;
 	$scope.p = p;
 	$scope.audio=audio;
@@ -151,10 +151,12 @@ app.directive('modalDialog', function() {
     transclude: true, // we want to insert custom content inside the directive
     link: function(scope, element, attrs) {
       scope.dialogStyle = {};
-      if (attrs.width)
+      if (attrs.width) {
         scope.dialogStyle.width = attrs.width;
-      if (attrs.height)
+		}
+      if (attrs.height) {
         scope.dialogStyle.height = attrs.height;
+		}
       scope.hideModal = function() {
         scope.show = false;
       };
@@ -202,8 +204,8 @@ var Game = function() {
 				return function() {
 					game.cssClass = "gameClass0";
 					controller.refreshScope();
-				}
-			}
+				};
+			};
 			setTimeout(f(this, controller), 50); 
 			this.words[l2()].splice(this.index, 1);
 			if (this.words[l1()]) {
@@ -397,7 +399,7 @@ var PictureGame = function() {
 	};
 	
 
-}
+};
 PictureGame.prototype = new Game();
 
 
@@ -409,14 +411,14 @@ var ListenGame = function() {
 		return "";
 	};
 	this.playSpeech = function() {
-		audio.play(this.getCorrectAnswer())
+		audio.play(this.getCorrectAnswer());
 	};
 	this.customNext = function (wasCorrect) {
 		this.buttonModel = this.generateButtons();
 		this.playSpeech();
 	};
 
-}
+};
 ListenGame.prototype = new Game();
 
 var load = function() {
@@ -425,10 +427,10 @@ var load = function() {
 		gs = initialP;
 	}
 	return gs;
-}
+};
 var save = function() {
 	Lockr.set("miteny_p", p);
-}
+};
 
 
 var initialP = {

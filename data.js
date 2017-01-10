@@ -72,13 +72,13 @@ var data =
 	type	: "normal",
 	name	: {de:"Zeitangaben", en: "time", fr: "temps", mg: "??"},
 	de	: ["gestern", "heute", "morgen", "Morgen", "vorgestern", "Nachmittag", "Mittag", "täglich", "Abend", "jetzt", "früher", "bald"],
-	mg	: ["omaly", "anio", "rahampitso", "maraina", "afak'omaly", "anaty", "ambony", "ambany", "aloha", "aoriana", "amin'"]
+	mg	: ["omaly", "anio", "rahampitso", "maraina", "afak'omaly", "tolakandro", "atoandro", "isan'andro", "hariva", "izao", "taloha", "efa ho"]
 },
 {
 	type	: "normal",
 	name	: {de:"Familie", en: "family", fr: "famille", mg: "fianakaviana"},
-	de	: ["Papa", "Mama", "Bruder (als Mann)", "Bruder (als Frau)", "Schwester (als Mann)", "Schwestet (als Frau)", , "Sohn", "Tochter", "Oma", "Opa", "verheiratet", "Verwandter", "havana", "Verwandtschaft"],
-	mg	: ["omaly", "anio", "rahampitso", "maraina", "afak'omaly", "anaty", "ambony", "ambany", "aloha", "aoriana", "amin'"]
+	de	: ["Papa", "Mama", "Bruder (als Mann)", "Bruder (als Frau)", "Schwester (als Mann)", "Schwester (als Frau)", "Sohn", "Tochter", "Oma", "Opa", "verheiratet", "Verwandter", "Verwandtschaft"],
+	mg	: ["dada", "neny", "rahalahy", "anadahy", "anabavy", "rahavavy", "zanaka lahy", "zanaka vavy", "bebe", "dadabe", "manambady", "havana", "fihavanana"]
 },
 {
 	type	: "listen",
@@ -86,3 +86,26 @@ var data =
 	mg : ["mena", "maintso"]
 }
 ];
+var validateData = function() {
+	for (var i = 0; i < data.length; i++) {
+		var d = data[i];
+		if (d.mg) {
+			if (d.fr) {
+				if (d.fr.length != d.mg.length) {
+					console.log(d.name.fr +": d.fr.length("+d.fr.length+") != de.mg.length("+d.mg.length+")");
+				}
+			}
+			if (d.de) {
+				if (d.de.length != d.mg.length) {
+					console.log(d.name.de +": d.de.length("+d.de.length+") != de.mg.length("+d.mg.length+")");
+				}
+			}
+			if (d.en) {
+				if (d.en.length != d.mg.length) {
+					console.log(d.name.en +": d.en.length("+d.en.length+") != de.mg.length("+d.mg.length+")");
+				}
+			}
+		}
+	}
+};
+validateData();
