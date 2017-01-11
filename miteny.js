@@ -184,7 +184,7 @@ var Game = function() {
 		return this.total;
 	};
 	this.getDone = function() {
-		return this.getTotal() - this.words[l2()].length;
+		return this.total - this.words[l2()].length;
 	};
 	this.getQuestion = function() {
 		return this.words[l1()][this.index];
@@ -222,24 +222,32 @@ var Game = function() {
 	};
 	
 	this.checkAnswer = function(controller) {
-
-		if (this.answer.toUpperCase() === this.getCorrectAnswer().toUpperCase()) {
-			this.correctGuess(controller);
-		} else {
-			this.wrongGuess(controller);
+		var correctAnswer = this.getCorrectAnswer();
+		var possibleAnswers = correctAnswer.split("/");
+		for (var i = 0; i < possibleAnswers.length; i++) {
+			var possibleAnswer = possibleAnswers[i].trim();
+			var startOfComment = possibleAnswer.indexOf("(");
+			if (startOfComment > -1) {
+				possibleAnswer = possibleAnswer.slice(0, startOfComment).trim(); 
+			}
+			if (this.answer.toUpperCase() === possibleAnswer.toUpperCase()) {
+				this.correctGuess(controller, possibleAnswer);
+				return;
+			}
 		}
+		this.wrongGuess(controller);
 	};
 
 	this.getCorrectAnswer = function() {
 		return this.words[l2()][this.index];
 	};
 
-	this.correctGuess = function(controller) {
-		this.playAfterCorrectGuess();
+	this.correctGuess = function(controller, word) {
+		this.playAfterCorrectGuess(word);
 		this.next(true, controller);
 	};
-	this.playAfterCorrectGuess = function() {
-		audio.play(this.getCorrectAnswer());
+	this.playAfterCorrectGuess = function(word) {
+		audio.play(word);
 	};
 	this.wrongGuess = function(controller) {
 		window.alert( text("wrong") + " " + this.getQuestion() +" ==> "+ this.getCorrectAnswer());
@@ -290,11 +298,15 @@ var MultipleChoiceGame = function() {
 	};
 	this.selectAnswer = function(choice, controller) {
 		var idx = this.possibleAnswers[choice];
+		var word = this.words[l2()][this.index];
 		if (idx === this.index) {
-			this.correctGuess(controller);
+			this.correctGuess(controller, word);
 		} else {
 			this.wrongGuess(controller);
 		}
+	};
+	this.getTotal = function() {
+		return this.total - 3;
 	};
 
 };

@@ -113,6 +113,12 @@ var data =
 	mg:[ "tarehy", "orona", "vava", "sofiny", "maso", "molotra", "handriny", "fify", "nify", "soaka"]
 },
 {
+	type	: "normal",
+	name	: {de:"Personalpronomen", en: "Personal pronoun", fr: "pronom personnel", mg: "mpisolo manokana???"},
+	de	: ["ich", "du", "er/sie/es/sie", "wir (inklusiv)", "wir (exklusiv)", "ihr", "mir/mich", "dir/dich", "sich", "uns (inklusiv)", "uns (exklusiv)", "euch"],
+	mg:[ "aho/izaho", "ianao", "izy", "isika", "izahay", "ianareo", "ahy", "anao", "azy", "antsika", "anay", "anareo"]
+},
+{
 	type	: "listen",
 	name	: {de:"Einige Worte", en:"Some Words", fr:"Quelque mots", mg:"Sasany Teny"},
 	mg : ["mena", "maintso"]
