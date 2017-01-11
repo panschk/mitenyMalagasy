@@ -89,6 +89,30 @@ var data =
 	mg: [ "kisoa", "saka", "alika", "ganagana", "vorona", "kankana", "soavaly", "omby", "akoho", "totozy", "bitro"]
 },
 {
+	type	: "normal",
+	name	: {de:"Getränke", en: "drinks", fr: "boissons", mg: "zava-pisotro"},
+	de	: ["Getränke", "Wasser", "Milch", "Saft", "Orangensaft", "Bier", "Wein", "Kaffee", "Tee", "Limonade"],
+	en	: ["drinks", "water", "milk", "juice", "orange juice", "beer", "wine", "coffee", "tea", "lemonade"],
+	fr	: ["boissons", "eau", "lait", "jus", "orange", "bière", "vin", "café", "thé", "soda"],
+	mg: [ "zava-pisotro", "rano", "ronono", "ranom-boankazo", "ranom-boasary", "labiera", "divay", "kafe", "dite", "soda"]
+},
+{
+	type	: "normal",
+	name	: {de:"Obst", en: "fruit", fr: "fruit", mg: "voankazo"},
+	de	: ["Obst", "Banane", "Apfel", "Orange", "Mango", "Litschi", "Erdbeere", "Pfirsich", "Melone", "Ananas"],
+	en	: ["fruit", "banana", "apple", "orange", "mango", "lychee", "strawberry", "peach", "melon", "pineapple"],
+	fr	:[ "fruit", "banane", "pomme", "orange", "mangue", "litchi", "fraise", "pêche", "melon", "ananas"]
+	mg:[ "voankazo", "akondro", "paoma", "voasary", "manga", "lychee", "frezy", "paiso", "voatavo", "mananasy"]
+},
+{
+	type	: "normal",
+	name	: {de:"Gesicht", en: "face", fr: "visage", mg: "tarehy"},
+	de	: ["Gesicht", "Nase", "Mund", "Ohren", "Augen", "Lippen", "Stirn", "Wange", "Zähne", "Kinn"],
+	en	: ["face", "nose", "mouth", "ears", "eyes", "lips", "forehead", "cheek", "teeth", "chin"],
+	fr	:[ "visage", "nez", "bouche", "oreilles", "yeux", "lèvres", "front", "joue", "dents", "menton"],
+	mg:[ "tarehy", "orona", "vava", "sofiny", "maso", "molotra", "handriny", "fify", "nify", "soaka"]
+}
+{
 	type	: "listen",
 	name	: {de:"Einige Worte", en:"Some Words", fr:"Quelque mots", mg:"Sasany Teny"},
 	mg : ["mena", "maintso"]
