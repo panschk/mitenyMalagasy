@@ -107,16 +107,28 @@ var data =
 {
 	type	: "normal",
 	name	: {de:"Gesicht", en: "face", fr: "visage", mg: "tarehy"},
-	de	: ["Gesicht", "Nase", "Mund", "Ohren", "Augen", "Lippen", "Stirn", "Wange", "Zähne", "Kinn"],
-	en	: ["face", "nose", "mouth", "ears", "eyes", "lips", "forehead", "cheek", "teeth", "chin"],
-	fr	:[ "visage", "nez", "bouche", "oreilles", "yeux", "lèvres", "front", "joue", "dents", "menton"],
-	mg:[ "tarehy", "orona", "vava", "sofiny", "maso", "molotra", "handriny", "fify", "nify", "soaka"]
+	de	: ["Gesicht", "Nase", "Mund", "Ohren", "Augen", "Lippen", "Stirn", "Wange", "Zähne", "Kinn", "Haare"],
+	en	: ["face", "nose", "mouth", "ears", "eyes", "lips", "forehead", "cheek", "teeth", "chin", "hair"],
+	fr	:[ "visage", "nez", "bouche", "oreilles", "yeux", "lèvres", "front", "joue", "dents", "menton", "cheveux"],
+	mg:[ "tarehy", "orona", "vava", "sofiny", "maso", "molotra", "handriny", "fify", "nify", "soaka", "volo"]
 },
 {
 	type	: "normal",
-	name	: {de:"Personalpronomen", en: "Personal pronoun", fr: "pronom personnel", mg: "mpisolo manokana???"},
+	name	: {de:"Personalpronomen", en: "Personal pronouns", fr: "pronoms personnel", mg: "mpisolo manokana???"},
 	de	: ["ich", "du", "er/sie/es/sie", "wir (inklusiv)", "wir (exklusiv)", "ihr", "mir/mich", "dir/dich", "sich", "uns (inklusiv)", "uns (exklusiv)", "euch"],
 	mg:[ "aho/izaho", "ianao", "izy", "isika", "izahay", "ianareo", "ahy", "anao", "azy", "antsika", "anay", "anareo"]
+},
+{
+	type	: "normal",
+	name	: {de:"Körper", en: "body", fr: "corps", mg: "vatana"},
+	de	: ["Körper", "Kopf", "Hand", "Fuß/Bein", "Arm", "Brust", "Bauch", "Rücken", "Po"],
+	mg	:["vatana", "loha", "tanana", "tongotra", "sandry", "tratra", "kibo", "indray", "vody"]
+},
+{
+	type	: "normal",
+	name	: {de:"Kleidung", en: "clothes", fr: "vêtements", mg: "fitafiana"},
+	de	: ["Hose", "Hemd", "Hut", "Brille", "Tuch", "Schuhe", "Socken", "Flip Flops", "Gürtel"],
+	mg	: ["pataloha", "lobaka", "satroka", "solomaso", "lamba", "kiraro", "ba kiraro", "scoubidous", "fehikibo"]
 },
 {
 	type	: "listen",
