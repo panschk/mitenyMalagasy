@@ -25,8 +25,10 @@ var audio = {
 		}
 	},
 	play : function(word) {
-		var audioObj = new Audio(audio.path(word));
-		audioObj.play();
+		if (audio.path(word)) {
+			var audioObj = new Audio(audio.path(word));
+			audioObj.play();
+		}
 	}
 };
 

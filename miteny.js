@@ -67,14 +67,6 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 	};
 	this.levels = function() {
 		return data;
-		/*var levelList = [];
-		data.forEach(function(entry) {
-			if (entry[l1()] && entry[l2()]) {
-				levelList.push(entry);
-			}
-		});
-		return levelList;
-		*/
 	};
 	this.doShow = function(levelId, levelType) {
 		// list is active for all types
@@ -243,7 +235,11 @@ var Game = function() {
 	};
 
 	this.correctGuess = function(controller) {
+		this.playAfterCorrectGuess();
 		this.next(true, controller);
+	};
+	this.playAfterCorrectGuess = function() {
+		audio.play(this.getCorrectAnswer());
 	};
 	this.wrongGuess = function(controller) {
 		window.alert( text("wrong") + " " + this.getQuestion() +" ==> "+ this.getCorrectAnswer());
@@ -416,6 +412,10 @@ var ListenGame = function() {
 	this.customNext = function (wasCorrect) {
 		this.buttonModel = this.generateButtons();
 		this.playSpeech();
+	};
+	// we already play the next word, so don't play the previous one
+	this.playAfterCorrectGuess = function() {
+		// do nothing
 	};
 
 };

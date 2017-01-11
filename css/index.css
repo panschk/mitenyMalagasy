@@ -21,6 +21,9 @@ div, input, button, select{
 	font-size: 3vw;
 	color: #2D3142;
 }
+div:disabled, input:disabled, button:disabled, select:disabled{
+	color: #aaaaaa;
+}
 input, button {
 	border-radius:45px;
 	border:1px solid #AAAAAA;

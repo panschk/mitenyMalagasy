@@ -101,7 +101,7 @@ var data =
 	name	: {de:"Obst", en: "fruit", fr: "fruit", mg: "voankazo"},
 	de	: ["Obst", "Banane", "Apfel", "Orange", "Mango", "Litschi", "Erdbeere", "Pfirsich", "Melone", "Ananas"],
 	en	: ["fruit", "banana", "apple", "orange", "mango", "lychee", "strawberry", "peach", "melon", "pineapple"],
-	fr	:[ "fruit", "banane", "pomme", "orange", "mangue", "litchi", "fraise", "pêche", "melon", "ananas"]
+	fr	:[ "fruit", "banane", "pomme", "orange", "mangue", "litchi", "fraise", "pêche", "melon", "ananas"],
 	mg:[ "voankazo", "akondro", "paoma", "voasary", "manga", "lychee", "frezy", "paiso", "voatavo", "mananasy"]
 },
 {
@@ -111,7 +111,7 @@ var data =
 	en	: ["face", "nose", "mouth", "ears", "eyes", "lips", "forehead", "cheek", "teeth", "chin"],
 	fr	:[ "visage", "nez", "bouche", "oreilles", "yeux", "lèvres", "front", "joue", "dents", "menton"],
 	mg:[ "tarehy", "orona", "vava", "sofiny", "maso", "molotra", "handriny", "fify", "nify", "soaka"]
-}
+},
 {
 	type	: "listen",
 	name	: {de:"Einige Worte", en:"Some Words", fr:"Quelque mots", mg:"Sasany Teny"},
