@@ -171,6 +171,7 @@ var Game = function() {
 	this.words		= {};
 	this.errors		= 0;
 	this.buttonModel = {};
+	this.prevIndex = 0;
 	this.cssClass = "gameClass0";
 	this.init = function(lvlId) {
 		this.levelId = lvlId;
@@ -210,6 +211,7 @@ var Game = function() {
 			}
 		}
 		var lengthArray = this.words[l2()].length;
+		this.prevIndex = this.index;
 		this.index = parseInt(Math.random()*lengthArray, 10);
 		this.answer = "";
 		this.generatePossibleAnswers();
@@ -380,11 +382,15 @@ var PictureGame = function() {
 	this.type = "picture";
 	this.answer		= "";
 	this.words		= {};
+	this.superInit = this.init;
 	this.init = function(lvlId) {
-		this.levelId = lvlId;
+		this.superInit(lvlId);
+		/*this.levelId = lvlId;
 		// copy is a deep clone, see util.js
 		this.words = util.copy(data[lvlId]);
 		this.next(false);
+		this.errors = 0;
+		this.total = this.words[l2()].length;*/
 	};
 	
 	this.getQuestion = function() {
@@ -402,7 +408,7 @@ var PictureGame = function() {
 	};
 	this.customNext = function (wasCorrect) {
 		if (wasCorrect) {
-			this.words.coordinates.splice(this.index, 1);
+			this.words.coordinates.splice(this.prevIndex, 1);
 		}
 	};
 	

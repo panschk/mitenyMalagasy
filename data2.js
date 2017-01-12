@@ -534,4 +534,5 @@ var data2 = [
 	fr:["mal","gris","répétition","exiger","large","préparer","sel","nez","pluriel","colère","revendication","continent"],
 	mg:["diso","volondavenona","Avereno","mitaky","malalaka","hiomana","sira","orona","teny","fahatezerana","fitarainana","kaontinanta"]
 }];
-data.push.apply(data, data2);
+// quality is so low, I rather aggregate the lists myself
+//data.push.apply(data, data2);

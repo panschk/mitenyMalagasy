@@ -2,10 +2,10 @@ var data =
 [ {
 	type	: "normal",
 	name	: {de:"Zahlen 1-10", en : "Numbers 1-10", fr: "nombres 1-10", mg : "Isa 1-10"},
-	de 	: ["eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn"],
-	en 	: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
-	fr 	: ["un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix"],
-	mg 	: ["iray", "roa", "telo", "efatra", "dimy", "enina", "fito", "valo", "sivy", "folo"],
+	de 	: ["null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn"],
+	en 	: ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
+	fr 	: ["zero", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix"],
+	mg 	: ["aotra", "iray", "roa", "telo", "efatra", "dimy", "enina", "fito", "valo", "sivy", "folo"],
 	speech : ['mg']
 },
  {
@@ -130,6 +130,19 @@ var data =
 	de	: ["Hose", "Hemd", "Hut", "Brille", "Tuch", "Schuhe", "Socken", "Flip Flops", "Gürtel"],
 	mg	: ["pataloha", "lobaka", "satroka", "solomaso", "lamba", "kiraro", "ba kiraro", "scoubidous", "fehikibo"]
 },
+{
+	type	: "normal",
+	name	: {de:"Küche", en: "kitchen", fr: "cuisine", mg: "lakozia"},
+	de	: ["Küche", "Löffel", "Messer", "Gabel", "Glas", "Becher", "Teller", "Topf", "Feuer"],
+	mg	: ["lakozia", "sotro", "antsy", "sotrorovitra", "vera", "kaopy", "lovia", "vilany", "afo"]
+},
+{
+	type	: "normal",
+	name	: {de:"Adjektive", en: "Adjectives", fr: "adjectifs", mg: "??"},
+	de	: ["nah", "genug", "alt", "hoch", "viel/mehrere", "falsch", "richtig", "lange", "kurz", "faul", "klein"],
+	mg	: ["akaiky", "ampy", "antitra", "avo", "betsaka", "diso", "marina", "ela", "fohy", "kamo", "kely"]
+},
+
 {
 	type	: "listen",
 	name	: {de:"Einige Worte", en:"Some Words", fr:"Quelque mots", mg:"Sasany Teny"},
