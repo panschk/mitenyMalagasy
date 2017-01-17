@@ -110,7 +110,7 @@ var data =
 	de	: ["Gesicht", "Nase", "Mund", "Ohren", "Augen", "Lippen", "Stirn", "Wange", "Zähne", "Kinn", "Haare"],
 	en	: ["face", "nose", "mouth", "ears", "eyes", "lips", "forehead", "cheek", "teeth", "chin", "hair"],
 	fr	:[ "visage", "nez", "bouche", "oreilles", "yeux", "lèvres", "front", "joue", "dents", "menton", "cheveux"],
-	mg:[ "tarehy", "orona", "vava", "sofiny", "maso", "molotra", "handriny", "fify", "nify", "soaka", "volo"]
+	mg:[ "tarehy", "orona", "vava", "sofina", "maso", "molotra", "handriny", "fify", "nify", "soaka", "volo"]
 },
 {
 	type	: "normal",
@@ -141,6 +141,18 @@ var data =
 	name	: {de:"Adjektive", en: "Adjectives", fr: "adjectifs", mg: "??"},
 	de	: ["nah", "genug", "alt", "hoch", "viel/mehrere", "falsch", "richtig", "lange", "kurz", "faul", "klein"],
 	mg	: ["akaiky", "ampy", "antitra", "avo", "betsaka", "diso", "marina", "ela", "fohy", "kamo", "kely"]
+},
+{
+	type	: "normal",
+	name	: {de:"Mehr Zahlen", en: "More numbers", fr: "plus de nombres", mg: "??"},
+	de	: ["hundert", "zweihundert", "dreihundert", "vierhundert", "fünfhundert", "sechshundert", "siebenhundert", "tausend", "zehntausend", "hunderttausend", "1 Million", "1 Milliarde"],
+	mg	: ["zato", "roan-jato", "telon-jato", "efa-jato", "diman-jato", "enin-jato", "fiton-jato", "arivo", "iray alina", "iray hetsy", "iray tapitrisa", "arivo tapitrisa"]
+},
+{
+	type	: "normal",
+	name	: {de:"Noch mehr Zahlen", en: "Even more numbers", fr: "encore plus de nombres", mg: "??"},
+	de	: ["das erste", "das zweite", "einhalb", "ein Drittel", "zwei Drittel", "einmal", "zweimal", "dreimal", "zum ersten Mal", "zu zweit", "zu dritt"],
+	mg	: ["ny voalohany", "ny faharoa", "antsasany", "ampahatelony", "roa ampahatelony", "indray", "indroa", "intelo", "voalohany", "tsiroaroa", "tsitelotelo"]
 },
 
 {
