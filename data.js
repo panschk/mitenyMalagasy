@@ -139,8 +139,26 @@ var data =
 {
 	type	: "normal",
 	name	: {de:"Adjektive", en: "Adjectives", fr: "adjectifs", mg: "??"},
-	de	: ["nah", "genug", "alt", "hoch", "viel/mehrere", "falsch", "richtig", "lange", "kurz", "faul", "klein"],
-	mg	: ["akaiky", "ampy", "antitra", "avo", "betsaka", "diso", "marina", "ela", "fohy", "kamo", "kely"]
+	de	: ["nah", "genug", "alt", "jung", "hoch", "viel/mehrere", "falsch", "richtig", "lange", "kurz", "faul", "fleißig", "klein", "kaputt"],
+	mg	: ["akaiky", "ampy", "antitra", "tanora", "avo", "betsaka", "diso", "marina", "ela", "fohy", "kamo", "mazoto", "kely", "simba"]
+},
+{
+	type	: "normal",
+	name	: {de:"Adjektive 2", en: "Adjectives 2", fr: "adjectifs 2", mg: "??"},
+	de	: ["teuer", "billig", "weit", "tief", "lang", "groß", "warm", "kalt", "stark", "dunkel", "hell", "schwach", "wenig"],
+	mg	: ["lafo", "mora", "lavitra", "lalina", "lava", "lehibe/ngeza", "mafana", "mangatsiaka", "mafy", "maizina", "mazava", "malemy", "vitsy"]
+},
+{
+	type	: "normal",
+	name	: {de:"Adjektive 3", en: "Adjectives 3", fr: "adjectifs 3", mg: "??"},
+	de	: ["sanft", "süß", "bitter", "sauer", "krank", "ähnlich", "schwer", "behutsam", "schlecht", "schwierig", "neu"],
+	mg	: ["sanft", "mamy", "mangidy", "marikivy", "marary", "mitovy", "mavesatra", "moramora", "ratsy", "sarotra", "vaovao"]
+},
+{
+	type	: "normal",
+	name	: {de:"Verben", en: "verbs", fr: "verbes", mg: "??"},
+	de	: ["besitzen", "sprechen", "schlafen", "kaufen", "essen", "gegessen werden", "ankommen", "lernen"],
+	mg	: ["manana", "miteny/miresaka", "matory", "mividy", "mihinana", "hanina", "tonga", "mianatra"]
 },
 {
 	type	: "normal",
@@ -154,7 +172,19 @@ var data =
 	de	: ["das erste", "das zweite", "einhalb", "ein Drittel", "zwei Drittel", "einmal", "zweimal", "dreimal", "zum ersten Mal", "zu zweit", "zu dritt"],
 	mg	: ["ny voalohany", "ny faharoa", "antsasany", "ampahatelony", "roa ampahatelony", "indray", "indroa", "intelo", "voalohany", "tsiroaroa", "tsitelotelo"]
 },
+{
+	type	: "normal",
+	name	: {de:"Wetter", en: "weather", fr: "temps", mg: "toetrandro"},
+	de	: ["Wetter", "Sonne", "Mond", "Stern", "Regen", "Wolken", "Nebel", "Wind", "Himmel"],
+	mg	: ["toetrandro", "masoandro", "volana", "kintana", "orana", "rahona", "zavona", "rivotra", "lanitra"]
+},
 
+{
+	type	: "sentence",
+	name	: {de: "Sätze", en : "sentences", fr: "phrases", mg : "??"},
+	de	: ["ich kaufe auf dem Markt ein", "ich werde ein kleines Haus haben"],
+	mg	: ["miantsena any antsena aho", "hanana trano kely aho"]
+},
 {
 	type	: "listen",
 	name	: {de:"Einige Worte", en:"Some Words", fr:"Quelque mots", mg:"Sasany Teny"},

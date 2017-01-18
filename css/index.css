@@ -18,7 +18,7 @@ html, body {
 	margin: 1vw;
 }
 div, input, button, select{
-	font-size: 3vw;
+	font-size: 5vw;
 	color: #2D3142;
 }
 div:disabled, input:disabled, button:disabled, select:disabled{

@@ -39,9 +39,8 @@
 		<button ng-click="m.startMemory($index)" ng-class="m.getButtonStyle($index, 'memory')" ng-show="m.doShow($index, 'normal')" ng-disabled="m.isDisabled($index)">&#xe322;</button>
 		<button ng-click="m.startPicture($index)" ng-class="m.getButtonStyle($index, 'picture')" ng-show="m.doShow($index, 'picture')" ng-disabled="m.isDisabled($index)">&#xe322;</button>
 		<button ng-click="m.startListenGame($index)" ng-class="m.getButtonStyle($index, 'listen')" ng-show="m.doShowListenGame($index)" ng-disabled="m.isDisabled($index)">&#x1f50a;</button>
-		
+		<button ng-click="m.startSentenceGame($index)" ng-class="m.getButtonStyle($index, 'sentence')" ng-show="m.doShow($index, 'sentence')" ng-disabled="m.isDisabled($index)">&#x270d;</button>
 	</div>
-		<button ng-click="m.startShowMarks()">*</button>
 <div id="footer">
 Logo und Icons based on <a href="http://www.flaticon.com/authors/freepik" target="_blank">Freepik from Flaticon</a>
 &nbsp;&nbsp;&nbsp;<a href="credits.html">Credits</a>
@@ -63,7 +62,7 @@ Logo und Icons based on <a href="http://www.flaticon.com/authors/freepik" target
 	   <button ng-click="m.send(game)">send feedback to server</button>
     </div>
    <div ng-show="m.isactive=='game'" id="game" ng-cloak ng-class="game.cssClass">
-	  <button ng-click="m.mainMenu()">{{text("back")}}</button> <button ng-click="m.mark()">*</button>
+	  <button ng-click="m.mainMenu()">{{text("back")}}</button>
 	  <div id = "progress" style="width:{{game.getDone()/game.getTotal()*100}}%"></div>
 	  <form ng-submit="m.check()">
 		  <div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</b></div>
@@ -76,7 +75,7 @@ Logo und Icons based on <a href="http://www.flaticon.com/authors/freepik" target
     </div>
 	
 	<div ng-show="m.isactive=='1of4'" id="1of4" ng-cloak ng-class="game.cssClass">
-		<button ng-click="m.mainMenu()">{{text("back")}}</button> <button ng-click="m.mark()">*</button>
+		<button ng-click="m.mainMenu()">{{text("back")}}</button>
 		<div id = "progress" style="width:{{game.getDone()/game.getTotal()*100}}%"></div>
 		<div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</div>
 		<button  ng-click="m.selectAnswer(0)">{{ game.getPossibleAnswer(0) }}</button>
@@ -117,10 +116,18 @@ Logo und Icons based on <a href="http://www.flaticon.com/authors/freepik" target
 			<button type ="submit">Ok</button>
 		</form>
 	</div>
-	<div ng-show="m.isactive=='marks'" id="marks" ng-cloak>
-	  	<button ng-click="m.mainMenu()">{{text("back")}}</button>
-		{{m.showMarks()}}
-	</div>
+	<div ng-show="m.isactive=='sentence'" id="sentence" ng-cloak ng-class="game.cssClass">
+	  <button ng-click="m.mainMenu()">{{text("back")}}</button>
+	  <div id = "progress" style="width:{{game.getDone()/game.getTotal()*100}}%"></div>
+	  <form ng-submit="m.check()">
+		  <div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</b></div>
+		  <input type="text" ng-model="game.answer" disabled=true><button type = "button" ng-click="game.deleteLetter()">&#x232B;</button>
+		  <br />
+		  <button type="button" ng-repeat="letter in game.buttonModel" ng-disabled = "!letter.isActive" ng-click = "game.addLetter(letter)">{{letter.text}}</button>
+		  <br />
+		  <button type ="submit" >Ok</button>
+	  </form>
+    </div>
 </div>
 
   </body>

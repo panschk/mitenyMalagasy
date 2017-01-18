@@ -43,7 +43,12 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 		$scope.game = new ListenGame();
 		$scope.game.init(lvl);
 	};
-	
+	this.startSentenceGame = function(lvl) {
+		$scope.p.currentgame = {"levelId" : lvl, "type" : "sentence"};
+		this.isactive = 'sentence';
+		$scope.game = new SentenceGame();
+		$scope.game.init(lvl);
+	};
 	this.isDisabled = function(lvlIndex) {
 		if (ALL_LEVELS){
 			return false;
@@ -90,20 +95,6 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 		}
 		var langOkay = data[levelId][l2()];
 		return typeMatch && langOkay;
-	};
-	this.mark = function() {
-		if (!p.marked) {
-			p.marked = [];
-		}
-		var game = $scope.game;
-		p.marked.push(l1() +"|"+ l2() + "|" + game.levelId + "|" + game.getQuestion() + "|" + game.getCorrectAnswer());
-		save();
-	};
-	this.startShowMarks = function() {
-		this.isactive = 'marks';
-	};
-	this.showMarks = function() {
-		return JSON.stringify(p.marked);
 	};
 	this.send = function(game) {
 		if (window.confirm("Wirklich senden?")) {
@@ -232,7 +223,7 @@ var Game = function() {
 			if (startOfComment > -1) {
 				possibleAnswer = possibleAnswer.slice(0, startOfComment).trim(); 
 			}
-			if (this.answer.toUpperCase() === possibleAnswer.toUpperCase()) {
+			if (this.answer.toUpperCase().trim() === possibleAnswer.toUpperCase()) {
 				this.correctGuess(controller, possibleAnswer);
 				return;
 			}
@@ -438,6 +429,34 @@ var ListenGame = function() {
 
 };
 ListenGame.prototype = new Game();
+
+var SentenceGame = function() {
+	this.type = "sentence";
+	this.generateButtons = function() {
+		var word = this.getCorrectAnswer();
+		var wordArray = word.split(" ");
+		util.shuffle(wordArray);
+		var letters = [];
+		for (var i = 0; i < wordArray.length; i++) {
+			letters.push({text: wordArray[i] + " ", isActive: true});
+		}
+		return letters;
+	};
+	this.deleteLetter = function() {
+		
+		var prevSpace = this.answer.slice(0, -1).lastIndexOf(" ");
+		var deletedWord = this.answer.slice(prevSpace + 1);
+		this.answer = this.answer.slice(0, - deletedWord.length);
+		for (var i = 0; i < this.buttonModel.length; i++) {
+			if (this.buttonModel[i].text === deletedWord && !this.buttonModel[i].isActive) {
+				this.buttonModel[i].isActive = true;
+				break;
+			}
+		}
+	}
+	
+};
+SentenceGame.prototype = new Game();
 
 var load = function() {
 	var gs = Lockr.get("miteny_p");
