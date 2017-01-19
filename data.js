@@ -175,8 +175,20 @@ var data =
 {
 	type	: "normal",
 	name	: {de:"Wetter", en: "weather", fr: "temps", mg: "toetrandro"},
-	de	: ["Wetter", "Sonne", "Mond", "Stern", "Regen", "Wolken", "Nebel", "Wind", "Himmel"],
-	mg	: ["toetrandro", "masoandro", "volana", "kintana", "orana", "rahona", "zavona", "rivotra", "lanitra"]
+	de	: ["Wetter", "Sonne", "Mond", "Stern", "Regen", "Wolken", "Nebel", "Wind", "Himmel", "Blitz", "Donner"],
+	mg	: ["toetrandro", "masoandro", "volana", "kintana", "orana", "rahona", "zavona", "rivotra", "lanitra", "tselatra", "kokotra"]
+},
+{
+	type	: "normal",
+	name	: {de:"Natur", en: "nature", fr: "nature", mg: "zava-manan'aina"},
+	de	: ["Pflanze", "Baum", "Gras", "Pilz", "Blätter", "Blume", "Fluß", "Teich", "Wald", "Wasserfall"],
+	mg	: ["zava-maniry", "hazo", "bozaka", "olatra", "ravina", "voninkazo", "renirano", "rano", "ala", "riana"]
+},
+{
+	type	: "normal",
+	name	: {de:"Essen", en: "food", fr: "nouriture", mg: "sakafo"},
+	de	: ["Essen", "Salz", "Pfeffer", "Brot", "Ei", "Honig", "Zucker", "Fleisch", "Fisch", "Reis", "Nudeln", "Wurst", "Sauce"],
+	mg	: ["sakafo", "sira", "diepoavatra", "mofo", "atody", "tantely", "siramamy", "hena", "trondro", "vary", "paty", "saosisy", "saosy"]
 },
 
 {
