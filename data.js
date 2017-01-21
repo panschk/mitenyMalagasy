@@ -184,18 +184,25 @@ var data =
 	de	: ["Pflanze", "Baum", "Gras", "Pilz", "Blätter", "Blume", "Fluß", "Teich", "Wald", "Wasserfall"],
 	mg	: ["zava-maniry", "hazo", "bozaka", "olatra", "ravina", "voninkazo", "renirano", "rano", "ala", "riana"]
 },
+
 {
 	type	: "normal",
 	name	: {de:"Essen", en: "food", fr: "nouriture", mg: "sakafo"},
 	de	: ["Essen", "Salz", "Pfeffer", "Brot", "Ei", "Honig", "Zucker", "Fleisch", "Fisch", "Reis", "Nudeln", "Wurst", "Sauce"],
 	mg	: ["sakafo", "sira", "diepoavatra", "mofo", "atody", "tantely", "siramamy", "hena", "trondro", "vary", "paty", "saosisy", "saosy"]
 },
+{
+	type	: "normal",
+	name	: {de: "Auf dem Markt", en : "At the market", fr: "Au marché", mg : "Amin'ny tsena??"},
+	de	: ["gehen", "heute", "Markt", "Ich", "wollen", "Gemüse", "Obst", "sehr", "aussehen", "wieviel kosten", "Kilo", "(Hilfswort für Imperativ)", "geben", "noch", "Dinge", "sonst", "Verkäufer", "kaufen", "heimkehren", "nach/zu/in", "Haus", "kochen", "Mittagessen"],
+	mg	: ["mandeha", "androany", "tsena", "izaho", "mila", "legioma", "voankazo", "tena", "endrika", "ohatrinona", "kilao", "mba", "omena", "mbola", "zavatra", "hafa", "mpivarotra", "mividy", "mody", "any", "trano", "mahandro", "sakafo atoandro"]
 
+},
 {
 	type	: "sentence",
-	name	: {de: "Sätze", en : "sentences", fr: "phrases", mg : "??"},
-	de	: ["ich kaufe auf dem Markt ein", "ich werde ein kleines Haus haben"],
-	mg	: ["miantsena any antsena aho", "hanana trano kely aho"]
+	name	: {de: "Auf dem Markt", en : "At the market", fr: "Au marché", mg : "Amin'ny tsena??"},
+	de	: ["Heute gehe ich zum Markt", "Ich brauche Obst und Gemüse.", "Die Tomaten sehen sehr gut aus.", "Wieviel kosten die Tomaten?", "Die Tomaten kosten 3000 Ariary das Kilo", "'Geben Sie mir bitte einen Kilo Tomaten!'", "'Möchten Sie sonst noch etwas?'", "'Ich brauche noch drei Gurken und zwei Kilo Kartoffeln.'", "'9500 Ariary, bitte'", "Beim Obsthändler kaufe ich noch vier Äfpel und fünf Orangen.", "Ab nach Hause. Ich werde das Mittagessen kochen."],
+	mg	: ["Handeha any antsena izaho androany", "Mila voankazo sy legioma aho", "tena tsara endrika ny voatabia", "Ohatrinona ny voatabia?", "Ny voatabia iray kilao dia telo rivo ariary", "Mba Omeo voatabia iray kilao aho!", "Mbola mila zavatra hafa ve ianao?", "Mbola mila konkombra telo sy ovy roa kilao aho", "Sivy arivo sy dimanjato ariary azafady", "Mbola hividy poama efatra sy voasary dimy aho any amin'ny mpivaro-boankazo", "Hody any an-trano aho. Hahandro sakafo atoandro aho"]
 },
 {
 	type	: "listen",

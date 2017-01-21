@@ -453,6 +453,9 @@ var SentenceGame = function() {
 				break;
 			}
 		}
+	};
+	this.cleanText = function(word) {
+		return word.text.toLowerCase().replace(/\?|\.|\,/g, "");
 	}
 	
 };
@@ -527,3 +530,4 @@ var l2 = function() {
 };
 
 var p = load();
+window.onbeforeunload = function() { return true; };

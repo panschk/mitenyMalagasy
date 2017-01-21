@@ -123,7 +123,7 @@ Logo und Icons based on <a href="http://www.flaticon.com/authors/freepik" target
 		  <div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</b></div>
 		  <input type="text" ng-model="game.answer" disabled=true><button type = "button" ng-click="game.deleteLetter()">&#x232B;</button>
 		  <br />
-		  <button type="button" ng-repeat="letter in game.buttonModel" ng-disabled = "!letter.isActive" ng-click = "game.addLetter(letter)">{{letter.text}}</button>
+		  <button type="button" ng-repeat="letter in game.buttonModel" ng-disabled = "!letter.isActive" ng-click = "game.addLetter(letter)">{{game.cleanText(letter)}}</button>
 		  <br />
 		  <button type ="submit" >Ok</button>
 	  </form>
