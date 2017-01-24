@@ -151,8 +151,8 @@ var data =
 {
 	type	: "normal",
 	name	: {de:"Adjektive 3", en: "Adjectives 3", fr: "adjectifs 3", mg: "??"},
-	de	: ["sanft", "süß", "bitter", "sauer", "krank", "ähnlich", "schwer", "behutsam", "schlecht", "schwierig", "neu"],
-	mg	: ["sanft", "mamy", "mangidy", "marikivy", "marary", "mitovy", "mavesatra", "moramora", "ratsy", "sarotra", "vaovao"]
+	de	: ["süß", "bitter", "sauer", "krank", "ähnlich", "schwer", "behutsam", "schlecht", "schwierig", "neu"],
+	mg	: ["mamy", "mangidy", "marikivy", "marary", "mitovy", "mavesatra", "moramora", "ratsy", "sarotra", "vaovao"]
 },
 {
 	type	: "normal",
