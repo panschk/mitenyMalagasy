@@ -1,5 +1,5 @@
 var d = {
-	de:	["Wolke", "Haus", "Berge", "Bäume", "Sportplatz"],
+	de:	["das Haus","der Baum","der Zaun","die Blume","das Tor", "der Vogel", "die Sonne", "die Wolke", "der Weg", "die Wurzel", "die Tür", "das Fenster"],
 	coordinates : []
 }
 var i = 0;

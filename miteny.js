@@ -96,13 +96,13 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 		var langOkay = data[levelId][l2()];
 		return typeMatch && langOkay;
 	};
-	this.send = function(game) {
+	/*this.send = function(game) {
 		if (window.confirm("Wirklich senden?")) {
 			var url = 'http://www.panschk.de/mitenyMalagasy/getFeedback.php?auth=mm&id=';
 			url = url + game.levelId + "&content="+JSON.stringify(game.good);
 			$http.post(url, game);
 		}
-	};
+	};*/
 	this.getButtonStyle = function(levelId, levelType) {
 		if (p.completedLevels && p.completedLevels[l2()] && p.completedLevels[l2()][levelId] && p.completedLevels[l2()][levelId][levelType]) {
 			return p.completedLevels[l2()][levelId][levelType];
@@ -306,13 +306,8 @@ var MultipleChoiceGame = function() {
 MultipleChoiceGame.prototype = new Game();
 
 var ListWords = function() {
-	// temporary to give feedback
-	this.good = [];
 	this.init = function(lvlId) {
 		this.levelId = lvlId;
-		for (var i = 0; i < data[this.levelId][l2()].length; i++) {
-			this.good[i] = false;
-		}
 	};
 	this.show = function() {
 		return data[this.levelId];

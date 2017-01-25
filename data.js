@@ -184,7 +184,17 @@ var data =
 	de	: ["Pflanze", "Baum", "Gras", "Pilz", "Blätter", "Blume", "Fluß", "Teich", "Wald", "Wasserfall"],
 	mg	: ["zava-maniry", "hazo", "bozaka", "olatra", "ravina", "voninkazo", "renirano", "rano", "ala", "riana"]
 },
-
+{
+	type	: "picture",
+	name	: {de: "kleines Haus", en : "little house", fr: "petite maison", mg : "trano kely"},
+	path	: "img/hausbaum.jpg",
+	size	: [560,761],
+	de		: ["das Dach", "das Haus","der Baum","der Zaun","die Blume","das Tor", "der Vogel", "die Sonne", "die Wolke", "der Weg", "die Wurzel", "die Tür", "das Fenster"],
+	en		: ["the roof", "the house", "the tree", "the fence", "the flower", "the gate", "the bird", "the sun", "the cloud", "the path", "the tree root", "the door", "the window"],
+	fr		: ["le toit", "la maison", "l'arbre", "la clôture", "la fleur", "la porte du jardin", "l'oiseau", "le soleil", "le nuage", "le chemin", "la racine", "la porte (de la maison)", "la fenêtre"],
+	mg		: ["ny tafo", "ny trano", "ny hazo", "ny fefy", "ny voninkazo", "ny vavahadin'ny zaridaina", "ny vorona", "ny masoandro", "ny rahona", "ny lalana", "ny faka", "ny vavahadin'ny trano", "ny varavarankely"],
+	coordinates :[[116,257,148,52],[110,325,158,72],[282,103,184,374],[288,631,168,48],[372,517,92,90],[188,629,92,52],[166,23,66,30],[282,5,80,76],[12,57,132,82],[136,415,130,228],[268,449,94,36],[144,351,32,40],[198,339,42,14]]
+},
 {
 	type	: "normal",
 	name	: {de:"Essen", en: "food", fr: "nouriture", mg: "sakafo"},
