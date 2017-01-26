@@ -181,8 +181,8 @@ var data =
 {
 	type	: "normal",
 	name	: {de:"Natur", en: "nature", fr: "nature", mg: "zava-manan'aina"},
-	de	: ["Pflanze", "Baum", "Gras", "Pilz", "Blätter", "Blume", "Fluß", "Teich", "Wald", "Wasserfall"],
-	mg	: ["zava-maniry", "hazo", "bozaka", "olatra", "ravina", "voninkazo", "renirano", "rano", "ala", "riana"]
+	de	: ["Pflanze", "Baum", "Gras", "Pilz", "Blätter", "Blume", "Fluß", "Teich", "Wald", "Wasserfall", "Sand"],
+	mg	: ["zava-maniry", "hazo", "bozaka", "olatra", "ravina", "voninkazo", "renirano", "rano", "ala", "riana", "fasika"]
 },
 {
 	type	: "picture",
@@ -213,6 +213,13 @@ var data =
 	name	: {de: "Auf dem Markt", en : "At the market", fr: "Au marché", mg : "Amin'ny tsena??"},
 	de	: ["Heute gehe ich zum Markt", "Ich brauche Obst und Gemüse.", "Die Tomaten sehen sehr gut aus.", "Wieviel kosten die Tomaten?", "Die Tomaten kosten 3000 Ariary das Kilo", "'Geben Sie mir bitte einen Kilo Tomaten!'", "'Möchten Sie sonst noch etwas?'", "'Ich brauche noch drei Gurken und zwei Kilo Kartoffeln.'", "'9500 Ariary, bitte'", "Beim Obsthändler kaufe ich noch vier Äfpel und fünf Orangen.", "Ab nach Hause. Ich werde das Mittagessen kochen."],
 	mg	: ["Handeha any antsena izaho androany", "Mila voankazo sy legioma aho", "tena tsara endrika ny voatabia", "Ohatrinona ny voatabia?", "Ny voatabia iray kilao dia telo rivo ariary", "Mba Omeo voatabia iray kilao aho!", "Mbola mila zavatra hafa ve ianao?", "Mbola mila konkombra telo sy ovy roa kilao aho", "Sivy arivo sy dimanjato ariary azafady", "Mbola hividy poama efatra sy voasary dimy aho any amin'ny mpivaro-boankazo", "Hody any an-trano aho. Hahandro sakafo atoandro aho"]
+},
+{
+	type	: "normal",
+	name	: {de: "Gegenstände", en : "objects", fr: "objets", mg : "zavatra"},
+	de	: ["Gegenstand", "Briefumschlag", "Brief", "Korb", "Karton", "Dose", "Sack", "Tüte", "Buch", "Zeitung", "Geld", "Nadel",  "Schere"],
+	mg	: ["zavatra", "valopy", "taratsy", "harona", "baoritra", "boaty", "gony", "sase", "boky", "gazety", "vola", "fanjaitra",  "hety"]
+
 },
 {
 	type	: "listen",
