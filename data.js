@@ -199,7 +199,7 @@ var data =
 	type	: "normal",
 	name	: {de:"Essen", en: "food", fr: "nouriture", mg: "sakafo"},
 	de	: ["Essen", "Salz", "Pfeffer", "Brot", "Ei", "Honig", "Zucker", "Fleisch", "Fisch", "Reis", "Nudeln", "Wurst", "Sauce"],
-	mg	: ["sakafo", "sira", "diepoavatra", "mofo", "atody", "tantely", "siramamy", "hena", "trondro", "vary", "paty", "saosisy", "saosy"]
+	mg	: ["sakafo", "sira", "dipoavatra", "mofo", "atody", "tantely", "siramamy", "hena", "trondro", "vary", "paty", "saosisy", "saosy"]
 },
 {
 	type	: "normal",
@@ -219,7 +219,12 @@ var data =
 	name	: {de: "Gegenstände", en : "objects", fr: "objets", mg : "zavatra"},
 	de	: ["Gegenstand", "Briefumschlag", "Brief", "Korb", "Karton", "Dose", "Sack", "Tüte", "Buch", "Zeitung", "Geld", "Nadel",  "Schere"],
 	mg	: ["zavatra", "valopy", "taratsy", "harona", "baoritra", "boaty", "gony", "sase", "boky", "gazety", "vola", "fanjaitra",  "hety"]
-
+},
+{
+	type	: "normal",
+	name	: {de: "Berufe", en : "jobs", fr: "travail", mg : "asa"},
+	de	: ["Beruf", "Arbeiter", "Schüler/Student", "Richter", "Verkäufer", "Kunde", "Schriftsteller", "Bauer", "Fahrer", "Lehrer", "Friseur", "Spieler", "Bettler", "Dieb"],
+	mg	: ["asa", "mpiasa", "mpianatra", "mpitsara", "mpivarotra", "mpividy", "mpanoratra", "mpamboly", "mpamily", "mpampianatra", "mpanety", "mpilalao", "mpangataka", "mpangalatra"]
 },
 {
 	type	: "listen",
