@@ -227,6 +227,12 @@ var data =
 	mg	: ["asa", "mpiasa", "mpianatra", "mpitsara", "mpivarotra", "mpividy", "mpanoratra", "mpamboly", "mpamily", "mpampianatra", "mpanety", "mpilalao", "mpangataka", "mpangalatra"]
 },
 {
+	type	: "normal",
+	name	: {de: "Orte", en : "places", fr: "lieux", mg : "toerana"},
+	de	: ["Ort", "Kirche", "Bahnhof", "Apotheke", "Rathaus", "Post", "Botschaft", "Berg", "Weg", "Straße", "Tankstelle", "Brücke"],
+	mg	: ["toerana", "fiangonana", "gara", "fivarotam-panafody", "firaisana", "paositra", "ambasady", "tendrombohitra", "lalana", "arabe", "fivarotana lasantsy", "tetezana"]
+}
+{
 	type	: "listen",
 	name	: {de:"Einige Worte", en:"Some Words", fr:"Quelque mots", mg:"Sasany Teny"},
 	mg : ["mena", "maintso"]
