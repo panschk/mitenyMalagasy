@@ -240,6 +240,9 @@ var Game = function() {
 		this.next(true, controller);
 	};
 	this.playAfterCorrectGuess = function(word) {
+		if (p && !p.sound) {
+			return;
+		}
 		audio.play(word);
 	};
 	this.wrongGuess = function(controller) {
@@ -415,7 +418,9 @@ var ListenGame = function() {
 	};
 	this.customNext = function (wasCorrect) {
 		this.buttonModel = this.generateButtons();
-		this.playSpeech();
+		if (p.sound) {
+			this.playSpeech();
+		}
 	};
 	// we already play the next word, so don't play the previous one
 	this.playAfterCorrectGuess = function() {
@@ -478,7 +483,8 @@ var initialP = {
 		de : {},
 		fr : {},
 		en : {}
-	}
+	},
+	sound: true
 };
 
 var success = function(game) {

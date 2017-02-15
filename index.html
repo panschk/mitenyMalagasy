@@ -27,6 +27,8 @@
 			<br />
 			{{text("langToLearn")}}&nbsp;&nbsp;<select ng-model="p.languageToLearn" ng-options="l.name for l in languages track by l.code"></select>
 			<br />
+			<input type="checkbox" name="sound" ng-model="p.sound">{{text('sound')}}</input>
+			<br />
 			<button ng-click = "save();toggleModal()">Ok</button>
 		</modal-dialog>
 	</div>
@@ -64,7 +66,7 @@ Logo und Icons based on <a href="http://www.flaticon.com/authors/freepik" target
 	  <div id = "progress" style="width:{{game.getDone()/game.getTotal()*100}}%"></div>
 	  <form ng-submit="m.check()">
 		  <div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</b></div>
-		  <input type="text" ng-model="game.answer"><button type = "button" ng-click="game.deleteLetter()">&#x232B;</button>
+		  <input type="text" ng-model="game.answer"/><button type = "button" ng-click="game.deleteLetter()">&#x232B;</button>
 		  <br />
 		  <button type="button" ng-repeat="letter in game.buttonModel" ng-disabled = "!letter.isActive" ng-click = "game.addLetter(letter)">{{letter.text.toUpperCase().replace(" ", "&nbsp;")}}</button>
 		  <br />
@@ -107,7 +109,7 @@ Logo und Icons based on <a href="http://www.flaticon.com/authors/freepik" target
 
 			<button type = "button" ng-click="game.playSpeech()">&#x1f50a;</button></td>
 			<br />
-			<input type="text" ng-model="game.answer"><button type = "button" ng-click="game.deleteLetter()">&#x232B;</button>
+			<input type="text" ng-model="game.answer" /><button type = "button" ng-click="game.deleteLetter()">&#x232B;</button>
 			<br />
 			<button type="button" ng-repeat="letter in game.buttonModel" ng-disabled = "!letter.isActive" ng-click = "game.addLetter(letter)">{{letter.text.toUpperCase().replace(" ", "&nbsp;")}}</button>
 			<br />
@@ -119,7 +121,7 @@ Logo und Icons based on <a href="http://www.flaticon.com/authors/freepik" target
 	  <div id = "progress" style="width:{{game.getDone()/game.getTotal()*100}}%"></div>
 	  <form ng-submit="m.check()">
 		  <div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</b></div>
-		  <input type="text" ng-model="game.answer" disabled=true><button type = "button" ng-click="game.deleteLetter()">&#x232B;</button>
+		  <textarea type="text" ng-model="game.answer" disabled=true></textarea><button type = "button" ng-click="game.deleteLetter()">&#x232B;</button>
 		  <br />
 		  <button type="button" ng-repeat="letter in game.buttonModel" ng-disabled = "!letter.isActive" ng-click = "game.addLetter(letter)">{{game.cleanText(letter)}}</button>
 		  <br />
