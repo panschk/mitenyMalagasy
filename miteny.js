@@ -484,7 +484,8 @@ var initialP = {
 		fr : {},
 		en : {}
 	},
-	sound: true
+	sound: true,
+	hideMyWords: false
 };
 
 var success = function(game) {
