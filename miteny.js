@@ -49,6 +49,30 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 		$scope.game = new SentenceGame();
 		$scope.game.init(lvl);
 	};
+	this.startListW = function(lvl) {
+		this.isactive = 'list';
+		$scope.game = new ListWords();
+		$scope.game.init(lvl);
+	};
+	this.startGameW = function(listName) {
+		$scope.p.currentgame = {"levelId" : -1, "type" : "game"};
+		this.isactive = 'game';
+		$scope.game = new Game();
+		$scope.game.initW();
+	};
+	this.start1of4W = function(lvl) {
+		$scope.p.currentgame = {"levelId" : lvl, "type" : "1of4"};
+		this.isactive = '1of4';
+		$scope.game = new MultipleChoiceGame();
+		$scope.game.init(lvl);
+	};
+	this.startMemoryW = function(lvl) {
+		$scope.p.currentgame = {"levelId" : lvl, "type" : "memory"};
+		this.isactive = 'memory';
+		$scope.game = new Memory();
+		$scope.game.init(lvl);
+	};
+	
 	this.isDisabled = function(lvlIndex) {
 		if (ALL_LEVELS){
 			return false;
@@ -103,6 +127,33 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 			$http.post(url, game);
 		}
 	};*/
+	this.newList = function(startVal) {
+		var name = window.prompt(text("enter_name_list"), startVal);
+		if (name) {
+			if (p.myWords.keys.includes(name)) {
+				window.alert(text("name_exists"));
+				this.newList(name);
+				return;
+			}
+			p.myWords.keys.push(name);
+			p.myWords.words.push({de:[], en:[], fr:[], mg:[]});
+			this.myWordSelection = name;
+			save();
+		}
+	};
+	this.addToList = function(answer, question, listName) {
+		var index = p.myWords.keys.indexOf(listName);
+		p.myWords.words[index][l1()].push(question);
+		p.myWords.words[index][l2()].push(answer);
+		save();
+	};
+	this.getWordSize = function(listName) {
+		var words = p.myWords.getWords(listName);
+		if (words) {
+			return words.length;
+		}
+		return -1;
+	}
 	this.getButtonStyle = function(levelId, levelType) {
 		if (p.completedLevels && p.completedLevels[l2()] && p.completedLevels[l2()][levelId] && p.completedLevels[l2()][levelId][levelType]) {
 			return p.completedLevels[l2()][levelId][levelType];
@@ -168,6 +219,13 @@ var Game = function() {
 		this.levelId = lvlId;
 		// copy is a deep clone, see util.js
 		this.words = util.copy(data[lvlId]);
+		this.startup();
+	};
+	this.initW = function(listName) {
+		this.words = util.copy(p.myWords.getWords(listName));
+		this.startup();
+	};
+	this.startup = function() {
 		this.next(false);
 		this.errors = 0;
 		this.total = this.words[l2()].length;
@@ -466,6 +524,14 @@ var load = function() {
 	if (!gs) {
 		gs = initialP;
 	}
+	//if (!gs.myWords) {
+		gs.myWords = {keys : [], words : []};
+	//}
+	gs.myWords.getWords = function(word) {
+		var index = gs.myWords.keys.indexOf(word);
+		return gs.myWords.words[index];
+	};
+	
 	return gs;
 };
 var save = function() {

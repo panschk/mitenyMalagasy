@@ -203,5 +203,15 @@ textarea {
 #progress {
 	height:10px;
 	background: linear-gradient(to right, yellow, green);
-
+}
+#levelWordListWrapper {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	font-size: 50%;
+}
+#levelWordListWrapper * {
+	font-size: 50%;
+	min-height:3vh;
+	min-width:3vw;
 }

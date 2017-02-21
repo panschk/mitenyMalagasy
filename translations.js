@@ -17,7 +17,11 @@ var translate = function(code, lang) {
 		wrong		: {de: "Falsch!", en: "That's wrong", fr: "Faux!", mg: "Diso!"},
 		where_is	: {de: "Wo ist", en: "Where is", fr: "Où est", mg: "Aiza"},
 		listen		: {de: "Hör zu", en: "Listen!", fr:"Ecoute", mg:"Mihaino"},
-		sound		: {de: "Sound", en : "sound", fr : "son", mg: "??" }
+		sound		: {de: "Sound", en : "sound", fr : "son", mg: "??" },
+		new_list	: {de: "neue Liste", en: "new list", fr: "nouvelle liste", mg : "??"},
+		add			: {de: "hinzufügen", en: "add", fr:"ajouter", mg:"??"},
+		enter_name_list: {de: "Name der Liste:", en : "name of list:", fr: "nom de la liste", mg:"??" },
+		name_exists : {de: "Name existiert bereits", en : "name already exists", fr: "nom existe déjà", mg: "??"}
 	}
 	if (lang && lang.code) { 
 		var valForLang = texts[code][lang.code];
