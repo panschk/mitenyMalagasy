@@ -37,7 +37,6 @@
 		<button ng-click="m.startListW($index)" ng-disabled="!(m.getWordSize(m.myWordSelection) >= 1)">&#x1f4f0;</button>
 		<button ng-click="m.start1of4W($index)"  ng-disabled="!(m.getWordSize(m.myWordSelection) >= 4)">&#x2611;</button>
 		<button ng-click="m.startGameW($index)"  ng-disabled="!(m.getWordSize(m.myWordSelection) >= 1)">&#x270d;</button>
-		<button ng-click="m.startMemoryW($index)" ng-disabled="!(m.getWordSize(m.myWordSelection) >=8)">&#xe322;</button>
 	</div>
 
 	<div ng-repeat="level in m.levels() track by $index">
@@ -57,6 +56,10 @@ Logo und Icons based on <a href="http://www.flaticon.com/authors/freepik" target
   </div>
      <div ng-show="m.isactive=='list'" id="list" ng-cloak>
 	  <button ng-click="m.mainMenu()">{{text("back")}}</button> 
+		<div id = "levelWordListWrapper">
+			<select ng-model="m.myWordSelection" ng-options="w for w in p.myWords.keys" class="levelWordList"></select>
+			<button ng-click="m.newList()">{{text("new_list")}}</button>
+		</div>
 	   <h1>{{ game.show().name[l1()]}}</h1>
 	   <h2>{{ game.show().name[l2()] }}</h2>
 	   <table>
@@ -64,6 +67,9 @@ Logo und Icons based on <a href="http://www.flaticon.com/authors/freepik" target
 	   <tr ng-repeat="n in game.show()[l2()] track by $index">
 		<td>{{game.show()[l1()][$index]}}</td><td>{{game.show()[l2()][$index]}}
 			<button ng-show="audio.exists(game.show()[l2()][$index])" ng-click="audio.play(game.show()[l2()][$index])">&#x1f50a;</button>
+			<button ng-show="game.levelId != -1" ng-click="m.addToList(game.show()[l2()][$index], game.show()[l1()][$index], m.myWordSelection)">{{text("add")}}</button>
+			<button ng-show="game.listName" ng-click="m.removeFromList(game.show()[l1()][$index], game.show()[l2()][$index], m.myWordSelection, game)">{{text("remove")}}</button>
+
 		</td>
 	   </tr>
 	   </table>
@@ -88,6 +94,11 @@ Logo und Icons based on <a href="http://www.flaticon.com/authors/freepik" target
 	
 	<div ng-show="m.isactive=='1of4'" id="1of4" ng-cloak ng-class="game.cssClass">
 		<button ng-click="m.mainMenu()">{{text("back")}}</button>
+		 <div id = "levelWordListWrapper">
+			<select ng-model="m.myWordSelection" ng-options="w for w in p.myWords.keys" class="levelWordList"></select>
+			<button ng-click="m.addToList(game.getCorrectAnswer(), game.getQuestion(), m.myWordSelection)">{{text("add")}}</button>
+			<button ng-click="m.newList()">{{text("new_list")}}</button>
+		</div>
 		<div id = "progress" style="width:{{game.getDone()/game.getTotal()*100}}%"></div>
 		<div id = "question">{{text("translate_imperativ")}} <b>{{ game.getQuestion() }}</div>
 		<button  ng-click="m.selectAnswer(0)">{{ game.getPossibleAnswer(0) }}</button>

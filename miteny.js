@@ -52,25 +52,19 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 	this.startListW = function(lvl) {
 		this.isactive = 'list';
 		$scope.game = new ListWords();
-		$scope.game.init(lvl);
+		$scope.game.initW(this.myWordSelection);
 	};
 	this.startGameW = function(listName) {
 		$scope.p.currentgame = {"levelId" : -1, "type" : "game"};
 		this.isactive = 'game';
 		$scope.game = new Game();
-		$scope.game.initW();
+		$scope.game.initW(this.myWordSelection);
 	};
 	this.start1of4W = function(lvl) {
-		$scope.p.currentgame = {"levelId" : lvl, "type" : "1of4"};
+		$scope.p.currentgame = {"levelId" : -1, "type" : "1of4"};
 		this.isactive = '1of4';
 		$scope.game = new MultipleChoiceGame();
-		$scope.game.init(lvl);
-	};
-	this.startMemoryW = function(lvl) {
-		$scope.p.currentgame = {"levelId" : lvl, "type" : "memory"};
-		this.isactive = 'memory';
-		$scope.game = new Memory();
-		$scope.game.init(lvl);
+		$scope.game.initW(this.myWordSelection);
 	};
 	
 	this.isDisabled = function(lvlIndex) {
@@ -136,6 +130,8 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 				return;
 			}
 			p.myWords.keys.push(name);
+			p.myWords.l1.push(l1());
+			p.myWords.l2.push(l2());
 			p.myWords.words.push({de:[], en:[], fr:[], mg:[]});
 			this.myWordSelection = name;
 			save();
@@ -147,13 +143,24 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 		p.myWords.words[index][l2()].push(answer);
 		save();
 	};
+	this.removeFromList = function(w1, w2, listName, game) {
+		var words = p.myWords.getWords(listName);
+		var l1pos = words[l1()].indexOf(w1);
+		var l2pos = words[l2()].indexOf(w2);
+		if (l1pos > -1 && l1pos === l2pos) {
+			words[l1()].splice(l1pos, 1);
+			words[l2()].splice(l2pos, 1);
+		}
+		save();
+		game.initW(listName);
+	};
 	this.getWordSize = function(listName) {
 		var words = p.myWords.getWords(listName);
 		if (words) {
-			return words.length;
+			return words[l1()].length;
 		}
 		return -1;
-	}
+	};
 	this.getButtonStyle = function(levelId, levelType) {
 		if (p.completedLevels && p.completedLevels[l2()] && p.completedLevels[l2()][levelId] && p.completedLevels[l2()][levelId][levelType]) {
 			return p.completedLevels[l2()][levelId][levelType];
@@ -223,6 +230,7 @@ var Game = function() {
 	};
 	this.initW = function(listName) {
 		this.words = util.copy(p.myWords.getWords(listName));
+		this.listName = listName;
 		this.startup();
 	};
 	this.startup = function() {
@@ -367,11 +375,19 @@ var MultipleChoiceGame = function() {
 MultipleChoiceGame.prototype = new Game();
 
 var ListWords = function() {
+	
 	this.init = function(lvlId) {
 		this.levelId = lvlId;
+		this.data = data[lvlId];
 	};
+	this.initW = function(listName) {
+		this.data = p.myWords.getWords(listName);
+		this.levelId = -1;
+		this.listName = listName;
+	};
+	
 	this.show = function() {
-		return data[this.levelId];
+		return this.data;
 	};
 };
 
@@ -514,7 +530,7 @@ var SentenceGame = function() {
 	};
 	this.cleanText = function(word) {
 		return word.text.toLowerCase().replace(/\?|\.|\,/g, "");
-	}
+	};
 	
 };
 SentenceGame.prototype = new Game();
@@ -524,9 +540,9 @@ var load = function() {
 	if (!gs) {
 		gs = initialP;
 	}
-	//if (!gs.myWords) {
-		gs.myWords = {keys : [], words : []};
-	//}
+	if (!gs.myWords) {
+		gs.myWords = {keys : [], words : [], l1 : [], l2 : []};
+	}
 	gs.myWords.getWords = function(word) {
 		var index = gs.myWords.keys.indexOf(word);
 		return gs.myWords.words[index];

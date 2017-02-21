@@ -4,7 +4,7 @@ var languages = [
 {code:"fr", name:"Français"},
 {code: "mg", name:"Malagasy"}
 
-]
+];
 var translate = function(code, lang) {
 
 	var texts = {
@@ -21,13 +21,15 @@ var translate = function(code, lang) {
 		new_list	: {de: "neue Liste", en: "new list", fr: "nouvelle liste", mg : "??"},
 		add			: {de: "hinzufügen", en: "add", fr:"ajouter", mg:"??"},
 		enter_name_list: {de: "Name der Liste:", en : "name of list:", fr: "nom de la liste", mg:"??" },
-		name_exists : {de: "Name existiert bereits", en : "name already exists", fr: "nom existe déjà", mg: "??"}
-	}
+		name_exists : {de: "Name existiert bereits", en : "name already exists", fr: "nom existe déjà", mg: "??"},
+		remove		: {de: "löschen", en: "remove", fr:"enlever", mg:"??"}
+		
+	};
 	if (lang && lang.code) { 
 		var valForLang = texts[code][lang.code];
 		if (valForLang) {
 			return valForLang;
 		}
 	}
-	return texts[code]['en']; 
-}
+	return texts[code].en; 
+};
