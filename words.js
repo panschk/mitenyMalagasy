@@ -176,5 +176,14 @@ eto:hier,
 etsy:da,
 ety:hier,
 ezaka:Anstrengung
+fa:aber/dass/weil,
+fady:Tabu,
+fahafiry:wievielte,
+fahasalamana:Gesundheit,
+fahavalo:Feind,
+fahefana:Macht,
+fahiny:damals,
+fahoriana:Armut,
+fakan-drivotra:Urlaub,
 
 };
