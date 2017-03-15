@@ -1,4 +1,6 @@
 var ALL_LEVELS=true;
+var INDEX_MYWORDS=-1;
+var INDEX_RANDOM=-2;
 /*jshint sub:true */
 /* ['de'] is better written in dot notation*/
 /*global data,angular,util,audio,languages,Lockr,translate*/ 
@@ -11,62 +13,54 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 	this.startList = function(lvl) {
 		this.isactive = 'list';
 		$scope.game = new ListWords();
-		$scope.game.init(lvl);
+		this.initAnyGame(lvl);
 	};
+	this.initAnyGame = function(lvl) {
+		if (lvl === INDEX_MYWORDS) {
+			$scope.game.initW(this.myWordSelection);
+		} else if (lvl === INDEX_RANDOM) {
+			$scope.game.initRandom();
+		} else {
+			$scope.game.init(lvl);
+		}
+	};
+	
 	this.startGame = function(lvl) {
 		$scope.p.currentgame = {"levelId" : lvl, "type" : "game"};
 		this.isactive = 'game';
 		$scope.game = new Game();
-		$scope.game.init(lvl);
+		this.initAnyGame(lvl);
 	};
 	this.start1of4 = function(lvl) {
 		$scope.p.currentgame = {"levelId" : lvl, "type" : "1of4"};
 		this.isactive = '1of4';
 		$scope.game = new MultipleChoiceGame();
-		$scope.game.init(lvl);
+		this.initAnyGame(lvl);
 	};
 	this.startMemory = function(lvl) {
 		$scope.p.currentgame = {"levelId" : lvl, "type" : "memory"};
 		this.isactive = 'memory';
 		$scope.game = new Memory();
-		$scope.game.init(lvl);
+		this.initAnyGame(lvl);
 	};
 	this.startPicture = function(lvl) {
 		$scope.p.currentgame = {"levelId" : lvl, "type" : "picture"};
 		this.isactive = 'picturegame';
 		$scope.game = new PictureGame();
-		$scope.game.init(lvl);
+		this.initAnyGame(lvl);
 	};
 	this.startListenGame = function(lvl) {
 		$scope.p.currentgame = {"levelId" : lvl, "type" : "listen"};
 		this.isactive = 'listen';
 		$scope.game = new ListenGame();
-		$scope.game.init(lvl);
+		this.initAnyGame(lvl);
 	};
 	this.startSentenceGame = function(lvl) {
 		$scope.p.currentgame = {"levelId" : lvl, "type" : "sentence"};
 		this.isactive = 'sentence';
 		$scope.game = new SentenceGame();
-		$scope.game.init(lvl);
+		this.initAnyGame(lvl);
 	};
-	this.startListW = function(lvl) {
-		this.isactive = 'list';
-		$scope.game = new ListWords();
-		$scope.game.initW(this.myWordSelection);
-	};
-	this.startGameW = function(listName) {
-		$scope.p.currentgame = {"levelId" : -1, "type" : "game"};
-		this.isactive = 'game';
-		$scope.game = new Game();
-		$scope.game.initW(this.myWordSelection);
-	};
-	this.start1of4W = function(lvl) {
-		$scope.p.currentgame = {"levelId" : -1, "type" : "1of4"};
-		this.isactive = '1of4';
-		$scope.game = new MultipleChoiceGame();
-		$scope.game.initW(this.myWordSelection);
-	};
-	
 	this.isDisabled = function(lvlIndex) {
 		if (ALL_LEVELS){
 			return false;
@@ -233,6 +227,10 @@ var Game = function() {
 		this.listName = listName;
 		this.startup();
 	};
+	this.initRandom = function() {
+		this.words = get10RandomWords();
+		this.startup();
+	};
 	this.startup = function() {
 		this.next(false);
 		this.errors = 0;
@@ -382,10 +380,14 @@ var ListWords = function() {
 	};
 	this.initW = function(listName) {
 		this.data = p.myWords.getWords(listName);
-		this.levelId = -1;
+		this.levelId = INDEX_MYWORDS;
 		this.listName = listName;
 	};
-	
+	this.initRandom = function() {
+		this.data = get10RandomWords();
+		this.levelId = INDEX_RANDOM;
+	};
+
 	this.show = function() {
 		return this.data;
 	};
@@ -612,6 +614,14 @@ var l2 = function() {
 	}
 	return 'mg';
 };
-
+var get10RandomWords = function() {
+	var indices = util.getRandomIndex(COMPLETE_WORDS.length, 10);
+	var randomWords = {name:{de:"Zufällig", mg:"??"},de:[], mg:[]}
+	for (var i = 0; i < indices.length; i++) {
+		randomWords.mg[i] = COMPLETE_WORDS[indices[i]][0];
+		randomWords.de[i] = COMPLETE_WORDS[indices[i]][1];
+	}
+	return randomWords;
+};
 var p = load();
 window.onbeforeunload = function() { return true; };

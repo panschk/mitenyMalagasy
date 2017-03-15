@@ -22,8 +22,8 @@ var translate = function(code, lang) {
 		add			: {de: "hinzufügen", en: "add", fr:"ajouter", mg:"??"},
 		enter_name_list: {de: "Name der Liste:", en : "name of list:", fr: "nom de la liste", mg:"??" },
 		name_exists : {de: "Name existiert bereits", en : "name already exists", fr: "nom existe déjà", mg: "??"},
-		remove		: {de: "löschen", en: "remove", fr:"enlever", mg:"??"}
-		
+		remove		: {de: "löschen", en: "remove", fr:"enlever", mg:"??"},
+		"10randomwords" : {de:"10 Wörter zufällig", en : "10 random words", fr : "dix mots par chance", mg : "??"}
 	};
 	if (lang && lang.code) { 
 		var valForLang = texts[code][lang.code];

@@ -6,7 +6,8 @@
     <script src="js/angular.min.js"></script>
 	<script src="js/lockr.js"></script>
 	<script src="data.js" charset="utf-8"></script>
-	<script src="data2.js" charset="utf-8"></script>
+	<!--<script src="data2.js" charset="utf-8"></script>-->
+	<script src="words.js" charset="utf-8"></script>
 	<script src="audio.js" charset="utf-8"></script>
 	<script src="translations.js" charset="utf-8"></script>
 	<script src="util.js" charset="utf-8"></script>
@@ -34,11 +35,16 @@
 	</div>
 	<div ng-show="!p.hideMyWords">
 		<select ng-model="m.myWordSelection" ng-options="w for w in p.myWords.keys" class="levelWordList"></select>
-		<button ng-click="m.startListW($index)" ng-disabled="!(m.getWordSize(m.myWordSelection) >= 1)">&#x1f4f0;</button>
-		<button ng-click="m.start1of4W($index)"  ng-disabled="!(m.getWordSize(m.myWordSelection) >= 4)">&#x2611;</button>
-		<button ng-click="m.startGameW($index)"  ng-disabled="!(m.getWordSize(m.myWordSelection) >= 1)">&#x270d;</button>
+		<button ng-click="m.startList(-1)" ng-disabled="!(m.getWordSize(m.myWordSelection) >= 1)">&#x1f4f0;</button>
+		<button ng-click="m.start1of4(-1)"  ng-disabled="!(m.getWordSize(m.myWordSelection) >= 4)">&#x2611;</button>
+		<button ng-click="m.startGame(-1)"  ng-disabled="!(m.getWordSize(m.myWordSelection) >= 1)">&#x270d;</button>
 	</div>
-
+	<div>
+		{{ text("10randomwords") }}
+		<button ng-click="m.startList(-2)">&#x1f4f0;</button>
+		<button ng-click="m.start1of4(-2)">&#x2611;</button>
+		<button ng-click="m.startGame(-2)">&#x270d;</button>
+	</div>
 	<div ng-repeat="level in m.levels() track by $index">
 		{{ level['name'][l1()] }} 
 		<button ng-click="m.startList($index)" ng-show="m.doShow($index)" ng-disabled="m.isDisabled($index)">&#x1f4f0;</button>
@@ -69,7 +75,6 @@ Logo und Icons based on <a href="http://www.flaticon.com/authors/freepik" target
 			<button ng-show="audio.exists(game.show()[l2()][$index])" ng-click="audio.play(game.show()[l2()][$index])">&#x1f50a;</button>
 			<button ng-show="game.levelId != -1" ng-click="m.addToList(game.show()[l2()][$index], game.show()[l1()][$index], m.myWordSelection)">{{text("add")}}</button>
 			<button ng-show="game.listName" ng-click="m.removeFromList(game.show()[l1()][$index], game.show()[l2()][$index], m.myWordSelection, game)">{{text("remove")}}</button>
-
 		</td>
 	   </tr>
 	   </table>
