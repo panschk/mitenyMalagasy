@@ -616,7 +616,7 @@ var l2 = function() {
 };
 var get10RandomWords = function() {
 	var indices = util.getRandomIndex(COMPLETE_WORDS.length, 10);
-	var randomWords = {name:{de:"Zufällig", mg:"??"},de:[], mg:[]}
+	var randomWords = {name:{de:"Zufällig", mg:"??"},de:[], mg:[]};
 	for (var i = 0; i < indices.length; i++) {
 		randomWords.mg[i] = COMPLETE_WORDS[indices[i]][0];
 		randomWords.de[i] = COMPLETE_WORDS[indices[i]][1];
