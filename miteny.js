@@ -1,6 +1,8 @@
 var ALL_LEVELS=true;
 var INDEX_MYWORDS=-1;
 var INDEX_RANDOM=-2;
+var LIST_MASTERED="LIST_MASTERED";
+var LIST_LEARNING="LIST_LEARNING";
 /*jshint sub:true */
 /* ['de'] is better written in dot notation*/
 /*global data,angular,util,audio,languages,Lockr,translate*/ 
@@ -160,6 +162,10 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 			return p.completedLevels[l2()][levelId][levelType];
 		}
 		return "";
+	};
+	this.countWordsInList = function(listName) {
+		var list = p.progressLists[listName];
+		return list.length;
 	};
 	this.refreshScope = function() {
 		$scope.$apply();
@@ -544,6 +550,9 @@ var load = function() {
 	}
 	if (!gs.myWords) {
 		gs.myWords = {keys : [], words : [], l1 : [], l2 : []};
+	}
+	if (!gs.progressLists) {
+		gs.progressLists = {LIST_MASTERED : [], LIST_LEARNING : []};
 	}
 	gs.myWords.getWords = function(word) {
 		var index = gs.myWords.keys.indexOf(word);

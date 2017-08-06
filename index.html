@@ -20,6 +20,7 @@
   <div id="menu"  ng-show="m.isactive=='menu'">
   <img src="img/lemur.png" width = "10%"/>
     <h1>Miteny Malagasy!</h1>
+    {{text("stats")}}: <a ng-click="m.startGame(-1)">{{m.countWordsInList("LIST_MASTERED")}} {{text("mastered")}}</a> <a ng-click="m.startGame(-1)">{{m.countWordsInList("LIST_LEARNING")}} {{text("learning")}}</a>
     <div ng-controller='ModalController'>
 		<button ng-click='toggleModal()'>{{text("settings")}}</button>
 		<modal-dialog show='modalShown' width='60%' height='60%'>
