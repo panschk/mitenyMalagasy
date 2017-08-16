@@ -554,6 +554,45 @@ var load = function() {
 	if (!gs.progressLists) {
 		gs.progressLists = {LIST_MASTERED : [], LIST_LEARNING : []};
 	}
+	if (!gs.progressLists.containsWord) {
+		gs.progressLists.containsWord = function(listName, word) {
+			var list = gs.progressLists[listName];
+			for (var i = 0; i < list.length; i++) {
+				if (list[i].mg === word.mg && list[i].de === word.de && list[i].fr === word.fr && list[i].en === word.en) {
+					return list[i];
+				}
+			}
+			return false;
+		};
+	}
+	if (!gs.progressLists.updateStats) {
+		gs.progressLists.updateStats = function(word, isCorrect) {
+			var mastered = gs.progressLists.containsWord(LIST_MASTERED, word);
+			if (mastered) {
+				if (isCorrect) {
+					mastered.correct=mastered.correct+1;
+					mastered.streak=mastered.streak+1;
+				} else {
+					mastered.wrong = mastered.wrong + 1;
+					mastered.streak = 0;
+				}
+			} else {
+				var learning = gs.progressLists.containsWord(LIST_LEARNING, word);
+				if (learning) {
+					if (isCorrect) {
+						mastered.correct=mastered.correct+1;
+						mastered.streak=mastered.streak+1;
+					} else {
+						mastered.wrong = mastered.wrong + 1;
+						mastered.streak = 0;
+					}
+				}
+				
+			}
+		};
+	}
+	
+	
 	gs.myWords.getWords = function(word) {
 		var index = gs.myWords.keys.indexOf(word);
 		return gs.myWords.words[index];
