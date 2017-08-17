@@ -286,6 +286,7 @@ var Game = function() {
 	
 	this.checkAnswer = function(controller) {
 		var correctAnswer = this.getCorrectAnswer();
+		var wordObj = this.createWordObj(this.index);
 		var possibleAnswers = correctAnswer.split("/");
 		for (var i = 0; i < possibleAnswers.length; i++) {
 			var possibleAnswer = possibleAnswers[i].trim();
@@ -294,10 +295,12 @@ var Game = function() {
 				possibleAnswer = possibleAnswer.slice(0, startOfComment).trim(); 
 			}
 			if (this.answer.toUpperCase().trim() === possibleAnswer.toUpperCase()) {
+				p.progressLists.updateStats(wordObj, true);
 				this.correctGuess(controller, possibleAnswer);
 				return;
 			}
 		}
+		p.progressLists.updateStats(wordObj, false);
 		this.wrongGuess(controller);
 	};
 
@@ -344,7 +347,13 @@ var Game = function() {
 			}
 		}
 	};
-	
+	this.createWordObj= function(idx) {
+		var word = this.words[l2()][idx];
+		var wordObj = {de:null, fr:null, en:null, mg:null};
+		wordObj[l1()] = this.words[l1()][idx];
+		wordObj[l2()] = this.words[l2()][idx];
+		return wordObj;
+	};
 };
 
 var MultipleChoiceGame = function() {
@@ -363,16 +372,14 @@ var MultipleChoiceGame = function() {
 		return this.words[l2()][idx];
 	};
 	this.selectAnswer = function(choice, controller) {
+		var wordObj = this.createWordObj(this.index);
 		var idx = this.possibleAnswers[choice];
-		var word = this.words[l2()][this.index];
-		var l1 = l1();
-		var l2 = l2();
-		var wordObj = {l1 : this.words[l1()][this.index], l2 : this.words[l2()][this.index]};
 		if (idx === this.index) {
 			p.progressLists.updateStats(wordObj, true);
-			this.correctGuess(controller, word);
+			this.correctGuess(controller, wordObj[l2()]);
 		} else {
 			p.progressLists.updateStats(wordObj, false);
+			p.progressLists.updateStats(this.createWordObj(idx), false);
 			this.wrongGuess(controller);
 		}
 	};
@@ -585,13 +592,16 @@ var load = function() {
 				var learning = gs.progressLists.containsWord(LIST_LEARNING, word);
 				if (!learning) {
 					learning = word;
+					learning.correct = 0;
+					learning.wrong = 0;
+					learning.streak = 0;
 					gs.progressLists.LIST_LEARNING.push(learning);
 				}
 				if (isCorrect) {
-					learning.correct=mastered.correct+1;
-					learning.streak=mastered.streak+1;
+					learning.correct=learning.correct+1;
+					learning.streak=learning.streak+1;
 				} else {
-					learning.wrong = mastered.wrong + 1;
+					learning.wrong = learning.wrong + 1;
 					learning.streak = 0;
 				}
 				if (learning.streak > 4) {
