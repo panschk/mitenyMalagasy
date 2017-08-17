@@ -365,9 +365,14 @@ var MultipleChoiceGame = function() {
 	this.selectAnswer = function(choice, controller) {
 		var idx = this.possibleAnswers[choice];
 		var word = this.words[l2()][this.index];
+		var l1 = l1();
+		var l2 = l2();
+		var wordObj = {l1 : this.words[l1()][this.index], l2 : this.words[l2()][this.index]};
 		if (idx === this.index) {
+			p.progressLists.updateStats(wordObj, true);
 			this.correctGuess(controller, word);
 		} else {
+			p.progressLists.updateStats(wordObj, false);
 			this.wrongGuess(controller);
 		}
 	};
@@ -578,17 +583,25 @@ var load = function() {
 				}
 			} else {
 				var learning = gs.progressLists.containsWord(LIST_LEARNING, word);
-				if (learning) {
-					if (isCorrect) {
-						mastered.correct=mastered.correct+1;
-						mastered.streak=mastered.streak+1;
-					} else {
-						mastered.wrong = mastered.wrong + 1;
-						mastered.streak = 0;
-					}
+				if (!learning) {
+					learning = word;
+					gs.progressLists.LIST_LEARNING.push(learning);
 				}
-				
+				if (isCorrect) {
+					learning.correct=mastered.correct+1;
+					learning.streak=mastered.streak+1;
+				} else {
+					learning.wrong = mastered.wrong + 1;
+					learning.streak = 0;
+				}
+				if (learning.streak > 4) {
+					var idx = gs.progressLists.LIST_LEARNING.indexOf(learning);
+					gs.progressLists.LIST_LEARNING.splice(idx, 1);
+					gs.progressLists.LIST_MASTERED.push(learning);
+				}
 			}
+			console.log(JSON.stringify(p.progressLists));
+			console.log(JSON.stringify(gs.progressLists));
 		};
 	}
 	
