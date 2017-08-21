@@ -20,7 +20,7 @@
   <div id="menu"  ng-show="m.isactive=='menu'">
   <img src="img/lemur.png" width = "10%"/>
     <h1>Miteny Malagasy!</h1>
-    {{text("stats")}}: <a ng-click="m.startGame(-1)">{{m.countWordsInList("LIST_MASTERED")}} {{text("mastered")}}</a> <a ng-click="m.startGame(-1)">{{m.countWordsInList("LIST_LEARNING")}} {{text("learning")}}</a>
+    {{text("stats")}}: <a ng-click="m.showWordLists('LIST_MASTERED', 'mastered')">{{m.countWordsInList("LIST_MASTERED")}} {{text("mastered")}}</a> <a ng-click="m.showWordLists('LIST_LEARNING', 'learning')">{{m.countWordsInList("LIST_LEARNING")}} {{text("learning")}}</a>
     <div ng-controller='ModalController'>
 		<button ng-click='toggleModal()'>{{text("settings")}}</button>
 		<modal-dialog show='modalShown' width='60%' height='60%'>
@@ -77,6 +77,22 @@ Logo und Icons based on <a href="http://www.flaticon.com/authors/freepik" target
 			<button ng-show="game.levelId != -1" ng-click="m.addToList(game.show()[l2()][$index], game.show()[l1()][$index], m.myWordSelection)">{{text("add")}}</button>
 			<button ng-show="game.listName" ng-click="m.removeFromList(game.show()[l1()][$index], game.show()[l2()][$index], m.myWordSelection, game)">{{text("remove")}}</button>
 		</td>
+	   </tr>
+	   </table>
+    </div>
+	<div ng-show="m.isactive=='listLearned'" id="listLearned" ng-cloak>
+	  <button ng-click="m.mainMenu()">{{text("back")}}</button> 
+	   <h1>{{text(game.listText)}}</h1>
+	   <table>
+	   <tr><th>{{p.language.name}}</th><th>{{p.languageToLearn.name}}</th><th>:-)</th><th>:-(</th><th>--></th></tr>
+	   <tr ng-repeat="n in game.show() track by $index">
+		<td>{{game.show()[$index][l1()]}}</td><td>{{game.show()[$index][l2()]}}
+			<button ng-show="audio.exists(game.show()[$index][l2()])" ng-click="audio.play(game.show()[$index][l2()])">&#x1f50a;</button>
+		</td>
+		<td>{{game.show()[$index].correct}}</td>
+		<td>{{game.show()[$index].wrong}}</td>
+		<td>{{game.show()[$index].streak}}</td>
+		
 	   </tr>
 	   </table>
     </div>

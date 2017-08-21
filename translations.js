@@ -29,7 +29,10 @@ var translate = function(code, lang) {
 		learning	: {de : "kennengelernt", en: "learning", fr : "en cours", mg : "mbola hianarana"}
 		
 	};
-	if (lang && lang.code) { 
+	if (!code){
+		return "/";
+	}
+	if (lang && lang.code) {
 		var valForLang = texts[code][lang.code];
 		if (valForLang) {
 			return valForLang;
