@@ -105,6 +105,9 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 		var langOkay = data[levelId][l1()] && data[levelId][l2()];
 		return typeMatch && langOkay;
 	};
+	this.doShowRandomWords = function() {
+		return (l1() === 'de' && l2() === 'mg') || (l2() === 'de' && l1() === 'mg');
+	};
 	this.doShowListenGame = function(levelId) {
 		var typeMatch = data[levelId].type==='listen';
 		if (!typeMatch) {

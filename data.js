@@ -49,28 +49,28 @@ var data =
 },
 {
 	type	: "normal",
-	name	: {de:"Fragewörter", en: "Question words", fr: "questions", mg: "??"},
+	name	: {de:"Fragewörter", en: "Question words", fr: "questions", mg: "fanontaniana"},
 	de	: ["Wer", "Wie", "Wo", "Was", "Wie viel", "Woher", "Wohin", "Warum", "Wie teuer", "Wann", "Wie lange"],
 	mg	: ["iza", "ahoana", "aiza", "inona", "firy", "avy aiza", "mankaiza", "nahoana", "ohatrinona", "rahoviana", "hafiriana"]
 
 },
 {
 	type	: "normal",
-	name	: {de:"Richtungen", en: "Directions", fr: "Directions", mg: "??"},
+	name	: {de:"Richtungen", en: "Directions", fr: "Directions", mg: "tari-dalana"},
 	de	: ["links", "rechts", "geradeaus", "Norden", "Süden", "Westen", "Osten", "Hin", "Zurück", "Bis", "Nach"],
 	mg	: ["ankavia", "ankavanana", "mahitsy", "avaratra", "atsimo", "andrefana", "atsinanana", "mandroso", "miverina", "ivelany", "mankany"]
 
 },
 {
 	type	: "normal",
-	name	: {de:"Ortsangaben", en: "Locations", fr: "Emplacements", mg: "??"},
+	name	: {de:"Ortsangaben", en: "Locations", fr: "Emplacements", mg: "toerana"},
 	de	: ["nah", "weit", "hier", "dort", "draußen", "innen", "über", "unter", "vorne", "hinten", "bei/zu"],
 	mg	: ["akaiky", "lavitra", "eto", "any", "ivelany", "anaty", "ambony", "ambany", "aloha", "aoriana", "amin'"]
 
 },
 {
 	type	: "normal",
-	name	: {de:"Zeitangaben", en: "time", fr: "temps", mg: "??"},
+	name	: {de:"Zeitangaben", en: "time", fr: "temps", mg: "fotoana"},
 	de	: ["gestern", "heute", "morgen", "Morgen", "vorgestern", "Nachmittag", "Mittag", "täglich", "Abend", "jetzt", "früher", "bald"],
 	mg	: ["omaly", "anio", "rahampitso", "maraina", "afak'omaly", "tolakandro", "atoandro", "isan'andro", "hariva", "izao", "taloha", "efa ho"]
 },
@@ -114,7 +114,7 @@ var data =
 },
 {
 	type	: "normal",
-	name	: {de:"Personalpronomen", en: "Personal pronouns", fr: "pronoms personnel", mg: "mpisolo manokana???"},
+	name	: {de:"Personalpronomen", en: "Personal pronouns", fr: "pronoms personnel", mg: "mpisolo manokana"},
 	de	: ["ich", "du", "er/sie/es/sie", "wir (inklusiv)", "wir (exklusiv)", "ihr", "mir/mich", "dir/dich", "sich", "uns (inklusiv)", "uns (exklusiv)", "euch"],
 	mg:[ "aho/izaho", "ianao", "izy", "isika", "izahay", "ianareo", "ahy", "anao", "azy", "antsika", "anay", "anareo"]
 },
@@ -138,37 +138,37 @@ var data =
 },
 {
 	type	: "normal",
-	name	: {de:"Adjektive", en: "Adjectives", fr: "adjectifs", mg: "??"},
+	name	: {de:"Adjektive", en: "Adjectives", fr: "adjectifs", mg: "adjectifs"},
 	de	: ["nah", "genug", "alt", "jung", "hoch", "viel/mehrere", "falsch", "richtig", "lange", "kurz", "faul", "fleißig", "klein", "kaputt"],
 	mg	: ["akaiky", "ampy", "antitra", "tanora", "avo", "betsaka", "diso", "marina", "ela", "fohy", "kamo", "mazoto", "kely", "simba"]
 },
 {
 	type	: "normal",
-	name	: {de:"Adjektive 2", en: "Adjectives 2", fr: "adjectifs 2", mg: "??"},
+	name	: {de:"Adjektive 2", en: "Adjectives 2", fr: "adjectifs 2", mg: "adjectifs 2"},
 	de	: ["teuer", "billig", "weit", "tief", "lang", "groß", "warm", "kalt", "stark", "dunkel", "hell", "schwach", "wenig"],
 	mg	: ["lafo", "mora", "lavitra", "lalina", "lava", "lehibe/ngeza", "mafana", "mangatsiaka", "mafy", "maizina", "mazava", "malemy", "vitsy"]
 },
 {
 	type	: "normal",
-	name	: {de:"Adjektive 3", en: "Adjectives 3", fr: "adjectifs 3", mg: "??"},
+	name	: {de:"Adjektive 3", en: "Adjectives 3", fr: "adjectifs 3", mg: "adjectifs 3"},
 	de	: ["süß", "bitter", "sauer", "krank", "ähnlich", "schwer", "behutsam", "schlecht", "schwierig", "neu"],
 	mg	: ["mamy", "mangidy", "marikivy", "marary", "mitovy", "mavesatra", "moramora", "ratsy", "sarotra", "vaovao"]
 },
 {
 	type	: "normal",
-	name	: {de:"Verben", en: "verbs", fr: "verbes", mg: "??"},
+	name	: {de:"Verben", en: "verbs", fr: "verbes", mg: "verbes"},
 	de	: ["besitzen", "sprechen", "schlafen", "kaufen", "essen", "gegessen werden", "ankommen", "lernen"],
 	mg	: ["manana", "miteny/miresaka", "matory", "mividy", "mihinana", "hanina", "tonga", "mianatra"]
 },
 {
 	type	: "normal",
-	name	: {de:"Mehr Zahlen", en: "More numbers", fr: "plus de nombres", mg: "??"},
+	name	: {de:"Mehr Zahlen", en: "More numbers", fr: "plus de nombres", mg: "betsaka isa"},
 	de	: ["hundert", "zweihundert", "dreihundert", "vierhundert", "fünfhundert", "sechshundert", "siebenhundert", "tausend", "zehntausend", "hunderttausend", "1 Million", "1 Milliarde"],
 	mg	: ["zato", "roan-jato", "telon-jato", "efa-jato", "diman-jato", "enin-jato", "fiton-jato", "arivo", "iray alina", "iray hetsy", "iray tapitrisa", "arivo tapitrisa"]
 },
 {
 	type	: "normal",
-	name	: {de:"Noch mehr Zahlen", en: "Even more numbers", fr: "encore plus de nombres", mg: "??"},
+	name	: {de:"Noch mehr Zahlen", en: "Even more numbers", fr: "encore plus de nombres", mg: "betsaka isa"},
 	de	: ["das erste", "das zweite", "einhalb", "ein Drittel", "zwei Drittel", "einmal", "zweimal", "dreimal", "zum ersten Mal", "zu zweit", "zu dritt"],
 	mg	: ["ny voalohany", "ny faharoa", "antsasany", "ampahatelony", "roa ampahatelony", "indray", "indroa", "intelo", "voalohany", "tsiroaroa", "tsitelotelo"]
 },
@@ -203,14 +203,14 @@ var data =
 },
 {
 	type	: "normal",
-	name	: {de: "Auf dem Markt", en : "At the market", fr: "Au marché", mg : "Amin'ny tsena??"},
+	name	: {de: "Auf dem Markt", en : "At the market", fr: "Au marché", mg : "Eny an-tsena"},
 	de	: ["gehen", "heute", "Markt", "Ich", "wollen", "Gemüse", "Obst", "sehr", "aussehen", "wieviel kosten", "Kilo", "(Hilfswort für Imperativ)", "geben", "noch", "Dinge", "sonst", "Verkäufer", "kaufen", "heimkehren", "nach/zu/in", "Haus", "kochen", "Mittagessen"],
 	mg	: ["mandeha", "androany", "tsena", "izaho", "mila", "legioma", "voankazo", "tena", "endrika", "ohatrinona", "kilao", "mba", "omena", "mbola", "zavatra", "hafa", "mpivarotra", "mividy", "mody", "any", "trano", "mahandro", "sakafo atoandro"]
 
 },
 {
 	type	: "sentence",
-	name	: {de: "Auf dem Markt", en : "At the market", fr: "Au marché", mg : "Amin'ny tsena??"},
+	name	: {de: "Auf dem Markt", en : "At the market", fr: "Au marché", mg : "Eny an-tsena"},
 	de	: ["Heute gehe ich zum Markt", "Ich brauche Obst und Gemüse.", "Die Tomaten sehen sehr gut aus.", "Wieviel kosten die Tomaten?", "Die Tomaten kosten 3000 Ariary das Kilo", "'Geben Sie mir bitte einen Kilo Tomaten!'", "'Möchten Sie sonst noch etwas?'", "'Ich brauche noch drei Gurken und zwei Kilo Kartoffeln.'", "'9500 Ariary, bitte'", "Beim Obsthändler kaufe ich noch vier Äfpel und fünf Orangen.", "Ab nach Hause. Ich werde das Mittagessen kochen."],
 	mg	: ["Handeha any antsena izaho androany", "Mila voankazo sy legioma aho", "tena tsara endrika ny voatabia", "Ohatrinona ny voatabia?", "Ny voatabia iray kilao dia telo rivo ariary", "Mba Omeo voatabia iray kilao aho!", "Mbola mila zavatra hafa ve ianao?", "Mbola mila konkombra telo sy ovy roa kilao aho", "Sivy arivo sy dimanjato ariary azafady", "Mbola hividy poama efatra sy voasary dimy aho any amin'ny mpivaro-boankazo", "Hody any an-trano aho. Hahandro sakafo atoandro aho"]
 },
