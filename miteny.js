@@ -69,11 +69,6 @@ app.controller('Main', ['$scope','$http', function Main($scope, $http) {
 		}
 		return p.progress<lvlIndex;
 	};
-	this.showWordLists= function(listName,listText) {
-		this.isactive = 'listLearned';
-		$scope.game = new ListLearnedWords();
-		$scope.game.init(listName, listText);
-	};
 	this.gameClass = function() {
 		if ($scope.game) {
 			return $scope.game.cssClass;
@@ -413,17 +408,6 @@ var ListWords = function() {
 
 	this.show = function() {
 		return this.data;
-	};
-};
-
-var ListLearnedWords = function() {
-	
-	this.init = function(listName, listText) {
-		this.listName = listName;
-		this.listText= listText;
-	};
-	this.show = function() {
-		return p.progressLists[this.listName];
 	};
 };
 
