@@ -6,7 +6,6 @@
     <script src="js/angular.min.js"></script>
 	<script src="js/lockr.js"></script>
 	<script src="data.js" charset="utf-8"></script>
-	<!--<script src="data2.js" charset="utf-8"></script>-->
 	<script src="words.js" charset="utf-8"></script>
 	<script src="audio.js" charset="utf-8"></script>
 	<script src="translations.js" charset="utf-8"></script>
@@ -40,21 +39,21 @@
 		<button ng-click="m.start1of4(-1)"  ng-disabled="!(m.getWordSize(m.myWordSelection) >= 4)">&#x2611;</button>
 		<button ng-click="m.startGame(-1)"  ng-disabled="!(m.getWordSize(m.myWordSelection) >= 1)">&#x270d;</button>
 	</div>
-	<div>
+	<div ng-show="m.doShowRandomWords()">
 		{{ text("10randomwords") }}
 		<button ng-click="m.startList(-2)">&#x1f4f0;</button>
 		<button ng-click="m.start1of4(-2)">&#x2611;</button>
 		<button ng-click="m.startGame(-2)">&#x270d;</button>
 	</div>
 	<div ng-repeat="level in m.levels() track by $index">
-		{{ level['name'][l1()] }} 
+		<span ng-show="m.doShow($index)">{{ level['name'][l1()] }}</span>
 		<button ng-click="m.startList($index)" ng-show="m.doShow($index)" ng-disabled="m.isDisabled($index)">&#x1f4f0;</button>
 		<button ng-click="m.start1of4($index)" ng-class="m.getButtonStyle($index, '1of4')" ng-show="m.doShow($index, 'normal')" ng-disabled="m.isDisabled($index)">&#x2611;</button>
 		<button ng-click="m.startGame($index)" ng-class="m.getButtonStyle($index, 'game')" ng-show="m.doShow($index, 'normal')" ng-disabled="m.isDisabled($index)">&#x270d;</button>
-		<button ng-click="m.startMemory($index)" ng-class="m.getButtonStyle($index, 'memory')" ng-show="m.doShow($index, 'normal')" ng-disabled="m.isDisabled($index)">&#xe322;</button>
-		<button ng-click="m.startPicture($index)" ng-class="m.getButtonStyle($index, 'picture')" ng-show="m.doShow($index, 'picture')" ng-disabled="m.isDisabled($index)">&#xe322;</button>
+		<button ng-click="m.startMemory($index)" ng-class="m.getButtonStyle($index, 'memory')" ng-show="m.doShow($index, 'normal')" ng-disabled="m.isDisabled($index)">&#x2318;</button>
+		<button ng-click="m.startPicture($index)" ng-class="m.getButtonStyle($index, 'picture')" ng-show="m.doShow($index, 'picture')" ng-disabled="m.isDisabled($index)">&#x1F3E0;</button>
 		<button ng-click="m.startListenGame($index)" ng-class="m.getButtonStyle($index, 'listen')" ng-show="m.doShowListenGame($index)" ng-disabled="m.isDisabled($index)">&#x1f50a;</button>
-		<button ng-click="m.startSentenceGame($index)" ng-class="m.getButtonStyle($index, 'sentence')" ng-show="m.doShow($index, 'sentence')" ng-disabled="m.isDisabled($index)">&#x270d;</button>
+		<button ng-click="m.startSentenceGame($index)" ng-class="m.getButtonStyle($index, 'sentence')" ng-show="m.doShow($index, 'sentence')" ng-disabled="m.isDisabled($index)">&#x20db;</button>
 	</div>
 <div id="footer">
 Logo und Icons based on <a href="http://www.flaticon.com/authors/freepik" target="_blank">Freepik from Flaticon</a>
